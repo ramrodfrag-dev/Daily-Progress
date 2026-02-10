@@ -1,65 +1,50 @@
+
 # def subarraySum(nums: list[int], k: int):
 #     left=0
 #     right=0
-#     results=[]
-#     windowSum=nums[right]
-#     ele=[nums[right]]
-
-#     while(right>=left and left<len(nums) and right<len(nums)):
-#         if windowSum==k:
-#             results.append(ele.copy())     # copy is important as it is still connected 
-#         elif windowSum>k and right>left:
-#             windowSum-=ele[0]
-#             ele=ele[1:]
-#             left+=1
-#             continue
+#     hashe={}
+#     sum=0
+#     count=0
+    
+#     for i,num in enumerate(nums):
+#         sum+=num
+#         if sum==k:
+#             count+=1
+            
+#         if sum-k in hashe:
+#             j=hashe.get(sum-k)
+#             count+=j
         
-#         if right<len(nums)-1:
-#             right+=1
-#             ele.append(nums[right])
-#             windowSum+=nums[right]
-#         elif right>=len(nums)-1:
-#             windowSum-=ele[0]
-#             ele=ele[1:]
-#             left+=1
-#         elif right>len(nums) and left>=len(nums):
-#             break
+#         if sum not in hashe:
+#             hashe.update({sum:1})
+#         else:
+#             j=hashe.get(sum)
+#             hashe.update({sum:j+1})
     
-#     print(results, len(results))
+#     print(count)
     
-# nums=[1,9,5,0,4,2,6,3,8,1,7]
-# k=9
+# nums=[0,0,0,0,0,0,0,0,0,0]
+# k=0
 
 # subarraySum(nums,k)
         
-#Above thing is for the only positive thing optimal code. But for negatives we have other code:
+nums=[1,2,4,3,5,0,1]
+results=[-1] * len(nums)
+stack=[]
 
-def subarraySum(nums: list[int], k: int):
-    left=0
-    right=0
-    hashe={}
-    sum=0
-    count=0
-    
-    for i,num in enumerate(nums):
-        sum+=num
-        if sum==k:
-            count+=1
-            
-        if sum-k in hashe:
-            j=hashe.get(sum-k)
-            count+=j
-        
-        if sum not in hashe:
-            hashe.update({sum:1})
-        else:
-            j=hashe.get(sum)
-            hashe.update({sum:j+1})
-    
-    print(count)
-    
-nums=[0,0,0,0,0,0,0,0,0,0]
-k=0
+#Step-2-> Push if the stack is empty and if we get a greater number than top of stack then pop all elements until top of stack > current element and push this current element
 
-subarraySum(nums,k)
+for i,num in enumerate(nums):
+    if len(stack)==0:
+        stack.append(i)
+    else:
+        while num>nums[stack[-1]]:
+            results[stack[-1]]=num
+            stack.pop()
+            if len(stack)==0: break
+        stack.append(i)
         
+        
+print(results)
+
+

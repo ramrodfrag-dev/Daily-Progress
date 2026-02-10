@@ -1,6 +1,6 @@
 
 
-<!-- 27-01-2026 -->
+## 27-01-2026
 
 PATTERN: Two Pointers
 
@@ -15,7 +15,7 @@ Why it works:
 
 
 
-<!-- 28-01-2026 -->
+## 28-01-2026
 
 PATTERN: Sliding Window
 
@@ -32,7 +32,7 @@ Note: Difference between 2 pointers and sliding window
 
 
 
-<!-- 30-01-2026 -->
+## 30-01-2026
 
 PATTERN: Hashing
 
@@ -60,7 +60,7 @@ Key idea:
 
 
 
-<!-- 2-02-2026 -->
+## 2-02-2026
 
 PATTERN: Prefix-Postfix Sum or product
 
@@ -84,7 +84,7 @@ Implementation see in the python_core_practice.py
 
 
 
-<!-- 5-02-2026 -->
+## 5-02-2026
 
 PATTERN-1: How to access methods and variables of another methods inside a same class.
 
@@ -103,7 +103,7 @@ Implementation in python_core_practice.py
 
 
 
-<!-- 6-02-2026 -->
+## 6-02-2026
 
 PATTERN: Frequency Map
 - It consists of HashMap and also prefix sum for optimal soln.
@@ -123,10 +123,42 @@ Key idea:
 
 
 
-<!-- 7-02-2026 -->
+## 7-02-2026 (Day8)
+
+PATTERN: Monotonic Stack(Decreasing or increasing ones)
+
+Used when: We we need to find the:
+- next greater element(Monotonically Decreasing Stack)
+- next smaller element(Monotonically Increasing Stack)
+- previous smaller element(Monotonically Increasing Stack)
+- previous greater element(Monotonically Decreasing Stack)
+- Questions similar to these concepts
+
+Key idea(For monotonically decreasing): We take an stack(list) and loop through the list given:
+- If current iterating eleemnt > stack[-1] then pop the stack and continue until current element < stack[-1].
+- If it comes out of above while loop then push the current element in to the stack. And continue until all elements are covered in main list given.
+- After popping update the results by adding the current element to the result to the appropriate result index
+
+
+
+
+PATTERN: Finding min,max element of the given stack at a particular time.
+
+Used when:
+- If the stack max,min element is asked in O(1) time
+
+Key idea:
+- Take an other stack(minstack or maxstack) and collect the elements which are max or min up to that layer of stack.
+- even if the above layers vanish also we have max,min in each layer which calculates up to that layer starting from bottom.
+
+
+
+
+
+## 10-02-2026(Day9)
 
 PATTERN:
 
-Used when:
+Used When:
 
 Key idea:
