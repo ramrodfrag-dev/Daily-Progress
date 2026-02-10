@@ -157,8 +157,36 @@ Key idea:
 
 ## 10-02-2026(Day9)
 
-PATTERN:
+PATTERN: Deque
 
 Used When:
+- wants the addition or deletion of elements fromt the starting.
+- when adding and deleting thousand numbers in to a list
+
+Key idea:
+- from collections import deque
+- q=deque()
+- Other implementations are in practise_py files.
+
+Note:
+- Lists when the space is completed it doubles it size and then copies the elements in to it and while deleting also if space is more it becomes half and like that.
+- so, time is significantly wasted
+- In case of deque the time is not wasted because the deque is just like a linked list. So, if a new item comes it just allocates a new space and head is changed accordinglly.
+
+
+Note:
+Syntax:
+- root:Optional[TreeNode] ->This means root datatype can be either of Treenode or None.
+- Here TreeNode is not defned. You can define it in any way.
+
+
+
+
+## 11-02-2026(Day10)
+
+PATTERN: Level-by-Level Traversal(Use BFS for traversal)
+
+Used When:
+- When tree data structures are given or the problem is solved by BFS Algorithm
 
 Key idea:
