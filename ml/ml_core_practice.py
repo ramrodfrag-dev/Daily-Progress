@@ -159,6 +159,97 @@ Acutually not spam     FP        TN
 #f. Specificity: This is true negativity. Remember -ve means opposite of positive so 2 terms came in +ve so, other 2 comes in -ve
 '''TN/(TN+FP)''' # -> Remember this formula by thinking true -ve so, it must be opp of +ve.
 
+#
+#
+#
+#
+#
+#
+
+# 4-02-2026
+
+'''Some Models in Machine Learning'''
+# 1. Logistic Regression:
+#       ->It actually predicts probabilities then convert them into classes.
+#       ->It basically classifies but the name is historically regression
+#       ->Relationship between features and class is mostly linear ->we can easily predict the output based on the given features as they are linearly dependent
+
+# It fails when data is non-linear
+# Decision boundary is curved or irregular  ->Ex: spam detection with weird patterns, medical diagnosis with many interactions,etc
+
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression(
+    multi_class="multinomial",  # More than 2 classes
+    solver="lbfgs",             # Optimization algorithm
+    max_iter=1000               # Max training steps
+)
+
+
+# 2. Decision Tree:
+#       ->It asks questions like a flow to get correct output.
+#Ex: does it have wings:Yes -It's a bird then it can fly:No -May be a ostrich or birds which are heavy.
+#       ->Used when the data is non-linear   ->Loan approval
+#       ->Expect Human readable rules
+#       ->when datasets are medium
+
+# Failing condition: When there is a small change then we get a totally different tree
+# Overfit easily
+
+from sklearn.tree import DecisionTreeClassifier
+model=DecisionTreeClassifier(
+    max_depth=5,
+    random_state=42
+)
+
+
+# 3.Random Forests:
+#       ->Instead of trusting one tree we trust 200 trees with their outputs
+#       ->Every tree sees a random data then each tree votes and the maximum votes will be considered as the output
+#       ->Used for complex data and Non-linear relationships
+#       ->Used when we need high accuracy without tuning hell
+#Ex: Disease Prediction thing is where the Random forests are used.
+
+from sklearn.ensemble import RandomForestClassifier
+model=RandomForestClassifier(
+    n_estimators=200,  #chooses how many no.of trees to select for the voting
+    random_state=42    #It is the seed value which is used for generating random values
+)
+
+'''Note: n_estimators range from 100-500'''
 
 
 
+
+# 4.Gradient Boosting:
+#       ->Here Trees correct previous mistakes whereas in Random Forests trees are independent
+#       ->Here trees are arranges in sequential and whereas in the Random forest they are in parallel.
+#       ->It is more powerful while the Random forests are stable
+#       ->Used when small mistakes costs a lot then this reduces them.
+#       ->Used when Rare cases are there or very extremely complex patterns
+
+#   Fails when the dataset is small and the question is very small.
+#       ->If one tree makes mistakes then it's next tree corrects it.
+
+'''
+First model makes mistakes
+Second focuses on mistakes
+Third fixes remaining mistakes
+Repeat…
+'''
+
+#Algorithms used here:
+# a.GradientBoosting Classifier
+# b.XGBoost(Extreme Gradient Boosting)           ->a,b they are used when the data is tabular and i kaggle like problems and high accuracy is involved and parameters can be tuned.
+# c.LightGBM
+# d.CatBoost
+
+
+from xgboost import XGBClassifier
+import xgboost as xgb
+
+model=XGBClassifier(
+    n_estimators=100,   #no.of trees to build sequentially
+    learning_rate=0.1,   # It shrinks the contribution of each tree to a certain extent. Ex: Initially F(x)=T1+T2+T3 then now it is F(x)=0.1*T1 + 0.1* T2 + 0.1*T3 so, contribution decreases.
+    max_depth=3,        #depth of each tree
+    random_state=42
+)

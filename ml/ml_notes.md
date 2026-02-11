@@ -57,3 +57,30 @@ Topics Covered:(Model Evaluation metrics)
 - ROC curve basics
 
 
+
+###  10-02-2026
+
+Topics Covered: When to use which model for evaluation
+
+Used When:
+- Used according to data set
+- Used according to the error tolerance factor
+
+Key idea:
+
+START
+ |
+ |-- Output is number → Regression
+ |
+ |-- Output is category → Classification
+        |
+        |-- Simple + explainable → Logistic Regression
+        |
+        |-- Rules based → Decision Tree
+        |
+        |-- Strong baseline → Random Forest
+        |
+        |-- Best accuracy → Gradient Boost / XGBoost
+
+
+See the practise thing for more info.
