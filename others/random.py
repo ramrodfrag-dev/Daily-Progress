@@ -27,24 +27,56 @@
 # k=0
 
 # subarraySum(nums,k)
+
+
+
+#
+#
+#
+#
+#        
         
-nums=[1,2,4,3,5,0,1]
-results=[-1] * len(nums)
-stack=[]
+# Next Greatest Element        
 
-#Step-2-> Push if the stack is empty and if we get a greater number than top of stack then pop all elements until top of stack > current element and push this current element
+# nums=[1,2,4,3,5,0,1]
+# results=[-1] * len(nums)
+# stack=[]
 
-for i,num in enumerate(nums):
-    if len(stack)==0:
-        stack.append(i)
-    else:
-        while num>nums[stack[-1]]:
-            results[stack[-1]]=num
-            stack.pop()
-            if len(stack)==0: break
-        stack.append(i)
+# #Step-2-> Push if the stack is empty and if we get a greater number than top of stack then pop all elements until top of stack > current element and push this current element
+
+# for i,num in enumerate(nums):
+#     if len(stack)==0:
+#         stack.append(i)
+#     else:
+#         while num>nums[stack[-1]]:
+#             results[stack[-1]]=num
+#             stack.pop()
+#             if len(stack)==0: break
+#         stack.append(i)
         
         
-print(results)
+# print(results)
 
+#
+#
+#
+#
+#
 
+#Binary Tree Level Order Traversal
+import collections
+
+class TreeNode:
+    def __init__(self,val=0,left=None,right=None):
+        self.val=val
+        self.right=right
+        self.left=left
+        
+    def __repr__(self):                         #To make python understand how our custom class can be accessed.
+        return f"{self.val}"
+        
+root=TreeNode()
+root.val=45
+que=collections.deque([root])
+
+print(que)

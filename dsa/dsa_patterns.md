@@ -190,3 +190,22 @@ Used When:
 - When tree data structures are given or the problem is solved by BFS Algorithm
 
 Key idea:
+Outer loop for the deque to be empty and inner for the length of the deque. This traverses like BFS and here use level_items variable to catch all variables before running while loop again
+
+
+
+## 16-02-2026(Day11)
+
+PATTERN: Recursion
+
+Used When:
+- When we require function to call itself again and again with different variable values
+
+Key idea:
+- We generally have a base case which terminates the recurseive call in a stack and pops it -->Base case
+- And recursive call which calls itself -->Recursive step
+
+Note:
+- Always define variables in a class and use it in all methods or just use return statement to get the variables updated instead of just creating new variables again and again in the recursive stack
+
+
