@@ -184,13 +184,13 @@ Syntax:
 
 ## 11-02-2026(Day10)
 
-PATTERN: Level-by-Level Traversal(Use BFS for traversal)
+PATTERN: Level-by-Level Traversal(Use BFS for traversal) -->Use Queue
 
 Used When:
 - When tree data structures are given or the problem is solved by BFS Algorithm
 
 Key idea:
-Outer loop for the deque to be empty and inner for the length of the deque. This traverses like BFS and here use level_items variable to catch all variables before running while loop again
+- Outer loop for the deque to be empty and inner for the length of the deque. This traverses like BFS and here use level_items variable to catch all variables before running while loop again
 
 
 
@@ -209,3 +209,16 @@ Note:
 - Always define variables in a class and use it in all methods or just use return statement to get the variables updated instead of just creating new variables again and again in the recursive stack
 
 
+
+## 26-02-2026(Day12)
+
+PATTERN: Depth-First-Search(DFS) -->Use Stack
+
+Used When:
+- When tree data structures are given or the problem is solved by DFS Algorithm
+
+Key idea:
+- It is recursive type of thing, which calls itself instead of bfs which is iterative in nature
+
+
+## 6-03-2026

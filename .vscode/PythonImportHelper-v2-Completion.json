@@ -1,0 +1,272 @@
+[
+    {
+        "label": "collections",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "collections",
+        "description": "collections",
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "deque",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "train_test_split",
+        "importPath": "sklearn.model_selection",
+        "description": "sklearn.model_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.model_selection",
+        "documentation": {}
+    },
+    {
+        "label": "LogisticRegression",
+        "importPath": "sklearn.linear_model",
+        "description": "sklearn.linear_model",
+        "isExtraImport": true,
+        "detail": "sklearn.linear_model",
+        "documentation": {}
+    },
+    {
+        "label": "LogisticRegression",
+        "importPath": "sklearn.linear_model",
+        "description": "sklearn.linear_model",
+        "isExtraImport": true,
+        "detail": "sklearn.linear_model",
+        "documentation": {}
+    },
+    {
+        "label": "load_iris",
+        "importPath": "sklearn.datasets",
+        "description": "sklearn.datasets",
+        "isExtraImport": true,
+        "detail": "sklearn.datasets",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "DecisionTreeClassifier",
+        "importPath": "sklearn.tree",
+        "description": "sklearn.tree",
+        "isExtraImport": true,
+        "detail": "sklearn.tree",
+        "documentation": {}
+    },
+    {
+        "label": "RandomForestClassifier",
+        "importPath": "sklearn.ensemble",
+        "description": "sklearn.ensemble",
+        "isExtraImport": true,
+        "detail": "sklearn.ensemble",
+        "documentation": {}
+    },
+    {
+        "label": "xgboost",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "xgboost",
+        "description": "xgboost",
+        "detail": "xgboost",
+        "documentation": {}
+    },
+    {
+        "label": "XGBClassifier",
+        "importPath": "xgboost",
+        "description": "xgboost",
+        "isExtraImport": true,
+        "detail": "xgboost",
+        "documentation": {}
+    },
+    {
+        "label": "TreeNode",
+        "kind": 6,
+        "importPath": "dsa.day10&day12_trees",
+        "description": "dsa.day10&day12_trees",
+        "peekOfCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n# This is for the Level Order Traversal for any binary or any other tree\nclass Solution:\n    def levelOrder(self, root: Optional[TreeNode]) -> list[list[int]]:\n        res=[]\n        if not root:",
+        "detail": "dsa.day10&day12_trees",
+        "documentation": {}
+    },
+    {
+        "label": "Solution",
+        "kind": 6,
+        "importPath": "dsa.day10&day12_trees",
+        "description": "dsa.day10&day12_trees",
+        "peekOfCode": "class Solution:\n    def levelOrder(self, root: Optional[TreeNode]) -> list[list[int]]:\n        res=[]\n        if not root:\n            return res\n        que=collections.deque([root])\n        while que:\n            level_items=[]\n            for _ in range(0,len(que)):\n                node=que.popleft()",
+        "detail": "dsa.day10&day12_trees",
+        "documentation": {}
+    },
+    {
+        "label": "height",
+        "kind": 2,
+        "importPath": "dsa.day10&day12_trees",
+        "description": "dsa.day10&day12_trees",
+        "peekOfCode": "def height(self, root: Optional[TreeNode]):\n        if not root: return 0\n        left=self.height(root.left)\n        if left== -1: return -1\n        right=self.height(root.right)\n        if right== -1: return -1\n        if abs(right-left)>1:\n            return -1\n        return max(right, left)+1\n# if we see the difference is greater then we will directly return -1 to each and every layer.",
+        "detail": "dsa.day10&day12_trees",
+        "documentation": {}
+    },
+    {
+        "label": "Soln",
+        "kind": 6,
+        "importPath": "dsa.day11_recursion",
+        "description": "dsa.day11_recursion",
+        "peekOfCode": "class Soln:\n    def Factorial(self,n):\n        if n==1 or n==0: return 1\n        else:\n            return n * self.Factorial(n-1)\nobj=Soln()\nprint(obj.Factorial(5))\n# Remember when calling a function in the class add self before that instead of adding another argument like self.\n#\n#",
+        "detail": "dsa.day11_recursion",
+        "documentation": {}
+    },
+    {
+        "label": "TreeNode",
+        "kind": 6,
+        "importPath": "dsa.day11_recursion",
+        "description": "dsa.day11_recursion",
+        "peekOfCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\nroot=TreeNode()\n# Finding depth of tree\ndef recurse(root):\n    if not root: return 0\n    left=recurse(root.left)",
+        "detail": "dsa.day11_recursion",
+        "documentation": {}
+    },
+    {
+        "label": "recurse",
+        "kind": 2,
+        "importPath": "dsa.day11_recursion",
+        "description": "dsa.day11_recursion",
+        "peekOfCode": "def recurse(root):\n    if not root: return 0\n    left=recurse(root.left)\n    right=recurse(root.right)\n    return max(left+1,right+1)\ndef main():\n    count=recurse(root)\n    return count\n# Here add root nodes and check its value",
+        "detail": "dsa.day11_recursion",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "dsa.day11_recursion",
+        "description": "dsa.day11_recursion",
+        "peekOfCode": "def main():\n    count=recurse(root)\n    return count\n# Here add root nodes and check its value",
+        "detail": "dsa.day11_recursion",
+        "documentation": {}
+    },
+    {
+        "label": "Stack",
+        "kind": 6,
+        "importPath": "dsa.day8_stack",
+        "description": "dsa.day8_stack",
+        "peekOfCode": "class Stack:\n    def __init__(self):\n        self.items=[]\n    def push(self,x):\n        self.items.append(x)\n    def is_empty(self):\n        return len(self.items)==0\n    def pop(self):\n        if self.is_empty():\n            return None",
+        "detail": "dsa.day8_stack",
+        "documentation": {}
+    },
+    {
+        "label": "Queue",
+        "kind": 6,
+        "importPath": "dsa.day9_queue",
+        "description": "dsa.day9_queue",
+        "peekOfCode": "class Queue:\n    def __init__(self):\n        self.q=deque()\n    def push(self,val):\n        self.q.append(val)\n    def pop(self):\n        if self.is_empty(): return\n        return self.q.popleft()\n    def front(self):\n        return self.q[0]",
+        "detail": "dsa.day9_queue",
+        "documentation": {}
+    },
+    {
+        "label": "NumArray",
+        "kind": 6,
+        "importPath": "dsa.python_core_practice",
+        "description": "dsa.python_core_practice",
+        "peekOfCode": "class NumArray:\n    def __init__(self, nums: list[int]):    # see self is include in that method\n        self.prefix=[0]\n        for i in range(0,len(nums)):\n            self.prefix.append(nums[i]+self.prefix[i])\n    def sumRange(self, left: int, right: int) -> int:\n        return self.prefix[right+1]-self.prefix[left]\n# Observe the code carefully see if one function or variable which is being initialized or written in one method of a class is to be accessed by another method of the same class then use self before that variable or method always and also include self in the methods while initializing\n#Leetcode: 303->Range Sum Query Immutable and  598->Range Addition\n# 303: It is just the prefix sum concept just only the classes and how to use self when some variables of one method is called by another method is known now. It is like adding a self tag infront of it just like self.variablename to call and access it.",
+        "detail": "dsa.python_core_practice",
+        "documentation": {}
+    },
+    {
+        "label": "anagram",
+        "kind": 2,
+        "importPath": "dsa.python_core_practice",
+        "description": "dsa.python_core_practice",
+        "peekOfCode": "def anagram(strs):\n    group={}\n    for word in strs:\n        st=\"\".join(sorted(word))\n        if st not in group:\n            group[st]=[]\n        group[st].append(word)\n    return list(group.values())\n# Here Observe the grouping thing and do not over think it. when they are saying group them by anagrams then their sorted words will be same or their frequency will be same. So, first make dictionaries with these content and then sort them with values and later\n# group them with respect to values pair and all keys come together and make a list and return them. but here null strings duplicates will be removed and answer goes wrong",
+        "detail": "dsa.python_core_practice",
+        "documentation": {}
+    },
+    {
+        "label": "subarraySum",
+        "kind": 2,
+        "importPath": "dsa.python_core_practice",
+        "description": "dsa.python_core_practice",
+        "peekOfCode": "def subarraySum(self,nums: list[int], k: int):\n    hashe={}\n    sum=0\n    count=0\n    for i,num in enumerate(nums):\n        sum+=num\n        if sum==k:\n            count+=1\n        if sum-k in hashe:\n            j=hashe.get(sum-k)",
+        "detail": "dsa.python_core_practice",
+        "documentation": {}
+    },
+    {
+        "label": "#predictions",
+        "kind": 5,
+        "importPath": "ml.ml_core_practice",
+        "description": "ml.ml_core_practice",
+        "peekOfCode": "#predictions = model.predict(X_test) ->Here it predicts by taking new x_values \n#Estimators generally train with numerical data and if the data is not numerical also it is converted to numericals with contextual embeddings and then used.\n'''Methods USed for classification and Regression Problems:\n1. Multiple Linear Regrssion Models for Regression problems where it takes a set of features and their values and produce a real numbers output.\n here softmax activation function is used.\n2. Logistic Regression Models for Classifications problems where it takes a bunch of features  and finally produce a binary valued outcomes like 0 or 1.\n here sigmoid activation function is used.\nThink of Logistic Regrssion as takin the Linear Regression and squashing it through the logistic function to produce fixed number of outputs.\n'''\n'''Outliers'''",
+        "detail": "ml.ml_core_practice",
+        "documentation": {}
+    },
+    {
+        "label": "x,y",
+        "kind": 5,
+        "importPath": "ml.ml_core_practice",
+        "description": "ml.ml_core_practice",
+        "peekOfCode": "x,y = load_iris(return_x_y=True)                    #Loading data\nx_train,x_test,y_train,y_test = train_test_split(   #Spliting data\n    x,y,test_size=0.2,random_state=42\n)\nmodel=LogisticRegression()\nmodel.fit(x_train,y_train)                          # Training model\ny_pred=model.predict(x_test)                        #Prediction of testing data\n'''Pandas Basics '''\n# -> It is a python library for data analysis and manipulation. The core object is to work with a DataFrame which is like a spreadsheet or like a database table in python.\n# Basics",
+        "detail": "ml.ml_core_practice",
+        "documentation": {}
+    },
+    {
+        "label": "x_train,x_test,y_train,y_test",
+        "kind": 5,
+        "importPath": "ml.ml_core_practice",
+        "description": "ml.ml_core_practice",
+        "peekOfCode": "x_train,x_test,y_train,y_test = train_test_split(   #Spliting data\n    x,y,test_size=0.2,random_state=42\n)\nmodel=LogisticRegression()\nmodel.fit(x_train,y_train)                          # Training model\ny_pred=model.predict(x_test)                        #Prediction of testing data\n'''Pandas Basics '''\n# -> It is a python library for data analysis and manipulation. The core object is to work with a DataFrame which is like a spreadsheet or like a database table in python.\n# Basics\nimport pandas as pd",
+        "detail": "ml.ml_core_practice",
+        "documentation": {}
+    },
+    {
+        "label": "threshold",
+        "kind": 5,
+        "importPath": "ml.ml_core_practice",
+        "description": "ml.ml_core_practice",
+        "peekOfCode": "threshold = len(df) * 0.5\ndf = df.dropna(axis=1,thresh=threshold) # Here if the axis is 0 then rows with more than 50 null values will be dropped but here it removes columns which has more than 50 elements null.\ndf['Column_name']=df['Column_name'].fillna(df['Column_name'].mean()) # Fills all null values with the mean of all the remaining values.\nlen(df)  # Gives the total number of rows in the dataframe.\ndf.shape[0] #Gives the total number of rows in df and if we put 1 we get total number of colums. And if we do only the df.shape we get both.\ndf[df[\"Rating\"]==4] #Prints Rating which are 4 from df\ndf.sample(10)  #gives any 10 random rows.\ndf.sort_values(by=[\"price\",\"Quantity\"],ascending=[False,True])\n#In the above thing first price will be sorted in Descending order and then in those elements Quantity will be sorted in the Ascending order as that of mentioned.\n#03-02-2026",
+        "detail": "ml.ml_core_practice",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "ml.ml_core_practice",
+        "description": "ml.ml_core_practice",
+        "peekOfCode": "df = df.dropna(axis=1,thresh=threshold) # Here if the axis is 0 then rows with more than 50 null values will be dropped but here it removes columns which has more than 50 elements null.\ndf['Column_name']=df['Column_name'].fillna(df['Column_name'].mean()) # Fills all null values with the mean of all the remaining values.\nlen(df)  # Gives the total number of rows in the dataframe.\ndf.shape[0] #Gives the total number of rows in df and if we put 1 we get total number of colums. And if we do only the df.shape we get both.\ndf[df[\"Rating\"]==4] #Prints Rating which are 4 from df\ndf.sample(10)  #gives any 10 random rows.\ndf.sort_values(by=[\"price\",\"Quantity\"],ascending=[False,True])\n#In the above thing first price will be sorted in Descending order and then in those elements Quantity will be sorted in the Ascending order as that of mentioned.\n#03-02-2026\n'''ML Model Evaluation Metrics(Fundamental)'''",
+        "detail": "ml.ml_core_practice",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "ml.ml_core_practice",
+        "description": "ml.ml_core_practice",
+        "peekOfCode": "model = LogisticRegression(\n    multi_class=\"multinomial\",  # More than 2 classes\n    solver=\"lbfgs\",             # Optimization algorithm\n    max_iter=1000               # Max training steps\n)\n# 2. Decision Tree:\n#       ->It asks questions like a flow to get correct output.\n#Ex: does it have wings:Yes -It's a bird then it can fly:No -May be a ostrich or birds which are heavy.\n#       ->Used when the data is non-linear   ->Loan approval\n#       ->Expect Human readable rules",
+        "detail": "ml.ml_core_practice",
+        "documentation": {}
+    },
+    {
+        "label": "TreeNode",
+        "kind": 6,
+        "importPath": "others.random",
+        "description": "others.random",
+        "peekOfCode": "class TreeNode:\n    def __init__(self,val=0,left=None,right=None):\n        self.val=val\n        self.right=right\n        self.left=left\n    def __repr__(self):                         #To make python understand how our custom class can be accessed.\n        return f\"{self.val}\"\nroot=TreeNode()\nroot.val=45\nque=collections.deque([root])",
+        "detail": "others.random",
+        "documentation": {}
+    }
+]
