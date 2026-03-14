@@ -221,4 +221,75 @@ Key idea:
 - It is recursive type of thing, which calls itself instead of bfs which is iterative in nature
 
 
-## 6-03-2026
+
+## 11-03-2026
+
+PATTERN: Fibonacci Series
+
+Key idea:
+- Use the fibanocci thing by recursion
+
+Note:
+- if the recursion takes too long resulting in the TLE then use the DP pr a similar process to store and retrive repeating calculated data 
+- In DP there are 2 things: 1. Top to down approach which takes larger time and large call stack space 2. Bottom to top approach which is usually better as it uses iteration instead of the Recursion
+
+When to use this:
+- When the result of current elements depend on other elements and they are the same question but the input is less
+- Climbing Stairs
+- House Robber
+
+
+
+## 12-03-2026
+
+PATTERN: Heaps
+
+Key idea: -> we use arrays for this heap
+- It is a complete BinaryTree which can be implemented by using arrays instead of node structures and pointers which consumes more memory
+- Arrays takes O(logn) for adding or deleting items, whereas in node types it takes O(n)for finding element+O(logn) for adding or deleting
+
+Note:
+- left child will be there in (2*i)+1 where i is the parent
+- right child will be there in (2*i)+2 where i is the parent
+- parent node will be (i-1)//2 where i is the child of the parent
+
+When to use this:
+- Top K elements (K largest, K smallest) or frequent elements
+- Priority scheduling or next available worker
+- Shortest path
+- Repeated best choices(Pick smallest or largest or next best)
+- When numbers continuously come and we need to maintain the min,max of the numbers
+
+Implementation and other info see in day13_heaps.py
+
+
+
+### PATTERN: Bucket Sort
+
+Key idea:
+- Here we make everything in to buckets and then each value is placed in to certain bucket and then the buckets are placed in the correct order
+- For each bucket there will be a list in which we add elements so, we need more space.
+- The time complexity is O(n) as just we are placing elements to each bucket and then putting all buckets at once in their same order.
+
+When to use:
+- when the given elements are in a certain range not very huge(must be small)
+- when there are more like frequency things
+
+
+### PATTERN: Tim Sort
+
+Key idea:
+- Here we are mixing both the merge and insertion sort
+- First divides all sorted and unsorted like some parts to make only changes in the unsorted parts
+Ex: [1,2,3,7,6,5,8,9]
+first sorted runs like [1,2,3,7], [6,5], [8,9]
+second it uses the insertion sort and sort the unsorted things
+finally merges those combinely at last
+- Time complexity is O(nlogn) which is greater than most algorithms but optimal for most of the items that needs to be sorted. so this is general .sort() uses.
+
+When to use:
+- General .sort() uses this method. we generally do not use specifically as it is not optimal for a particular things instead it is optimal for all general case.
+
+
+
+
