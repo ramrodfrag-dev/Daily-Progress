@@ -132,3 +132,43 @@ animals2= [150,152,148,160,155,149,151,153,154,158,
 food2 =[x for x in range(1,101,1)]
 
 print(f"Minimum time required={mintime(animals2,food2)}")
+
+#
+#
+#
+#
+#
+
+# 14-03-2026(day14)
+
+'''Using 2 heaps for finding the median'''
+
+class MedianFinder:
+
+    def __init__(self):
+        self.small=[] # keep max heap to get last element
+        self.large=[] # keep min heap to get the first element
+
+    def addNum(self, num: int) -> None:
+        heapq.heappush(self.small,-num)
+        heapq.heappush(self.large,-heapq.heappop(self.small))
+
+        if len(self.large)-len(self.small)>1:
+            heapq.heappush(self.small,-heapq.heappop(self.large))
+
+    def findMedian(self) -> float:
+        if len(self.large)>len(self.small):
+            return self.large[0]
+        else:
+            return (-self.small[0]+self.large[0])/2
+
+
+# MedianFinder object will be instantiated and called as such:
+obj = MedianFinder()
+num=5   #any number given in a stream
+obj.addNum(num)
+param_2 = obj.findMedian()
+
+
+# First we add element to the max heap in small and then to the min heap in large so, if we are adding elements like this instead of directly adding it to large then we get to the correct median.i.e the order of elements will be sorted
+# Then if large have more than 1 element than small then it is added to the small again to get the both medians in each of the lists

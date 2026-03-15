@@ -7,7 +7,7 @@
 '''Some main concepts in OOPS are:'''
 # 1.Inheritance     ->reuse behaviour of the parent class
 # 2.Encapsulation   ->(restricting the direct access) Wrapping data and methods together and restricting the direct access to the internal details.
-# 3.Polymoriphism   ->same interface but different behaviour
+# 3.Polymoriphism   ->same interface but different behaviour (or) same function name but different functionalities in same code.
 # 4.Abstraction     ->hiding complexity
 # Note: See the difference between Encapsulation and the Abstraction
 # In Encapsulation only the public methods are allowed to interact with the internal state of the objects
@@ -44,7 +44,7 @@ b.filtering logs
 c.operator overloading
 '''
 
-# Solution
+# Solution uses the operator overloading
 import time
 from datetime import datetime, UTC
 class SystemLog:
@@ -77,4 +77,72 @@ print(log1.getLastLogs(2.1))
 print(merged.getLastLogs(1))
 print(datetime.now(UTC))
 
+#
+#
+#
+#
 
+#   14-03-2026
+
+# polymorphism example:
+class Cat:
+    def speak(self):
+        print("meow")
+    
+class Dog:
+    def speak(self):
+        print("Bark")
+        
+animals=[Dog(),Cat()]
+
+for a in animals:
+    a.speak()
+    
+#Note: Here see the method name is same but the operations they are performing are different.
+# Polymorphism are of 2 types:
+#1. Runtime Polymorphism ->Method Overriding and duck typing
+#2. Compiler time Polymorphism ->Method overloading
+
+'''
+Method Overriding: There is one parent and one child which extends from parent which has same method names but different functionalities.
+There has to be a inheritence relationship between 2 classes
+
+Method Overloading: Within the same class if 2 methods have same name but different functionalities or change in parameters.
+They must be there in same class
+
+Duck typing is nothing but if there is a method associated with the class whose object is being called now then it executes it.
+Here if there are 2 methods in 2 different classes and an object is created on both objects and called the same function then the sunctionalities are changed.
+'''
+
+
+#OOPS Question:
+'''
+Design class:
+ProcessScheduler
+
+Requirements:
+1️⃣ Constructor receives process list.
+2️⃣ Each process has:
+name
+interval
+offset
+
+Example:
+A → every interval
+B → only even intervals
+C → after A runs 4 times
+D → only prime intervals
+
+Write function:
+getNextExecution(time)
+Return which process runs at that time.
+'''
+
+# Solution:
+
+class ProcessScheduler:
+    def __init__(self,processList):
+        self.processList=processList
+        
+
+processList=[("A",)]

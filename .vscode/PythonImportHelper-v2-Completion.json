@@ -196,48 +196,75 @@
         "documentation": {}
     },
     {
+        "label": "MedianFinder",
+        "kind": 6,
+        "importPath": "dsa.day13&14_heaps",
+        "description": "dsa.day13&14_heaps",
+        "peekOfCode": "class MedianFinder:\n    def __init__(self):\n        self.small=[] # keep max heap to get last element\n        self.large=[] # keep min heap to get the first element\n    def addNum(self, num: int) -> None:\n        heapq.heappush(self.small,-num)\n        heapq.heappush(self.large,-heapq.heappop(self.small))\n        if len(self.large)-len(self.small)>1:\n            heapq.heappush(self.small,-heapq.heappop(self.large))\n    def findMedian(self) -> float:",
+        "detail": "dsa.day13&14_heaps",
+        "documentation": {}
+    },
+    {
         "label": "mintime",
         "kind": 2,
-        "importPath": "dsa.day13_heaps",
-        "description": "dsa.day13_heaps",
+        "importPath": "dsa.day13&14_heaps",
+        "description": "dsa.day13&14_heaps",
         "peekOfCode": "def mintime(animals,food):\n    if animals[-1]<food[-1]:\n        return -1\n    animals=[(0,a) for a in animals]\n    heapq.heapify(animals)\n    time=0\n    for item in food:\n        while True:\n            slot,cap=heapq.heappop(animals)\n            if cap>=item:",
-        "detail": "dsa.day13_heaps",
+        "detail": "dsa.day13&14_heaps",
         "documentation": {}
     },
     {
         "label": "animals",
         "kind": 5,
-        "importPath": "dsa.day13_heaps",
-        "description": "dsa.day13_heaps",
+        "importPath": "dsa.day13&14_heaps",
+        "description": "dsa.day13&14_heaps",
         "peekOfCode": "animals = [5,7,3]\nFood packages require loads:\nfood = [2,4,6,1,3,5]\nRules:\nAn animal can carry food if capacity ≥ food weight\nCarrying takes 1 minute\nAfter carrying, the animal rests 1 minute\nAnimals work in parallel\nReturn minimum time to move all food or -1.\nConstraints:",
-        "detail": "dsa.day13_heaps",
+        "detail": "dsa.day13&14_heaps",
         "documentation": {}
     },
     {
         "label": "food",
         "kind": 5,
-        "importPath": "dsa.day13_heaps",
-        "description": "dsa.day13_heaps",
+        "importPath": "dsa.day13&14_heaps",
+        "description": "dsa.day13&14_heaps",
         "peekOfCode": "food = [2,4,6,1,3,5]\nRules:\nAn animal can carry food if capacity ≥ food weight\nCarrying takes 1 minute\nAfter carrying, the animal rests 1 minute\nAnimals work in parallel\nReturn minimum time to move all food or -1.\nConstraints:\n1 ≤ animals ≤ 10^5\n1 ≤ food ≤ 10^5",
-        "detail": "dsa.day13_heaps",
+        "detail": "dsa.day13&14_heaps",
         "documentation": {}
     },
     {
         "label": "animals",
         "kind": 5,
-        "importPath": "dsa.day13_heaps",
-        "description": "dsa.day13_heaps",
+        "importPath": "dsa.day13&14_heaps",
+        "description": "dsa.day13&14_heaps",
         "peekOfCode": "animals = [5,7,3]\nfood = [2,4,6,1,3,5]\nheap.clear()\nanimals.sort()  # animals = [3,5,7]\nfood.sort()     # food = [1,2,3,4,5,6]\ndef mintime(animals,food):\n    if animals[-1]<food[-1]:\n        return -1\n    animals=[(0,a) for a in animals]\n    heapq.heapify(animals)",
-        "detail": "dsa.day13_heaps",
+        "detail": "dsa.day13&14_heaps",
         "documentation": {}
     },
     {
         "label": "food",
         "kind": 5,
-        "importPath": "dsa.day13_heaps",
-        "description": "dsa.day13_heaps",
+        "importPath": "dsa.day13&14_heaps",
+        "description": "dsa.day13&14_heaps",
         "peekOfCode": "food = [2,4,6,1,3,5]\nheap.clear()\nanimals.sort()  # animals = [3,5,7]\nfood.sort()     # food = [1,2,3,4,5,6]\ndef mintime(animals,food):\n    if animals[-1]<food[-1]:\n        return -1\n    animals=[(0,a) for a in animals]\n    heapq.heapify(animals)\n    time=0",
-        "detail": "dsa.day13_heaps",
+        "detail": "dsa.day13&14_heaps",
+        "documentation": {}
+    },
+    {
+        "label": "obj",
+        "kind": 5,
+        "importPath": "dsa.day13&14_heaps",
+        "description": "dsa.day13&14_heaps",
+        "peekOfCode": "obj = MedianFinder()\nnum=5   #any number given in a stream\nobj.addNum(num)\nparam_2 = obj.findMedian()\n# First we add element to the max heap in small and then to the min heap in large so, if we are adding elements like this instead of directly adding it to large then we get to the correct median.i.e the order of elements will be sorted\n# Then if large have more than 1 element than small then it is added to the small again to get the both medians in each of the lists",
+        "detail": "dsa.day13&14_heaps",
+        "documentation": {}
+    },
+    {
+        "label": "param_2",
+        "kind": 5,
+        "importPath": "dsa.day13&14_heaps",
+        "description": "dsa.day13&14_heaps",
+        "peekOfCode": "param_2 = obj.findMedian()\n# First we add element to the max heap in small and then to the min heap in large so, if we are adding elements like this instead of directly adding it to large then we get to the correct median.i.e the order of elements will be sorted\n# Then if large have more than 1 element than small then it is added to the small again to get the both medians in each of the lists",
+        "detail": "dsa.day13&14_heaps",
         "documentation": {}
     },
     {
@@ -300,6 +327,33 @@
         "importPath": "Interview Concepts.OOPS",
         "description": "Interview Concepts.OOPS",
         "peekOfCode": "class SystemLog:\n    def __init__(self,loglist):\n        self.loglist=loglist    #This loglist must contain [(\"message\",timestamp),(\"message\",timestamp),....]\n    def getLastLogs(self,minutes):\n        limit=minutes*60\n        currenttime=time.time()\n        res=[logs for logs in self.loglist\n             if currenttime-logs[1]<=limit]\n        return res\n    def __add__(self,other):",
+        "detail": "Interview Concepts.OOPS",
+        "documentation": {}
+    },
+    {
+        "label": "Cat",
+        "kind": 6,
+        "importPath": "Interview Concepts.OOPS",
+        "description": "Interview Concepts.OOPS",
+        "peekOfCode": "class Cat:\n    def speak(self):\n        print(\"meow\")\nclass Dog:\n    def speak(self):\n        print(\"Bark\")\nanimals=[Dog(),Cat()]\nfor a in animals:\n    a.speak()\n#Note: Here see the method name is same but the operations they are performing are different.",
+        "detail": "Interview Concepts.OOPS",
+        "documentation": {}
+    },
+    {
+        "label": "Dog",
+        "kind": 6,
+        "importPath": "Interview Concepts.OOPS",
+        "description": "Interview Concepts.OOPS",
+        "peekOfCode": "class Dog:\n    def speak(self):\n        print(\"Bark\")\nanimals=[Dog(),Cat()]\nfor a in animals:\n    a.speak()\n#Note: Here see the method name is same but the operations they are performing are different.\n# Polymorphism are of 2 types:\n#1. Runtime Polymorphism ->Method Overriding and duck typing\n#2. Compiler time Polymorphism ->Method overloading",
+        "detail": "Interview Concepts.OOPS",
+        "documentation": {}
+    },
+    {
+        "label": "ProcessScheduler",
+        "kind": 6,
+        "importPath": "Interview Concepts.OOPS",
+        "description": "Interview Concepts.OOPS",
+        "peekOfCode": "class ProcessScheduler:\n    def __init__(self,processList):\n        self.processList=processList\nprocessList=[(\"A\",)]",
         "detail": "Interview Concepts.OOPS",
         "documentation": {}
     },

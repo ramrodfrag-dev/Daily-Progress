@@ -293,3 +293,13 @@ When to use:
 
 
 
+## 14-03-2026
+
+PATTERN: 2 Heap problems
+
+When to use:
+- When there will be a stream of data and we need to find a medium or min or max values from coming values.
+- 
+
+Key idea:
+- 
