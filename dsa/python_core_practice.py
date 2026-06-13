@@ -317,13 +317,13 @@ def subarraySum(self,nums: list[int], k: int):
             count+=1
             
         if sum-k in hashe:
-            j=hashe.get(sum-k)
+            j=hashe.get(sum-k,0)
             count+=j
         
         if sum not in hashe:
             hashe.update({sum:1})
         else:
-            j=hashe.get(sum)
+            j=hashe.get(sum,0)
             hashe.update({sum:j+1})
 
     return count
@@ -333,13 +333,40 @@ def subarraySum(self,nums: list[int], k: int):
 
 
 
-# 7-02-2026
+# 13-06-2026
 
 #General
+"Multi BFS Algorithm"
+#-> Here instead of just starting from 1 bfs root we start from many bfs roots and each gets some new children nodes added to the deque.
+#-> It is not complex just intially take many roots in the queue and then while removing instead of just keeping the while loop we also use the for loop along with the while in order to track the time elasped.
 
+# Leetcode: 994-> Rotting Oranges
 
-# Leetcode: 
+#994: In this I have first counted the fresh oranges and also along with it I have added the rotten oranges to queue at start in order to do multi-bfs, this is all done in one iteration of entire block of the grid
+# Later I have used iterated until the while loop is empty and inside that I have used the for loop for multi-bfs in order to know the minimum time to make all oranges all rotten and all the rest is same like island just traversing all directions and then if we find any good ornages we make them rotten and add them in the queue for next iteration.
 
-#
+from collections import deque
+grid=[[]]
+time,fresh=0,0
+rows,cols=len(grid),len(grid[0])
+directions=[[-1,0],[1,0],[0,-1],[0,1]]
+q=deque()
 
-#
+while q and fresh>0:
+    for i in range(len(q)):
+        r,c=q.popleft()
+        for dr,dc in directions:
+            row,col=r+dr,c+dc
+
+            if (row in range(rows) and
+                col in range(cols) and
+                grid[row][col]==1):
+                grid[row][col]=2
+                q.append((row,col))
+                fresh-=1
+    time+=1
+
+print(time if fresh==0 else -1)
+
+# Remember this type of syntax as it may repeat for most of the matrix problems of traversals and also here we are not using the visited as we may visit many nodes more than 1 time as there are many starting nodes so, in each perspective they may be visited or not visited.
+# so, instead of checking visited and stop the iterations here we use fresh oranges and the queue empty condition to find the time reuired.

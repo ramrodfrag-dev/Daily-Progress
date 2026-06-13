@@ -17,6 +17,14 @@
         "documentation": {}
     },
     {
+        "label": "deque",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
         "label": "Optional",
         "importPath": "typing",
         "description": "typing",
@@ -31,6 +39,33 @@
         "importPath": "heapq",
         "description": "heapq",
         "detail": "heapq",
+        "documentation": {}
+    },
+    {
+        "label": "queue",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "queue",
+        "description": "queue",
+        "detail": "queue",
+        "documentation": {}
+    },
+    {
+        "label": "networkx",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "networkx",
+        "description": "networkx",
+        "detail": "networkx",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
         "documentation": {}
     },
     {
@@ -268,6 +303,24 @@
         "documentation": {}
     },
     {
+        "label": "bfs_traversal",
+        "kind": 2,
+        "importPath": "dsa.day15graphs",
+        "description": "dsa.day15graphs",
+        "peekOfCode": "def bfs_traversal(graph,start_node):\n    visited=set()\n    q=collections.deque()\n    q.append(start_node)\n    bfs_order=[]\n    visited.add(start_node)\n    while q:\n        vertex=q.pop()\n        bfs_order.append(vertex)\n        for node in graph[vertex]:",
+        "detail": "dsa.day15graphs",
+        "documentation": {}
+    },
+    {
+        "label": "dfs_traversal",
+        "kind": 2,
+        "importPath": "dsa.day15graphs",
+        "description": "dsa.day15graphs",
+        "peekOfCode": "def dfs_traversal(graph,start_node,visited=None):\n    if visited is None:",
+        "detail": "dsa.day15graphs",
+        "documentation": {}
+    },
+    {
         "label": "Stack",
         "kind": 6,
         "importPath": "dsa.day8_stack",
@@ -308,7 +361,7 @@
         "kind": 2,
         "importPath": "dsa.python_core_practice",
         "description": "dsa.python_core_practice",
-        "peekOfCode": "def subarraySum(self,nums: list[int], k: int):\n    hashe={}\n    sum=0\n    count=0\n    for i,num in enumerate(nums):\n        sum+=num\n        if sum==k:\n            count+=1\n        if sum-k in hashe:\n            j=hashe.get(sum-k)",
+        "peekOfCode": "def subarraySum(self,nums: list[int], k: int):\n    hashe={}\n    sum=0\n    count=0\n    for i,num in enumerate(nums):\n        sum+=num\n        if sum==k:\n            count+=1\n        if sum-k in hashe:\n            j=hashe.get(sum-k,0)",
         "detail": "dsa.python_core_practice",
         "documentation": {}
     },
@@ -418,6 +471,24 @@
         "description": "others.random",
         "peekOfCode": "class TreeNode:\n    def __init__(self,val=0,left=None,right=None):\n        self.val=val\n        self.right=right\n        self.left=left\n    def __repr__(self):                         #To make python understand how our custom class can be accessed.\n        return f\"{self.val}\"\nroot=TreeNode()\nroot.val=45\nque=collections.deque([root])",
         "detail": "others.random",
+        "documentation": {}
+    },
+    {
+        "label": "special_div",
+        "kind": 2,
+        "importPath": "Python Advanced Concepts.day15_decorators",
+        "description": "Python Advanced Concepts.day15_decorators",
+        "peekOfCode": "def special_div(func):      #This is the decorator\n    def wrapper(a,b):       #Function to replace the original function with\n        if a<b:\n            a,b=b,a\n        func(a,b)\n    return wrapper\n@special_div\ndef div(a,b):               #This is original function\n    print(a/b)\n# div=special_div(div)      This is just used if we remove the @decorator name to the original function(It's just what internally does).",
+        "detail": "Python Advanced Concepts.day15_decorators",
+        "documentation": {}
+    },
+    {
+        "label": "div",
+        "kind": 2,
+        "importPath": "Python Advanced Concepts.day15_decorators",
+        "description": "Python Advanced Concepts.day15_decorators",
+        "peekOfCode": "def div(a,b):               #This is original function\n    print(a/b)\n# div=special_div(div)      This is just used if we remove the @decorator name to the original function(It's just what internally does).\ndiv(3,6)",
+        "detail": "Python Advanced Concepts.day15_decorators",
         "documentation": {}
     }
 ]
