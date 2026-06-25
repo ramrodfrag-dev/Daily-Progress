@@ -299,6 +299,46 @@ PATTERN: 2 Heap problems
 
 When to use:
 - When there will be a stream of data and we need to find a medium or min or max values from coming values.
+
+Key idea:
+- 
+
+
+
+
+## 22-06-2026
+
+PATTERN: Multi-BFS Algorithm
+
+When to use:
+- When there will be more than one starting point in the bfs thing so we can do bfs at same time for all starting nodes.
+
+Key idea:
+- It is not complex just intially take many roots in the queue and then while removing instead of just keeping the while loop we also use the for loop along with the while in order to track the time elasped.
+
+
+
+
+## 25-06-2026
+
+PATTERN: Floyd's Algorithm
+
+When to use:
+- When finding cycles in linked lists or finding the start of the cycle if cycle exists.
+
+Key idea:
+- 2 points one move fast and one moves slow so they come together at some point later if cycle exists.
+
+Reference:
+- https://www.geeksforgeeks.org/dsa/floyds-cycle-finding-algorithm/
+
+
+
+## 27-03-2026
+
+PATTERN: tgg
+
+When to use:
 - 
 
 Key idea:

@@ -333,10 +333,11 @@ def subarraySum(self,nums: list[int], k: int):
 
 
 
-# 13-06-2026
+
+# 13-06-2026 (Day-16)
 
 #General
-"Multi BFS Algorithm"
+"Multi-BFS Algorithm"
 #-> Here instead of just starting from 1 bfs root we start from many bfs roots and each gets some new children nodes added to the deque.
 #-> It is not complex just intially take many roots in the queue and then while removing instead of just keeping the while loop we also use the for loop along with the while in order to track the time elasped.
 
@@ -370,3 +371,36 @@ print(time if fresh==0 else -1)
 
 # Remember this type of syntax as it may repeat for most of the matrix problems of traversals and also here we are not using the visited as we may visit many nodes more than 1 time as there are many starting nodes so, in each perspective they may be visited or not visited.
 # so, instead of checking visited and stop the iterations here we use fresh oranges and the queue empty condition to find the time reuired.
+
+
+
+# 24-06-2026 (Day 17)
+
+"Floyd's algorithm"
+#-> Used for finding cycles in linked lists and finding the start of the cycle.
+#-> here both(slow and fast pointers) are initialized at beginning and then slow moves one step at a time and the fast moves 2 steps at a time and they meet if there is a cycle or else fast reaches end first
+#-> So, After meeting the slow pointer is reinitialized to head(start from where we started and then both fast and slow move one step at a time and when both are equal they meet exactly at start of the cycle)
+#-> Check proof it DSA book or see: https://www.geeksforgeeks.org/dsa/floyds-cycle-finding-algorithm/ 
+
+# Leetcode: 287-> Finding the Duplicate Number
+
+#994: Here we need to find the duplicate without modifying the array (nums) and using only constant extra space and also there exists only 1 repeated number.
+
+'''Use fast and slow points in many cases where we are struck some where and use no extra space..'''
+
+#
+#
+#
+#
+#
+#
+
+
+# 27-06-2026 (Day 18)
+
+"topic"
+#-> 
+
+# Leetcode: 994-> Rotting Oranges
+
+#994: In thi
