@@ -366,6 +366,15 @@
         "documentation": {}
     },
     {
+        "label": "isPalin",
+        "kind": 2,
+        "importPath": "dsa.python_core_practice",
+        "description": "dsa.python_core_practice",
+        "peekOfCode": "def isPalin():\n    left=0\n    right=len(s)-1\n    res=True\n    def palindrome(left: int,right: int):\n        while left<right:\n            if s[left]!=s[right]:\n                return False\n            left+=1\n            right-=1",
+        "detail": "dsa.python_core_practice",
+        "documentation": {}
+    },
+    {
         "label": "Animal",
         "kind": 6,
         "importPath": "Interview Concepts.OOPS",

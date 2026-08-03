@@ -396,11 +396,70 @@ print(time if fresh==0 else -1)
 #
 
 
-# 27-06-2026 (Day 18)
+# 03-08-2026 (Day 18)
 
-"topic"
+"Palindrome-II"
+#-> first use 2 pointers approach and see the given string is a palindrome or not and then if there is a mismatch then skip the two characters one ata time and check whether the remaining is palindrome or not.(Only one pointer give a movement and see remaining and see for the rest)
+
+# Leetcode: 680-> Valid Palindrome-II
+
+#680:
+s="abca"
+def isPalin():
+    left=0
+    right=len(s)-1
+    res=True
+    
+    def palindrome(left: int,right: int):
+        while left<right:
+            if s[left]!=s[right]:
+                return False
+            left+=1
+            right-=1
+        return True
+    
+    while left<right:
+        if s[left]==s[right]:
+            left+=1
+            right-=1
+        else:
+            res= (palindrome(left+1,right) or palindrome(left,right-1))
+            break
+    
+    return res
+    
+    
+    
+    
+# 03-08-2026 (Day 18)
+
+"Palindrome by splitting"
+#-> Split the numbers to make a correct Palindrome sequence. 
+
+# CodeChef: ->https://www.codechef.com/practice/course/two-pointers/POINTERP/problems/SPLITPAL
+
+# [3, 7, 6, 4] Initial Array
+# i = 2, X = 1, Y = 6
+# → [3, 1, 6, 6, 4]
+
+# [3, 1, 6, 6, 4]
+# i = 5, X = 1, Y = 3
+# → [3, 1, 6, 6, 1, 3]
+
+''' For the above thing to happen first start 1 pointer at the beginning and one at the end, then:
+1. if both are equal then increment and decrement the start and end pointers correctly
+2. if they are not equal take the maximum element and break it into the minimum element and remaining part.
+Put the remaining part beside it and continue checking
+3. Update the start and end pointers correctly when adding or traversing as the size of array is changing so the indexes will be changing.'''
+
+
+
+
+# 04-08-2026 (Day 18)
+
+""
 #-> 
 
-# Leetcode: 994-> Rotting Oranges
+# Leetcode: 680-> Valid Palindrome-II
 
-#994: In thi
+#680:

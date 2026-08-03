@@ -336,10 +336,43 @@ Reference:
 
 ## 27-03-2026
 
-PATTERN: tgg
+PATTERN: XOR with the array numbers to find the unique number in pairs of numbers.
 
 When to use:
-- 
+- WHen there is only one unique number and all other numbers have their duplicate that is in pairs(2, 4 times).
 
 Key idea:
-- 
+- XOR operation with a number twice will givee the same result again initial
+
+ Ex:
+- If the initial answer is 0 and then we did XOR with 2 and later 3 and then 2 then the final result will be equals to 0 XOR with 3.
+- So, Twice XOR with 2 cancells out and gives the same result as before.
+
+
+## 2-08-2026
+
+PATTERN: Valid Palindrome 2.
+
+When to use:
+- When they asked to find whether the given string is palindrome or not if atmost 1 character can be deleted.
+
+Key idea:
+- first use 2 pointers approach and see the given string is a palindrome or not and then if there is a mismatch then skip the two characters one ata time and check whether the remaining is palindrome or not.(Only one pointer give a movement and see remaining and see for the rest)
+
+ Ex:
+- abca. Here if we delete the b or c then we will get the palindrome approach using above idea.
+
+
+## 3-08-2026
+
+PATTERN: Palindrome by splitting.
+
+When to use:
+- specific problem is given in the: https://www.codechef.com/practice/course/two-pointers/POINTERP/problems/SPLITPAL
+
+Key idea:
+- First keep two pointers left and right among them which is bigger split it and the same part keep it inplace of the bigger number and then extend the string and put that remaining number beside of current number.
+
+ Ex:
+- if the array is: [1,7,6,1,1] Here the 7 can be split into 6 and 1 as it is bigger than 6 when checking. Now both are equal at each pointer checking them and it will be a palindrome.
+
