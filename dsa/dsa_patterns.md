@@ -376,3 +376,39 @@ Key idea:
  Ex:
 - if the array is: [1,7,6,1,1] Here the 7 can be split into 6 and 1 as it is bigger than 6 when checking. Now both are equal at each pointer checking them and it will be a palindrome.
 
+
+
+## 7-08-2026
+
+PATTERN: Prefix Product.
+
+When to use:
+- specific problem is given in the: https://neetcode.io/problems/products-of-array-discluding-self/question
+
+Key idea:
+- If they asked about all the sum or product except self then first make a left array with all prefixes and right array with all suffixes.Remove rightmost element in the left array and the left most element in the right array and finally multiple each element of lrft to the right and store in result array
+
+ Ex:
+- if the array is: [2,3,4,5] then the left=[1,2,6,24] and the right=[60,20,5,1] then the result=[60,40,30,24].
+
+
+
+PATTERN: Circular Queue or array or anything
+
+What to use:
+- When the question says like what is the minimum no of the left shifts or the right shifts we need to make the element will be equalls to the index of the array -1based indexing.
+
+Key idea:
+- Use the Modulo operator(%) so that the next number again comes in the other side of the queue.
+- To know the no. of steps an element(which is between 1 and length of array) to go to reach its index is: 
+- k=(i-num)%n    #i-num or num-i is both fine
+- res=min(k,n-k)  Here among k,n-k one is from the right side and the other is from left side. so check min distance and go for it.
+
+Ex:
+- arr=[5,3,2,1,4] Here with just one left shift 5 meets 5 index or with just 1 right shift 3 meets its index, so answer is 1.
+
+
+
+## 8-08-2026
+
+PATTERN:

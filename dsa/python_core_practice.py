@@ -455,11 +455,38 @@ Put the remaining part beside it and continue checking
 
 
 
-# 04-08-2026 (Day 18)
+
+# 04-08-2026 (Day 19)
+
+"Encoding and Decoding"
+#-> We will be given a list of strings and we are said to encode and decode in the code
+
+# Neetcode150: -> https://neetcode.io/problems/products-of-array-discluding-self/question?list=neetcode150
+
+#:Instead of thinking about a delimiter which breaks when all strings from a big string think like if we can encode the list of strings with their length in them so that when we decode them We can run the loop until then from the index to get whole string. Here we do not need to worry about some symbols not to come in the lists inorder to use delimiter.
+
+#Ex:    li=[cat,do#g,p4arrot], then the encode part will get cipher="3#cat4#do#g7#p4arrot", so we can find the strings without worrying about the delimiter
+
+
+
+
+
 
 ""
 #-> 
 
-# Leetcode: 680-> Valid Palindrome-II
+# Neetcode150: ->
 
-#680:
+# [3, 7, 6, 4] Initial Array
+# i = 2, X = 1, Y = 6
+# → [3, 1, 6, 6, 4]
+
+# [3, 1, 6, 6, 4]
+# i = 5, X = 1, Y = 3
+# → [3, 1, 6, 6, 1, 3]
+
+''' For the above thing to happen first start 1 pointer at the beginning and one at the end, then:
+1. if both are equal then increment and decrement the start and end pointers correctly
+2. if they are not equal take the maximum element and break it into the minimum element and remaining part.
+Put the remaining part beside it and continue checking
+3. Update the start and end pointers correctly when adding or traversing as the size of array is changing so the indexes will be changing.'''
