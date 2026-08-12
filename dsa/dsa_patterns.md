@@ -378,7 +378,7 @@ Key idea:
 
 
 
-## 7-08-2026
+## 7-08-2026(Day19)
 
 PATTERN: Prefix Product.
 
@@ -409,6 +409,37 @@ Ex:
 
 
 
-## 8-08-2026
+## 8-08-2026(Day20)
 
-PATTERN:
+PATTERN: TwoSum-II
+
+What to remember:
+- Just one thing whenever there are two pointers thing comes first keep left at 0 and right at end and do processing if not possible then in other cases do left at start and right at left+1. When sorted array is given always put the left at the start and the right at the end and make changes in those.
+
+
+## 12-08-2026(Day21)
+
+PATTERN: k closest elements
+
+When to use:
+- when they ask about return all those elements which are very near to the element given and also number of elements to print also given.
+
+Key idea:
+- When the total arr elements are less than the asking number of elements then print all elements, if the given element(x) is less than the first element of the array then print first k elements in array, print last k for the controversy thing.
+- then if the given elemnt is between the elements then move to that index(i) and record it and later. make 2 pointers left=i-4 and right=i+4 if those are valid indexes otherwise make those max or min indexes of array,
+- lastly put a while loop and it runs until right-left+1>k and check left and right element which is farther to the x remove that index and move further
+
+Ex:[1,2,3,4,5,6,7,8], x=4, k=3
+now as 4 is in middle of list then record i which will become 3(index) and now left=0,right=6,last while right-left+1>3: update left,right
+
+
+PATTERN: Best time to buy and sell stocks
+
+When to use:
+- If there is a siustion where some item prices is mentioned in all those day and you can buy and sell then what is max_profit,we can use.
+
+Key idea:
+- Always remember the max_profit=max(max_profit,price-min_price) as the price daily we will check and update min_price until then and see what will be the max_profit if they sell that that specific day.So, daily the max_profit and min_price will be updating.
+
+
+

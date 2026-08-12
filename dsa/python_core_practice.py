@@ -469,24 +469,32 @@ Put the remaining part beside it and continue checking
 
 
 
+"Difference between LIS vs LCS"
+
+# LIS (Longest Increasing Subsequence) finds the longest sequence where numbers strictly increase in value,
+# Example:LIS: For [10, 22, 9, 33], the LIS is [10, 22, 33] (Length: 3).
+
+# while LCS (Longest Common Subsequence) finds the longest sequence of elements shared between two different arrays in the same relative order.
+# LCS: For [A, B, C] and [A, C, D], the LCS is [A, C] (Length: 2).
 
 
 
-""
-#-> 
 
-# Neetcode150: ->
 
-# [3, 7, 6, 4] Initial Array
-# i = 2, X = 1, Y = 6
-# → [3, 1, 6, 6, 4]
+# 04-08-2026 (Day 19)
 
-# [3, 1, 6, 6, 4]
-# i = 5, X = 1, Y = 3
-# → [3, 1, 6, 6, 1, 3]
+"Valid Sudoku"
 
-''' For the above thing to happen first start 1 pointer at the beginning and one at the end, then:
-1. if both are equal then increment and decrement the start and end pointers correctly
-2. if they are not equal take the maximum element and break it into the minimum element and remaining part.
-Put the remaining part beside it and continue checking
-3. Update the start and end pointers correctly when adding or traversing as the size of array is changing so the indexes will be changing.'''
+# Leetcode: -> 36. Valid Sudoku
+
+# We are giving a matrix 9*9 then we are said to know it is a valid sudoku or not.
+# ->First Understand just one traversal will go to each and every element so, no need of any other traversal.
+# ->There is no need of more sets also for remembering all the elements since after each inner loop we can clear the sets, Only the 9 Boxes(3*3) will need 9 sets which cannot be coverred in inner loop so, we will store in dictionary and move forward
+# ->If any where we find any duplicates then we will return False otherwise at end we return True.
+
+# ->For rows and columns it is fine but when we are doing for 9 (3*3) then for i,j make them to x,y as:
+i,j=0,0  # so this belongs to the first box and so on do like that.
+x,y=i//3,j//3
+
+
+
