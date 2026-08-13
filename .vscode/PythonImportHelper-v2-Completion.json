@@ -375,6 +375,15 @@
         "documentation": {}
     },
     {
+        "label": "dict_max",
+        "kind": 2,
+        "importPath": "dsa.python_core_practice",
+        "description": "dsa.python_core_practice",
+        "peekOfCode": "def dict_max():\n    # return max(frequency,key=frequency.get)     #For getting the key even thorugh the max is found between values (Remember this)\n    return max(frequency.values())\n# ->Now use sliding window increment and if it follows condition then move l++,r++ however in every iteration just increment and at the same time update dictionary. calculate length at last\n### Condition:\nif (r-l+1-dict_max())>k:    # Here r-l+1 is length of current window and dict_max() will give max value in dict\n    l+=1\n# Why we are doing is like if we have enough number of operation to change the elements in the window which are not the max_frequncy element then all the window will become the max_frequency element.\n# For max_count always do in the loop:\nmax_count=max(max_count,r-l+1)",
+        "detail": "dsa.python_core_practice",
+        "documentation": {}
+    },
+    {
         "label": "Animal",
         "kind": 6,
         "importPath": "Interview Concepts.OOPS",

@@ -494,7 +494,59 @@ Put the remaining part beside it and continue checking
 
 # ->For rows and columns it is fine but when we are doing for 9 (3*3) then for i,j make them to x,y as:
 i,j=0,0  # so this belongs to the first box and so on do like that.
-x,y=i//3,j//3
+x,y=i//3,j//3  # we get values to check for the 9 sets which are big boxes(3*3) in (9*9) Each x,y corresponds to one box
+# Before starting to code just intialize all the 9 sets required for the (x,y) pair as directly we can add to those sets in between and use them as it is not required to clear in between also
+# For the other two sets which checks columns and rows they must be cleared at the end of one inner loop completion to start for next column or row.
 
+
+
+
+
+# 13-08-2026 (Day 22)
+
+"Sliding Window Advanced with dictionaries"
+
+# Leetcode: -> 424.Longest Repeating Character Replacement
+
+# ->Here this question is to find the maximum length of array which has single unique character, You will be given a k value using which you can change the string alphabets atmost k times each time a letter whatever we want.
+# To do this first store all frequencies in the dictionaries and write a function which gives the maximum frequncy at the current time in dictionary
+frequency={}
+max_count=float('-inf')
+r,l,k=0,0,2
+def dict_max():
+    # return max(frequency,key=frequency.get)     #For getting the key even thorugh the max is found between values (Remember this)
+    return max(frequency.values())
+
+# ->Now use sliding window increment and if it follows condition then move l++,r++ however in every iteration just increment and at the same time update dictionary. calculate length at last
+### Condition:
+if (r-l+1-dict_max())>k:    # Here r-l+1 is length of current window and dict_max() will give max value in dict
+    l+=1
+# Why we are doing is like if we have enough number of operation to change the elements in the window which are not the max_frequncy element then all the window will become the max_frequency element.
+# For max_count always do in the loop:
+max_count=max(max_count,r-l+1)
+
+
+
+
+"Permutation of string in other string"
+
+# Leetcode: ->567
+
+s1="abc"
+s2="aabbccabs"
+# if permutation of s1 is present in s2 then return True else False. Permutations can be like abc,bca,acb,cab,... like these in string2
+# so, we know the pattern must be of fixed length which is s1 length so, we use fixed sliding window and update l and r accordingly
+# at each iteration check window frequency and the s1 frequency if they are equal or not for result.
+# Rememeber to delete the character completely in window dict when their values become 0 to compare both dictionaries
+
+####Important:
+# ->Always remember when we are using while loop in sliding window then we can add the r value to the window before a condition or after condition based on requirement.
+# ->But when we are using for loop for sliding window always first add the value to the window as the r updates itself and later if the condition does not match then we can remove it.
+l=0
+window={}
+for r in range(len(s2)):
+    window[s2[r]]=window.get(s2[r],0)+1
+    # COnditions
+    
 
 
