@@ -76,20 +76,20 @@ stack=[]
 # Store these values in a different list to know which element is greater than this current element.
 
 for i,num in enumerate(nums):
-    if len(stack)==0:
-        stack.append(i)
-    else:
-        while num>stack[-1]:
+        while stack and num>stack[-1]:
             results[stack[-1]]=num
             stack.pop()
         stack.append(i)
         
-        
+# The above code is for monotoically Decreasing stack    
 print(results)
 
 '''Note: Always remember store the indices in the monotonic stack not the actual numbers as we need to update the results array of many elements in 1 iteration if greatest element
 is found now and all elements in the stack are lower than this element then all results indices must change so, it will be difficutlt to find the index of that number and then update it.
 '''
+
+# -> Even we can store a mixed number of types in single list in one cell in stack and use them as per the question is concerened with
+# ->Ex:LeetCode 739 :It tells to give a output array in which for each element after how many places its greater number is availale, if not available then we return 0.
 
 #
 #

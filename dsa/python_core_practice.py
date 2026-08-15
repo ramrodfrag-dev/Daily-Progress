@@ -550,3 +550,16 @@ for r in range(len(s2)):
     
 
 
+
+
+# 15-08-2026 (Day 23)
+
+"Extra Math:"
+
+# Contest: ->Indian express
+# -> we are given with a array and we need to find the count of all subarrays whose sum/subarray_size==S. S is given.
+# size=4
+# window_sum=0
+# window_sum/size==S <==> window_sum=size*S <==> window_sum-(size*S) which simply mean substract each S from each element and find the number og zeros in the prefix sum array after substracting S.
+
+

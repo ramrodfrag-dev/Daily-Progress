@@ -253,3 +253,19 @@ model=XGBClassifier(
     max_depth=3,        #depth of each tree
     random_state=42
 )
+
+
+
+"Cohort Analysis:"
+# Cohort analysis is a way of analyzing a group of people who share a common characteristic or event during a specific time period.
+# Simply:
+# A cohort is a group of users/items that started or experienced the same event at a similar time.
+# Cohort analysis tracks and compares how these groups behave over time.
+#Ex:
+# | Cohort   | Joined | Month 1 | Month 2 | Month 3 |
+# | -------- | -----: | ------: | ------: | ------: |
+# | January  |    100 |      80 |      60 |      50 |
+# | February |    200 |     180 |     150 |     120 |
+
+
+

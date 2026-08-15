@@ -12,3 +12,14 @@ Boyce-codd Normal form(BCNF): It ensures every determinent is a candidate key an
 ->BCNF is a stronger version of the 3NF
 */
 
+
+
+ 'Indexing on the Columns'
+
+-- Generlly all the primary keys are indexed but not the others
+-- These improve the speed of findng an element but downside is adding, deleting, others tasks require much time and changing one record needs much work
+-- How to index?
+CREATE INDEX idx_name_age
+ON students(name, age);
+
+-- In the above code in students table both the name and age combinely got indexed.

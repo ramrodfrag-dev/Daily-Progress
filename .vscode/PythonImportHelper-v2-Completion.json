@@ -508,5 +508,77 @@
         "peekOfCode": "def div(a,b):               #This is original function\n    print(a/b)\n# div=special_div(div)      This is just used if we remove the @decorator name to the original function(It's just what internally does).\ndiv(3,6)",
         "detail": "Python Advanced Concepts.day15_decorators",
         "documentation": {}
+    },
+    {
+        "label": "a",
+        "kind": 5,
+        "importPath": "Python Advanced Concepts.day23_different_func",
+        "description": "Python Advanced Concepts.day23_different_func",
+        "peekOfCode": "a = [1, 2, 3]\nb = ['a', 'b', 'c']\nprint(list(zip(a, b)))\n# Output\n# [(1, 'a'), (2, 'b'), (3, 'c')]\n# How it works:\n# a[0] + b[0] → (1, 'a')\n# a[1] + b[1] → (2, 'b')\n# a[2] + b[2] → (3, 'c')        We can also do for x,y in zip(a,b)\n# Time: O(1)        if there are n elements then time complexity becomes O(n)",
+        "detail": "Python Advanced Concepts.day23_different_func",
+        "documentation": {}
+    },
+    {
+        "label": "b",
+        "kind": 5,
+        "importPath": "Python Advanced Concepts.day23_different_func",
+        "description": "Python Advanced Concepts.day23_different_func",
+        "peekOfCode": "b = ['a', 'b', 'c']\nprint(list(zip(a, b)))\n# Output\n# [(1, 'a'), (2, 'b'), (3, 'c')]\n# How it works:\n# a[0] + b[0] → (1, 'a')\n# a[1] + b[1] → (2, 'b')\n# a[2] + b[2] → (3, 'c')        We can also do for x,y in zip(a,b)\n# Time: O(1)        if there are n elements then time complexity becomes O(n)\n# Space: O(1)       if zip is converted to list then space complexity becomes O(n)",
+        "detail": "Python Advanced Concepts.day23_different_func",
+        "documentation": {}
+    },
+    {
+        "label": "names",
+        "kind": 5,
+        "importPath": "Python Advanced Concepts.day23_different_func",
+        "description": "Python Advanced Concepts.day23_different_func",
+        "peekOfCode": "names = [\"John\", \"Alice\", \"Bob\", \"David\"]   # list → 4 items\ngrades = (85, 90, 78)                       # tuple → 3 items   ← shortest\nletters = \"ABCDE\"                           # string → 5 characters\nresult = zip(names, grades, letters)\nprint(list(result))\n#Output:\n# [('John', 85, 'A'),\n#  ('Alice', 90, 'B'),\n#  ('Bob', 78, 'C')]\n\"zip() stops when the shortest iterable ends\"",
+        "detail": "Python Advanced Concepts.day23_different_func",
+        "documentation": {}
+    },
+    {
+        "label": "grades",
+        "kind": 5,
+        "importPath": "Python Advanced Concepts.day23_different_func",
+        "description": "Python Advanced Concepts.day23_different_func",
+        "peekOfCode": "grades = (85, 90, 78)                       # tuple → 3 items   ← shortest\nletters = \"ABCDE\"                           # string → 5 characters\nresult = zip(names, grades, letters)\nprint(list(result))\n#Output:\n# [('John', 85, 'A'),\n#  ('Alice', 90, 'B'),\n#  ('Bob', 78, 'C')]\n\"zip() stops when the shortest iterable ends\"\n#",
+        "detail": "Python Advanced Concepts.day23_different_func",
+        "documentation": {}
+    },
+    {
+        "label": "letters",
+        "kind": 5,
+        "importPath": "Python Advanced Concepts.day23_different_func",
+        "description": "Python Advanced Concepts.day23_different_func",
+        "peekOfCode": "letters = \"ABCDE\"                           # string → 5 characters\nresult = zip(names, grades, letters)\nprint(list(result))\n#Output:\n# [('John', 85, 'A'),\n#  ('Alice', 90, 'B'),\n#  ('Bob', 78, 'C')]\n\"zip() stops when the shortest iterable ends\"\n#\n#",
+        "detail": "Python Advanced Concepts.day23_different_func",
+        "documentation": {}
+    },
+    {
+        "label": "result",
+        "kind": 5,
+        "importPath": "Python Advanced Concepts.day23_different_func",
+        "description": "Python Advanced Concepts.day23_different_func",
+        "peekOfCode": "result = zip(names, grades, letters)\nprint(list(result))\n#Output:\n# [('John', 85, 'A'),\n#  ('Alice', 90, 'B'),\n#  ('Bob', 78, 'C')]\n\"zip() stops when the shortest iterable ends\"\n#\n#\n#",
+        "detail": "Python Advanced Concepts.day23_different_func",
+        "documentation": {}
+    },
+    {
+        "label": "result",
+        "kind": 5,
+        "importPath": "Python Advanced Concepts.day23_different_func",
+        "description": "Python Advanced Concepts.day23_different_func",
+        "peekOfCode": "result = list(map(lambda x: x * x, [1, 2, 3]))              #Ex:1\n# Unlike normal functions which can be used any number of times once initialized but this can be only used once when initialized.\nsquare = lambda x: x * x                #Ex:2\nprint(square(5))\n\"lambda input: operation\"               #->This is the format how the lambda is written\nlambda x: x * 2                 #Ex:3\nlambda x: x + 10\nlambda x: x % 2 == 0\nlambda x: x[0]",
+        "detail": "Python Advanced Concepts.day23_different_func",
+        "documentation": {}
+    },
+    {
+        "label": "square",
+        "kind": 5,
+        "importPath": "Python Advanced Concepts.day23_different_func",
+        "description": "Python Advanced Concepts.day23_different_func",
+        "peekOfCode": "square = lambda x: x * x                #Ex:2\nprint(square(5))\n\"lambda input: operation\"               #->This is the format how the lambda is written\nlambda x: x * 2                 #Ex:3\nlambda x: x + 10\nlambda x: x % 2 == 0\nlambda x: x[0]",
+        "detail": "Python Advanced Concepts.day23_different_func",
+        "documentation": {}
     }
 ]
