@@ -58,3 +58,35 @@ lambda x: x + 10
 lambda x: x % 2 == 0
 lambda x: x[0]
 
+#
+#
+#
+#
+#
+#
+
+"Set default in dictionaries"
+
+# Ex:
+timeMap={}
+key="an"
+value,timestamp="jan",3
+timeMap.setdefault(key,[]).append((value,timestamp))
+# Instead of first creating the list if it is empty by checking and then appending.
+# is not recommedable as starts the thing by the default value if it is not initialized until now.
+
+
+
+"How the functions are written:"
+
+class Node:
+    def __init__(self, x: int, next: "Node | None" = None): # Here next can be Node or None
+        self.val = int(x)
+        self.next = next
+        
+# see how the default values are written.
+
+def sum(a:int,b:int)->int:
+    return a+b
+
+# See how the return values are written in code

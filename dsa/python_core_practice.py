@@ -563,3 +563,155 @@ for r in range(len(s2)):
 # window_sum/size==S <==> window_sum=size*S <==> window_sum-(size*S) which simply mean substract each S from each element and find the number og zeros in the prefix sum array after substracting S.
 
 
+
+
+
+
+# 16-08-2026 (Day 24)
+
+"Matrix Search in O(log(m*n))"
+
+# LeetCode: ->74: Search Matrix
+# ->In O(logn) We can generally search the array which is very efficient than the linear search(O(n))
+# ->In matrx also we should use the binary search to get this optimal time complexity
+# Note: The array is sorted correctly ascending order. Ex:matrix = [[1,2,4,8],[10,11,12,13],[14,20,30,40]]. so, next row first element will is greater than the previous row last element.
+
+###Solution:
+# ->Instead of thinking about the rows and columns and converting them to one output to use in binary search we use:
+#1.First apply binary search on all rows and find the particular row in which the element is present
+#2.Then we if we find that row internally we will call a sub binary search which only searches 1D arrays.
+#3.This function will find it and return true or false which then goes to first function which finds row in the matrix that contains element and then it returns final output.
+# Ex:
+
+matrix=[[1,2,4,8],[10,11,12,13],[14,20,30,40]]
+target=14
+l=0
+r=len(matrix)-1
+def binary(l,r,arr):
+    # Normal binary search
+    pass
+def binary_mat(l,r):
+    if l>r:
+        return False
+    m=(l+r)//2
+    if matrix[m][0]<=target and matrix[m][-1]>=target:
+        return binary(0,len(matrix[0]),matrix[m])
+    # else: again traverse in binary_mat and change the rows value
+print(binary_mat(l,r))
+
+
+
+"Koko eating bananas"
+
+# LeetCode: ->875
+
+piles = [3,6,7,11] # in each hour it has to select one pile and eat exact a number of bananas as decided in the beginning and it has to complete all piles before time h which is given
+h=8
+
+# When this question appears first think what could be the no.of bananas that could be eaten at a time. 
+# res=1 to max(piles), because only 1 pile is able to chose and eat. So minimum it requires len(piles) hours and generally h>=len(piles)
+# Now We have extreme values the original minimum no. of bananas to eat to complete all piles will be between them which we should find by some algorithm
+# By linear search it takes time as many conditions needs to be checked so, we use binary search and the conditions will be like:
+import math
+# In each check we do:
+m=(l+r)//2
+count=0
+for i in piles:
+    count+=math.ceil(i/m)
+if count<=h:
+    r=m-1
+else:
+    l=m+1
+# We stop when l>r
+# But if the element is not found then what value to return. If you closely observe by taking some examples as such and do it you will notice:
+# If the return statement did not execute and exited by l>r then the min value will be stored in l.This must be derived by some examples(2-3) we will notice it.So, finally outside while loop return l
+
+
+
+"Find min in rotated sorted Array"
+
+# LeetCode: ->153
+
+# Here a array is given which is sorted but rotated right for some k no. of times which is unknown
+# We need to find min no. and also in O(logn) instead of O(n), so we use binary search:
+while l<r:
+    m=(l+r)//2
+    if nums[m]>nums[r]:
+        l=m+1
+    else:
+        r=m         #Ex:nums=[3,4,5,6,1,2] Here we are writing r=m instead of r=m+1 as when taken an small example and solved the soln is being skipped so we use this convention to further check that last element.
+print(nums[l])      #Nums[l] and nums[r] contains result as when they are equal only the loop will be terminated
+# Always check conditions by writing many examples and check our code is working or not. if not add some changes
+
+
+
+
+
+
+# 17-08-2026 (Day 25)
+
+"Binary search in rotated sorted arrays"
+
+# LeetCode: ->74
+# ->Search in the rotated array in O(logn) which is only possible for binary search.So, think how to convert the whole thing to binary search
+# So, there must be staring point which the answer can be and to max here it is array range. Now take the middle number and check conditions
+###Condition here are:
+#1.The left part is sorted or right part is sorted check it first by nums[m]>=nums[l]
+#2.Next if the element is in the sorted side or other side, so accordingly send it to that side by removing other side
+#3.Stopping condition is like if the middle element equals to target then return that index otherwise after all while loop return -1.
+
+# for more soln see https://leetcode.com/problems/search-in-rotated-sorted-array/
+
+
+
+"What is deep copy and shallow copy"
+
+# 1.Normal usage of pointers when pointed by others will not have any memory
+a=[1,2,3]
+b=a  
+#->Means a,b points to same. If the b is changed then a reflects the changes
+# a ──────┐
+#         ▼
+#       [1, 2, 3]
+#         ▲
+#         │
+# b ──────┘
+
+"2.Shallow copy → copies the outer container/reference structure"
+# Ex: 
+import copy
+b = copy.copy(a)
+# The outer lists are different objects for a ,b.
+# a ───► [1, 2, 3]
+
+# b ───► [1, 2, 3]
+
+"Problem comes with nested objects"
+# Ex:
+a = [[1, 2], [3, 4]]
+b = a.copy()
+# a ───► [ ──────┐, ──────┐ ]
+#            │            │
+#            ▼            ▼
+#          [1,2]        [3,4]
+
+# b ───► [ ──────┘, ──────┘ ]
+# So, if we change in the inner object the other variable also reflects.
+
+
+"3.Deep copy → recursively creates independent copies of nested objects"
+import copy
+a = [[1, 2], [3, 4]]
+b = copy.deepcopy(a)
+# a ───► [ ───► [1,2], ───► [3,4] ]
+
+# b ───► [ ───► [1,2], ───► [3,4] ]
+# Now if we change in one object then other will remain untouched it does not reflects any changes
+
+
+
+
+
+"Slow and fast num"
+# Generally start both pointers at one place so that the floyds algorithm works good, otherwise some errors may come.
+

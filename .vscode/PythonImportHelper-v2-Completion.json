@@ -69,6 +69,24 @@
         "documentation": {}
     },
     {
+        "label": "copy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "copy",
+        "description": "copy",
+        "detail": "copy",
+        "documentation": {}
+    },
+    {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
         "label": "time",
         "kind": 6,
         "isExtraImport": true,
@@ -321,6 +339,60 @@
         "documentation": {}
     },
     {
+        "label": "ancestor_finder",
+        "kind": 2,
+        "importPath": "dsa.day26_linkedList",
+        "description": "dsa.day26_linkedList",
+        "peekOfCode": "def ancestor_finder(root,p,q):\n    while True:\n        if p.val<root.val and q.val<root.val:\n            root=root.left\n        elif p.val>root.val and q.val>root.val:\n            root=root.right\n        else:\n            return root\n# We can also do it in the recursion format by calling the root.right or left according to the conditions instead of while loop.",
+        "detail": "dsa.day26_linkedList",
+        "documentation": {}
+    },
+    {
+        "label": "head2",
+        "kind": 5,
+        "importPath": "dsa.day26_linkedList",
+        "description": "dsa.day26_linkedList",
+        "peekOfCode": "head2 = copy.copy(head)\n# head  ──► Node(1) ───────► Node(2) ───► Node(3)\n# head2 ──► Node(1) ────────┘\n# so, only the first node will be copied and others will be pointing to the same things.\n\"Deep copy\"\n# Original:\n# head\n#  ↓\n# 1 → 2 → 3\n# Deep copy:",
+        "detail": "dsa.day26_linkedList",
+        "documentation": {}
+    },
+    {
+        "label": "root",
+        "kind": 5,
+        "importPath": "dsa.day26_linkedList",
+        "description": "dsa.day26_linkedList",
+        "peekOfCode": "root = [5,3,8,1,4,7,9,None,2]   # Draw this and understand how it works\np,q = 3,8\noutput=5\nroot = [5,3,8,1,4,7,9,None,2]\np,q = 3,4\noutput=3\n####Soln:\n# Use the fact this is a binary search tree and if the both p,q are on one side of root then check that side or otherwise return root\ndef ancestor_finder(root,p,q):\n    while True:",
+        "detail": "dsa.day26_linkedList",
+        "documentation": {}
+    },
+    {
+        "label": "p,q",
+        "kind": 5,
+        "importPath": "dsa.day26_linkedList",
+        "description": "dsa.day26_linkedList",
+        "peekOfCode": "p,q = 3,8\noutput=5\nroot = [5,3,8,1,4,7,9,None,2]\np,q = 3,4\noutput=3\n####Soln:\n# Use the fact this is a binary search tree and if the both p,q are on one side of root then check that side or otherwise return root\ndef ancestor_finder(root,p,q):\n    while True:\n        if p.val<root.val and q.val<root.val:",
+        "detail": "dsa.day26_linkedList",
+        "documentation": {}
+    },
+    {
+        "label": "root",
+        "kind": 5,
+        "importPath": "dsa.day26_linkedList",
+        "description": "dsa.day26_linkedList",
+        "peekOfCode": "root = [5,3,8,1,4,7,9,None,2]\np,q = 3,4\noutput=3\n####Soln:\n# Use the fact this is a binary search tree and if the both p,q are on one side of root then check that side or otherwise return root\ndef ancestor_finder(root,p,q):\n    while True:\n        if p.val<root.val and q.val<root.val:\n            root=root.left\n        elif p.val>root.val and q.val>root.val:",
+        "detail": "dsa.day26_linkedList",
+        "documentation": {}
+    },
+    {
+        "label": "p,q",
+        "kind": 5,
+        "importPath": "dsa.day26_linkedList",
+        "description": "dsa.day26_linkedList",
+        "peekOfCode": "p,q = 3,4\noutput=3\n####Soln:\n# Use the fact this is a binary search tree and if the both p,q are on one side of root then check that side or otherwise return root\ndef ancestor_finder(root,p,q):\n    while True:\n        if p.val<root.val and q.val<root.val:\n            root=root.left\n        elif p.val>root.val and q.val>root.val:\n            root=root.right",
+        "detail": "dsa.day26_linkedList",
+        "documentation": {}
+    },
+    {
         "label": "Stack",
         "kind": 6,
         "importPath": "dsa.day8_stack",
@@ -380,6 +452,78 @@
         "importPath": "dsa.python_core_practice",
         "description": "dsa.python_core_practice",
         "peekOfCode": "def dict_max():\n    # return max(frequency,key=frequency.get)     #For getting the key even thorugh the max is found between values (Remember this)\n    return max(frequency.values())\n# ->Now use sliding window increment and if it follows condition then move l++,r++ however in every iteration just increment and at the same time update dictionary. calculate length at last\n### Condition:\nif (r-l+1-dict_max())>k:    # Here r-l+1 is length of current window and dict_max() will give max value in dict\n    l+=1\n# Why we are doing is like if we have enough number of operation to change the elements in the window which are not the max_frequncy element then all the window will become the max_frequency element.\n# For max_count always do in the loop:\nmax_count=max(max_count,r-l+1)",
+        "detail": "dsa.python_core_practice",
+        "documentation": {}
+    },
+    {
+        "label": "binary",
+        "kind": 2,
+        "importPath": "dsa.python_core_practice",
+        "description": "dsa.python_core_practice",
+        "peekOfCode": "def binary(l,r,arr):\n    # Normal binary search\n    pass\ndef binary_mat(l,r):\n    if l>r:\n        return False\n    m=(l+r)//2\n    if matrix[m][0]<=target and matrix[m][-1]>=target:\n        return binary(0,len(matrix[0]),matrix[m])\n    # else: again traverse in binary_mat and change the rows value",
+        "detail": "dsa.python_core_practice",
+        "documentation": {}
+    },
+    {
+        "label": "binary_mat",
+        "kind": 2,
+        "importPath": "dsa.python_core_practice",
+        "description": "dsa.python_core_practice",
+        "peekOfCode": "def binary_mat(l,r):\n    if l>r:\n        return False\n    m=(l+r)//2\n    if matrix[m][0]<=target and matrix[m][-1]>=target:\n        return binary(0,len(matrix[0]),matrix[m])\n    # else: again traverse in binary_mat and change the rows value\nprint(binary_mat(l,r))\n\"Koko eating bananas\"\n# LeetCode: ->875",
+        "detail": "dsa.python_core_practice",
+        "documentation": {}
+    },
+    {
+        "label": "piles",
+        "kind": 5,
+        "importPath": "dsa.python_core_practice",
+        "description": "dsa.python_core_practice",
+        "peekOfCode": "piles = [3,6,7,11] # in each hour it has to select one pile and eat exact a number of bananas as decided in the beginning and it has to complete all piles before time h which is given\nh=8\n# When this question appears first think what could be the no.of bananas that could be eaten at a time. \n# res=1 to max(piles), because only 1 pile is able to chose and eat. So minimum it requires len(piles) hours and generally h>=len(piles)\n# Now We have extreme values the original minimum no. of bananas to eat to complete all piles will be between them which we should find by some algorithm\n# By linear search it takes time as many conditions needs to be checked so, we use binary search and the conditions will be like:\nimport math\n# In each check we do:\nm=(l+r)//2\ncount=0",
+        "detail": "dsa.python_core_practice",
+        "documentation": {}
+    },
+    {
+        "label": "b",
+        "kind": 5,
+        "importPath": "dsa.python_core_practice",
+        "description": "dsa.python_core_practice",
+        "peekOfCode": "b = copy.copy(a)\n# The outer lists are different objects for a ,b.\n# a ───► [1, 2, 3]\n# b ───► [1, 2, 3]\n\"Problem comes with nested objects\"\n# Ex:\na = [[1, 2], [3, 4]]\nb = a.copy()\n# a ───► [ ──────┐, ──────┐ ]\n#            │            │",
+        "detail": "dsa.python_core_practice",
+        "documentation": {}
+    },
+    {
+        "label": "a",
+        "kind": 5,
+        "importPath": "dsa.python_core_practice",
+        "description": "dsa.python_core_practice",
+        "peekOfCode": "a = [[1, 2], [3, 4]]\nb = a.copy()\n# a ───► [ ──────┐, ──────┐ ]\n#            │            │\n#            ▼            ▼\n#          [1,2]        [3,4]\n# b ───► [ ──────┘, ──────┘ ]\n# So, if we change in the inner object the other variable also reflects.\n\"3.Deep copy → recursively creates independent copies of nested objects\"\nimport copy",
+        "detail": "dsa.python_core_practice",
+        "documentation": {}
+    },
+    {
+        "label": "b",
+        "kind": 5,
+        "importPath": "dsa.python_core_practice",
+        "description": "dsa.python_core_practice",
+        "peekOfCode": "b = a.copy()\n# a ───► [ ──────┐, ──────┐ ]\n#            │            │\n#            ▼            ▼\n#          [1,2]        [3,4]\n# b ───► [ ──────┘, ──────┘ ]\n# So, if we change in the inner object the other variable also reflects.\n\"3.Deep copy → recursively creates independent copies of nested objects\"\nimport copy\na = [[1, 2], [3, 4]]",
+        "detail": "dsa.python_core_practice",
+        "documentation": {}
+    },
+    {
+        "label": "a",
+        "kind": 5,
+        "importPath": "dsa.python_core_practice",
+        "description": "dsa.python_core_practice",
+        "peekOfCode": "a = [[1, 2], [3, 4]]\nb = copy.deepcopy(a)\n# a ───► [ ───► [1,2], ───► [3,4] ]\n# b ───► [ ───► [1,2], ───► [3,4] ]\n# Now if we change in one object then other will remain untouched it does not reflects any changes\n\"Slow and fast num\"\n# Generally start both pointers at one place so that the floyds algorithm works good, otherwise some errors may come.",
+        "detail": "dsa.python_core_practice",
+        "documentation": {}
+    },
+    {
+        "label": "b",
+        "kind": 5,
+        "importPath": "dsa.python_core_practice",
+        "description": "dsa.python_core_practice",
+        "peekOfCode": "b = copy.deepcopy(a)\n# a ───► [ ───► [1,2], ───► [3,4] ]\n# b ───► [ ───► [1,2], ───► [3,4] ]\n# Now if we change in one object then other will remain untouched it does not reflects any changes\n\"Slow and fast num\"\n# Generally start both pointers at one place so that the floyds algorithm works good, otherwise some errors may come.",
         "detail": "dsa.python_core_practice",
         "documentation": {}
     },
@@ -510,6 +654,24 @@
         "documentation": {}
     },
     {
+        "label": "Node",
+        "kind": 6,
+        "importPath": "Python Advanced Concepts.day23_different_func",
+        "description": "Python Advanced Concepts.day23_different_func",
+        "peekOfCode": "class Node:\n    def __init__(self, x: int, next: \"Node | None\" = None): # Here next can be Node or None\n        self.val = int(x)\n        self.next = next\n# see how the default values are written.\ndef sum(a:int,b:int)->int:\n    return a+b\n# See how the return values are written in code",
+        "detail": "Python Advanced Concepts.day23_different_func",
+        "documentation": {}
+    },
+    {
+        "label": "sum",
+        "kind": 2,
+        "importPath": "Python Advanced Concepts.day23_different_func",
+        "description": "Python Advanced Concepts.day23_different_func",
+        "peekOfCode": "def sum(a:int,b:int)->int:\n    return a+b\n# See how the return values are written in code",
+        "detail": "Python Advanced Concepts.day23_different_func",
+        "documentation": {}
+    },
+    {
         "label": "a",
         "kind": 5,
         "importPath": "Python Advanced Concepts.day23_different_func",
@@ -568,7 +730,7 @@
         "kind": 5,
         "importPath": "Python Advanced Concepts.day23_different_func",
         "description": "Python Advanced Concepts.day23_different_func",
-        "peekOfCode": "result = list(map(lambda x: x * x, [1, 2, 3]))              #Ex:1\n# Unlike normal functions which can be used any number of times once initialized but this can be only used once when initialized.\nsquare = lambda x: x * x                #Ex:2\nprint(square(5))\n\"lambda input: operation\"               #->This is the format how the lambda is written\nlambda x: x * 2                 #Ex:3\nlambda x: x + 10\nlambda x: x % 2 == 0\nlambda x: x[0]",
+        "peekOfCode": "result = list(map(lambda x: x * x, [1, 2, 3]))              #Ex:1\n# Unlike normal functions which can be used any number of times once initialized but this can be only used once when initialized.\nsquare = lambda x: x * x                #Ex:2\nprint(square(5))\n\"lambda input: operation\"               #->This is the format how the lambda is written\nlambda x: x * 2                 #Ex:3\nlambda x: x + 10\nlambda x: x % 2 == 0\nlambda x: x[0]\n#",
         "detail": "Python Advanced Concepts.day23_different_func",
         "documentation": {}
     },
@@ -577,7 +739,7 @@
         "kind": 5,
         "importPath": "Python Advanced Concepts.day23_different_func",
         "description": "Python Advanced Concepts.day23_different_func",
-        "peekOfCode": "square = lambda x: x * x                #Ex:2\nprint(square(5))\n\"lambda input: operation\"               #->This is the format how the lambda is written\nlambda x: x * 2                 #Ex:3\nlambda x: x + 10\nlambda x: x % 2 == 0\nlambda x: x[0]",
+        "peekOfCode": "square = lambda x: x * x                #Ex:2\nprint(square(5))\n\"lambda input: operation\"               #->This is the format how the lambda is written\nlambda x: x * 2                 #Ex:3\nlambda x: x + 10\nlambda x: x % 2 == 0\nlambda x: x[0]\n#\n#\n#",
         "detail": "Python Advanced Concepts.day23_different_func",
         "documentation": {}
     }
