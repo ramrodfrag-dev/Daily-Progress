@@ -715,3 +715,45 @@ b = copy.deepcopy(a)
 "Slow and fast num"
 # Generally start both pointers at one place so that the floyds algorithm works good, otherwise some errors may come.
 
+#
+#
+#
+#
+#
+
+# 25-08-2026 (Day 30)
+
+"Finding Pivot element"
+
+# LeetCode: ->724
+# ->There is an array given and we need to find the element whose left side all elements sum equals right side sum of all elements.
+# if the pivot is 1 then the left sum is 0 and all the right side elements sum must be equals 0.
+# They have asked to give left most pivot,so it is easier because we can use the brute force approach of checking each element is a pivot or not by making a suffix sum array and also checking left sum at same time
+#### Remember:
+# Always first try the question in brute force if it executes then fine otherwise then optimize it. do not think other approaches and data structures of what to be used. just think how to use brute force to solve this.
+
+# Here:
+def pivotIndex(self, nums: list[int]) -> int:
+    pivot=0
+    prefix=[0]*(len(nums)+1)
+    for i in range(len(nums)-1,-1,-1):
+            prefix[i]=prefix[i+1]+nums[i]       # found the suffix array
+        
+    leftsum=0
+    while pivot<len(nums):
+        if prefix[pivot+1]==leftsum:            # Checking if the left and right sums are equal
+            return pivot
+        leftsum+=nums[pivot]
+        pivot+=1
+    return -1                                   # if not return -1
+
+
+#
+#
+#
+#
+#
+#
+
+
+

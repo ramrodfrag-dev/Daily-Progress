@@ -564,6 +564,15 @@
         "documentation": {}
     },
     {
+        "label": "pivotIndex",
+        "kind": 2,
+        "importPath": "dsa.python_core_practice",
+        "description": "dsa.python_core_practice",
+        "peekOfCode": "def pivotIndex(self, nums: list[int]) -> int:\n    pivot=0\n    prefix=[0]*(len(nums)+1)\n    for i in range(len(nums)-1,-1,-1):\n            prefix[i]=prefix[i+1]+nums[i]       # found the suffix array\n    leftsum=0\n    while pivot<len(nums):\n        if prefix[pivot+1]==leftsum:            # Checking if the left and right sums are equal\n            return pivot\n        leftsum+=nums[pivot]",
+        "detail": "dsa.python_core_practice",
+        "documentation": {}
+    },
+    {
         "label": "piles",
         "kind": 5,
         "importPath": "dsa.python_core_practice",
@@ -604,7 +613,7 @@
         "kind": 5,
         "importPath": "dsa.python_core_practice",
         "description": "dsa.python_core_practice",
-        "peekOfCode": "a = [[1, 2], [3, 4]]\nb = copy.deepcopy(a)\n# a ───► [ ───► [1,2], ───► [3,4] ]\n# b ───► [ ───► [1,2], ───► [3,4] ]\n# Now if we change in one object then other will remain untouched it does not reflects any changes\n\"Slow and fast num\"\n# Generally start both pointers at one place so that the floyds algorithm works good, otherwise some errors may come.",
+        "peekOfCode": "a = [[1, 2], [3, 4]]\nb = copy.deepcopy(a)\n# a ───► [ ───► [1,2], ───► [3,4] ]\n# b ───► [ ───► [1,2], ───► [3,4] ]\n# Now if we change in one object then other will remain untouched it does not reflects any changes\n\"Slow and fast num\"\n# Generally start both pointers at one place so that the floyds algorithm works good, otherwise some errors may come.\n#\n#\n#",
         "detail": "dsa.python_core_practice",
         "documentation": {}
     },
@@ -613,7 +622,7 @@
         "kind": 5,
         "importPath": "dsa.python_core_practice",
         "description": "dsa.python_core_practice",
-        "peekOfCode": "b = copy.deepcopy(a)\n# a ───► [ ───► [1,2], ───► [3,4] ]\n# b ───► [ ───► [1,2], ───► [3,4] ]\n# Now if we change in one object then other will remain untouched it does not reflects any changes\n\"Slow and fast num\"\n# Generally start both pointers at one place so that the floyds algorithm works good, otherwise some errors may come.",
+        "peekOfCode": "b = copy.deepcopy(a)\n# a ───► [ ───► [1,2], ───► [3,4] ]\n# b ───► [ ───► [1,2], ───► [3,4] ]\n# Now if we change in one object then other will remain untouched it does not reflects any changes\n\"Slow and fast num\"\n# Generally start both pointers at one place so that the floyds algorithm works good, otherwise some errors may come.\n#\n#\n#\n#",
         "detail": "dsa.python_core_practice",
         "documentation": {}
     },
