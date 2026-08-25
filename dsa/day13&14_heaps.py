@@ -11,7 +11,7 @@ b. max-heap-> It's parents value is grater than children value
 # some points are(w.r.t array implementation of min heap):
 # 1. Worst Time complexity of Insertion and deletion is O(logn)
 # 2. Worst Time complexity of Searching something largest element or any other element except the min element of whole heap it takes O(n)
-# 3. For finding the least element in the heap it takes O(1 as the first element is the min element)
+# 3. For finding the least element in the heap it takes O(1) as the first element is the min element
 # 4. Building the entire heap by using .heappush takes O(nlogn) whereas it takes O(n) by using the .heapify
 # Reason for the 4th one is here while adding all nodes at once we only update the non-leaf nodes which are less than total no.of nodes and takes less time like O(n)
 
@@ -51,12 +51,34 @@ print(li)
 
 n=3
 small=heapq.nsmallest(n,li)[-1]
-large=heapq.nlargest(n,li)[-1]
+large=heapq.nlargest(n,li)[-1] # means:
+# Find the n largest elements from li, then take the smallest among those n elements.
 
 print(f"{n}th smallest number is {small} and the {n}th largest number is {large}")
 
 
 '''Heap is used for finding kth largest or smallest number instead of sorting because sorting takes O(nlogn) generally and the heap takes O(nlogk) k is the depth of the tree unlike n which is all elements'''
+
+# But if we need to find a fixed largest/smallest number in a stream the nsmallest or nlargest will become tle as each takes O(n).
+# Instead we do it in a O(1) time by just maintaining a fixed length of the heap and removing unnecessary part.
+#Ex:
+class KthLargest:
+
+    def __init__(self, k: int, nums: list[int]):
+        self.heap=nums
+        self.k=k
+        heapq.heapify(self.heap)
+        while len(self.heap)>self.k:
+            heapq.heappop(self.heap)
+
+    def add(self, val: int) -> int:
+        heapq.heappush(self.heap,val)
+        if len(self.heap)>self.k:
+            heapq.heappop(self.heap)
+        return self.heap[0]
+# This gets the kth largest number in most optimal way possible first for heapify O(n) and then O(nlogn) for each poping time and while retreiving we get the required in O(1) time.
+
+
 #
 #
 #

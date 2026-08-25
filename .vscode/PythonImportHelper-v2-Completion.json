@@ -188,28 +188,154 @@
     {
         "label": "TreeNode",
         "kind": 6,
-        "importPath": "dsa.day10&day12_trees",
-        "description": "dsa.day10&day12_trees",
-        "peekOfCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n# This is for the Level Order Traversal for any binary or any other tree\nclass Solution:\n    def levelOrder(self, root: Optional[TreeNode]) -> list[list[int]]:\n        res=[]\n        if not root:",
-        "detail": "dsa.day10&day12_trees",
+        "importPath": "dsa.day10_trees",
+        "description": "dsa.day10_trees",
+        "peekOfCode": "class TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n# This is for the Level Order Traversal for any binary or any other tree\nclass Solns:\n    def levelOrder(self, root: Optional[TreeNode]) -> list[list[int]]:\n        res=[]\n        if not root:",
+        "detail": "dsa.day10_trees",
+        "documentation": {}
+    },
+    {
+        "label": "Solns",
+        "kind": 6,
+        "importPath": "dsa.day10_trees",
+        "description": "dsa.day10_trees",
+        "peekOfCode": "class Solns:\n    def levelOrder(self, root: Optional[TreeNode]) -> list[list[int]]:\n        res=[]\n        if not root:\n            return res\n        que=collections.deque([root])\n        while que:\n            level_items=[]\n            for _ in range(0,len(que)):\n                node=que.popleft()",
+        "detail": "dsa.day10_trees",
+        "documentation": {}
+    },
+    {
+        "label": "Node",
+        "kind": 6,
+        "importPath": "dsa.day10_trees",
+        "description": "dsa.day10_trees",
+        "peekOfCode": "class Node:\n    def __init__(self, val, right=None):\n        self.val = val\n        self.right = right\ndef dfs(root, arr):\n    if not root:\n        return\n    print(\"Current root:\", root.val)\n    print(\"Before append:\", arr)\n    arr.append(root.val)",
+        "detail": "dsa.day10_trees",
+        "documentation": {}
+    },
+    {
+        "label": "Soln",
+        "kind": 6,
+        "importPath": "dsa.day10_trees",
+        "description": "dsa.day10_trees",
+        "peekOfCode": "class Soln:\n    def dfs(self,root: Optional[TreeNode], arr: list):\n        if not root:\n            return\n        self.dfs(root.left,arr)\n        arr.append(root.val)\n        self.dfs(root.right,arr)\n    def main(self,root: Optional[TreeNode]):\n        res=[]\n        self.dfs(root,res)",
+        "detail": "dsa.day10_trees",
+        "documentation": {}
+    },
+    {
+        "label": "Solutions",
+        "kind": 6,
+        "importPath": "dsa.day10_trees",
+        "description": "dsa.day10_trees",
+        "peekOfCode": "class Solutions:\n    def buildTree(self, preorder: list[int], inorder: list[int]) -> Optional[TreeNode]:\n        if not preorder or not inorder:\n            return None\n        root=TreeNode(preorder[0])\n        mid=inorder.index(preorder[0])\n        root.left=self.buildTree(preorder[1:mid+1],inorder[:mid])\n        root.right=self.buildTree(preorder[mid+1:],inorder[mid+1:])\n        return root\n# But it may give the TLE in some case for big inputs because continously we are slicing and the then finding index every time.",
+        "detail": "dsa.day10_trees",
         "documentation": {}
     },
     {
         "label": "Solution",
         "kind": 6,
-        "importPath": "dsa.day10&day12_trees",
-        "description": "dsa.day10&day12_trees",
-        "peekOfCode": "class Solution:\n    def levelOrder(self, root: Optional[TreeNode]) -> list[list[int]]:\n        res=[]\n        if not root:\n            return res\n        que=collections.deque([root])\n        while que:\n            level_items=[]\n            for _ in range(0,len(que)):\n                node=que.popleft()",
-        "detail": "dsa.day10&day12_trees",
+        "importPath": "dsa.day10_trees",
+        "description": "dsa.day10_trees",
+        "peekOfCode": "class Solution:\n    def buildTree(self, preorder, inorder):\n        pos = {}\n        for i, value in enumerate(inorder):\n            pos[value] = i\n        preIndex = 0\n        def dfs(left, right):\n            nonlocal preIndex\n            if left > right:\n                return None",
+        "detail": "dsa.day10_trees",
         "documentation": {}
     },
     {
         "label": "height",
         "kind": 2,
-        "importPath": "dsa.day10&day12_trees",
-        "description": "dsa.day10&day12_trees",
+        "importPath": "dsa.day10_trees",
+        "description": "dsa.day10_trees",
         "peekOfCode": "def height(self, root: Optional[TreeNode]):\n        if not root: return 0\n        left=self.height(root.left)\n        if left== -1: return -1\n        right=self.height(root.right)\n        if right== -1: return -1\n        if abs(right-left)>1:\n            return -1\n        return max(right, left)+1\n# if we see the difference is greater then we will directly return -1 to each and every layer.",
-        "detail": "dsa.day10&day12_trees",
+        "detail": "dsa.day10_trees",
+        "documentation": {}
+    },
+    {
+        "label": "ancestor_finder",
+        "kind": 2,
+        "importPath": "dsa.day10_trees",
+        "description": "dsa.day10_trees",
+        "peekOfCode": "def ancestor_finder(root,p,q):\n    while True:\n        if p.val<root.val and q.val<root.val:\n            root=root.left\n        elif p.val>root.val and q.val>root.val:\n            root=root.right\n        else:\n            return root\n# We can also do it in the recursion format by calling the root.right or left according to the conditions instead of while loop.\n#",
+        "detail": "dsa.day10_trees",
+        "documentation": {}
+    },
+    {
+        "label": "counts",
+        "kind": 2,
+        "importPath": "dsa.day10_trees",
+        "description": "dsa.day10_trees",
+        "peekOfCode": "def counts(self,root:TreeNode,h:int)->int: #type: ignore\n        if not root:\n            return 0\n        curr=root.val\n        h=max(curr,h)\n        l=self.counts(root.left,h)\n        r=self.counts(root.right,h)\n        if root.val>=h:\n            return l+r+1\n        return l+r",
+        "detail": "dsa.day10_trees",
+        "documentation": {}
+    },
+    {
+        "label": "goodNodes",
+        "kind": 2,
+        "importPath": "dsa.day10_trees",
+        "description": "dsa.day10_trees",
+        "peekOfCode": "def goodNodes(self, root: TreeNode) -> int:  #type: ignore\n    res=self.counts(root,root.val)\n    return res\n#\n#\n#\n#\n#\n\"Check the valid BST\"\n# The Best way to do it by using the Inorder traversal, but if we use list in each point and concatent them and send to parent it becomes tle.",
+        "detail": "dsa.day10_trees",
+        "documentation": {}
+    },
+    {
+        "label": "dfs",
+        "kind": 2,
+        "importPath": "dsa.day10_trees",
+        "description": "dsa.day10_trees",
+        "peekOfCode": "def dfs(root, arr):\n    if not root:\n        return\n    print(\"Current root:\", root.val)\n    print(\"Before append:\", arr)\n    arr.append(root.val)\n    print(\"After append:\", arr)\n    dfs(root.right, arr)\n# Tree: 1 → 2 → 3\nroot = Node(1, Node(2, Node(3)))",
+        "detail": "dsa.day10_trees",
+        "documentation": {}
+    },
+    {
+        "label": "root",
+        "kind": 5,
+        "importPath": "dsa.day10_trees",
+        "description": "dsa.day10_trees",
+        "peekOfCode": "root = [5,3,8,1,4,7,9,None,2]   # Draw this and understand how it works\np,q = 3,8\noutput=5\nroot = [5,3,8,1,4,7,9,None,2]\np,q = 3,4\noutput=3\n####Soln:\n# Use the fact this is a binary search tree and if the both p,q are on one side of root then check that side or otherwise return root\ndef ancestor_finder(root,p,q):\n    while True:",
+        "detail": "dsa.day10_trees",
+        "documentation": {}
+    },
+    {
+        "label": "p,q",
+        "kind": 5,
+        "importPath": "dsa.day10_trees",
+        "description": "dsa.day10_trees",
+        "peekOfCode": "p,q = 3,8\noutput=5\nroot = [5,3,8,1,4,7,9,None,2]\np,q = 3,4\noutput=3\n####Soln:\n# Use the fact this is a binary search tree and if the both p,q are on one side of root then check that side or otherwise return root\ndef ancestor_finder(root,p,q):\n    while True:\n        if p.val<root.val and q.val<root.val:",
+        "detail": "dsa.day10_trees",
+        "documentation": {}
+    },
+    {
+        "label": "root",
+        "kind": 5,
+        "importPath": "dsa.day10_trees",
+        "description": "dsa.day10_trees",
+        "peekOfCode": "root = [5,3,8,1,4,7,9,None,2]\np,q = 3,4\noutput=3\n####Soln:\n# Use the fact this is a binary search tree and if the both p,q are on one side of root then check that side or otherwise return root\ndef ancestor_finder(root,p,q):\n    while True:\n        if p.val<root.val and q.val<root.val:\n            root=root.left\n        elif p.val>root.val and q.val>root.val:",
+        "detail": "dsa.day10_trees",
+        "documentation": {}
+    },
+    {
+        "label": "p,q",
+        "kind": 5,
+        "importPath": "dsa.day10_trees",
+        "description": "dsa.day10_trees",
+        "peekOfCode": "p,q = 3,4\noutput=3\n####Soln:\n# Use the fact this is a binary search tree and if the both p,q are on one side of root then check that side or otherwise return root\ndef ancestor_finder(root,p,q):\n    while True:\n        if p.val<root.val and q.val<root.val:\n            root=root.left\n        elif p.val>root.val and q.val>root.val:\n            root=root.right",
+        "detail": "dsa.day10_trees",
+        "documentation": {}
+    },
+    {
+        "label": "root",
+        "kind": 5,
+        "importPath": "dsa.day10_trees",
+        "description": "dsa.day10_trees",
+        "peekOfCode": "root = Node(1, Node(2, Node(3)))\narr = []\ndfs(root, arr)\n# see the code clearly when the value changes in the function then only it creates multiple objects and keep one for each recursive loop\n# But if the parameter is not changed at all i.e by just adding and deleting the elements, there will be a shared memeory of that object and it can be used outside of the recursive call also.\n'''Every recursive function call creates a new stack frame with its own local variables and parameters. When we call dfs(root.right, arr), the new recursive call gets its own local root reference pointing to root.right,\nwhile the previous call's root remains unchanged. However, arr in every recursive call can refer to the same list object. Therefore, operations such as arr.append() modify that shared list, and the changes remain even after the recursive call returns.\nReturning removes the inner function's stack frame, but it does not undo modifications made to a shared mutable object.'''\n# Representation:\n# Call 1                 Call 2                 Call 3",
+        "detail": "dsa.day10_trees",
+        "documentation": {}
+    },
+    {
+        "label": "arr",
+        "kind": 5,
+        "importPath": "dsa.day10_trees",
+        "description": "dsa.day10_trees",
+        "peekOfCode": "arr = []\ndfs(root, arr)\n# see the code clearly when the value changes in the function then only it creates multiple objects and keep one for each recursive loop\n# But if the parameter is not changed at all i.e by just adding and deleting the elements, there will be a shared memeory of that object and it can be used outside of the recursive call also.\n'''Every recursive function call creates a new stack frame with its own local variables and parameters. When we call dfs(root.right, arr), the new recursive call gets its own local root reference pointing to root.right,\nwhile the previous call's root remains unchanged. However, arr in every recursive call can refer to the same list object. Therefore, operations such as arr.append() modify that shared list, and the changes remain even after the recursive call returns.\nReturning removes the inner function's stack frame, but it does not undo modifications made to a shared mutable object.'''\n# Representation:\n# Call 1                 Call 2                 Call 3\n# root → Node 1          root → Node 2          root → Node 3",
+        "detail": "dsa.day10_trees",
         "documentation": {}
     },
     {
@@ -246,6 +372,15 @@
         "description": "dsa.day11_recursion",
         "peekOfCode": "def main():\n    count=recurse(root)\n    return count\n# Here add root nodes and check its value",
         "detail": "dsa.day11_recursion",
+        "documentation": {}
+    },
+    {
+        "label": "KthLargest",
+        "kind": 6,
+        "importPath": "dsa.day13&14_heaps",
+        "description": "dsa.day13&14_heaps",
+        "peekOfCode": "class KthLargest:\n    def __init__(self, k: int, nums: list[int]):\n        self.heap=nums\n        self.k=k\n        heapq.heapify(self.heap)\n        while len(self.heap)>self.k:\n            heapq.heappop(self.heap)\n    def add(self, val: int) -> int:\n        heapq.heappush(self.heap,val)\n        if len(self.heap)>self.k:",
+        "detail": "dsa.day13&14_heaps",
         "documentation": {}
     },
     {
@@ -339,56 +474,11 @@
         "documentation": {}
     },
     {
-        "label": "ancestor_finder",
-        "kind": 2,
-        "importPath": "dsa.day26_linkedList",
-        "description": "dsa.day26_linkedList",
-        "peekOfCode": "def ancestor_finder(root,p,q):\n    while True:\n        if p.val<root.val and q.val<root.val:\n            root=root.left\n        elif p.val>root.val and q.val>root.val:\n            root=root.right\n        else:\n            return root\n# We can also do it in the recursion format by calling the root.right or left according to the conditions instead of while loop.",
-        "detail": "dsa.day26_linkedList",
-        "documentation": {}
-    },
-    {
         "label": "head2",
         "kind": 5,
         "importPath": "dsa.day26_linkedList",
         "description": "dsa.day26_linkedList",
         "peekOfCode": "head2 = copy.copy(head)\n# head  ──► Node(1) ───────► Node(2) ───► Node(3)\n# head2 ──► Node(1) ────────┘\n# so, only the first node will be copied and others will be pointing to the same things.\n\"Deep copy\"\n# Original:\n# head\n#  ↓\n# 1 → 2 → 3\n# Deep copy:",
-        "detail": "dsa.day26_linkedList",
-        "documentation": {}
-    },
-    {
-        "label": "root",
-        "kind": 5,
-        "importPath": "dsa.day26_linkedList",
-        "description": "dsa.day26_linkedList",
-        "peekOfCode": "root = [5,3,8,1,4,7,9,None,2]   # Draw this and understand how it works\np,q = 3,8\noutput=5\nroot = [5,3,8,1,4,7,9,None,2]\np,q = 3,4\noutput=3\n####Soln:\n# Use the fact this is a binary search tree and if the both p,q are on one side of root then check that side or otherwise return root\ndef ancestor_finder(root,p,q):\n    while True:",
-        "detail": "dsa.day26_linkedList",
-        "documentation": {}
-    },
-    {
-        "label": "p,q",
-        "kind": 5,
-        "importPath": "dsa.day26_linkedList",
-        "description": "dsa.day26_linkedList",
-        "peekOfCode": "p,q = 3,8\noutput=5\nroot = [5,3,8,1,4,7,9,None,2]\np,q = 3,4\noutput=3\n####Soln:\n# Use the fact this is a binary search tree and if the both p,q are on one side of root then check that side or otherwise return root\ndef ancestor_finder(root,p,q):\n    while True:\n        if p.val<root.val and q.val<root.val:",
-        "detail": "dsa.day26_linkedList",
-        "documentation": {}
-    },
-    {
-        "label": "root",
-        "kind": 5,
-        "importPath": "dsa.day26_linkedList",
-        "description": "dsa.day26_linkedList",
-        "peekOfCode": "root = [5,3,8,1,4,7,9,None,2]\np,q = 3,4\noutput=3\n####Soln:\n# Use the fact this is a binary search tree and if the both p,q are on one side of root then check that side or otherwise return root\ndef ancestor_finder(root,p,q):\n    while True:\n        if p.val<root.val and q.val<root.val:\n            root=root.left\n        elif p.val>root.val and q.val>root.val:",
-        "detail": "dsa.day26_linkedList",
-        "documentation": {}
-    },
-    {
-        "label": "p,q",
-        "kind": 5,
-        "importPath": "dsa.day26_linkedList",
-        "description": "dsa.day26_linkedList",
-        "peekOfCode": "p,q = 3,4\noutput=3\n####Soln:\n# Use the fact this is a binary search tree and if the both p,q are on one side of root then check that side or otherwise return root\ndef ancestor_finder(root,p,q):\n    while True:\n        if p.val<root.val and q.val<root.val:\n            root=root.left\n        elif p.val>root.val and q.val>root.val:\n            root=root.right",
         "detail": "dsa.day26_linkedList",
         "documentation": {}
     },

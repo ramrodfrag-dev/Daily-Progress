@@ -443,3 +443,20 @@ Key idea:
 
 
 
+
+## 23-08-2026(Day29)
+
+#### Some basic things to rememeber:
+
+- To check whether a tree is a Valid Binary Search Tree or not, the best way is to derive its inorder traversal and 
+see all the elements are in increasing or not. For it you need to use the recursive stack type approach and pass a variable to get the values instead of returning all lists which may cause tle
+
+- When the '+' operator between two numbers is performed the addition happens and when it is done between the strings then the concatenation takes place but when it is done between the lists the lists gets added up. But if the both operands given are not of the same datatype then it throws an error as it cannot perform operation.
+
+- When we use the enumerator it starts the indexing from 0 whatever array you give and however you split.
+ Ex: enumerate(arr[1:]) this gives from 1st index only but the indexing starts from 0.
+ So, in order to remove this confusion just use the range() or other functions when indexes are important along with nums in arr instead of the enumerate function.
+
+
+
+ 

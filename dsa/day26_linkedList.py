@@ -61,34 +61,3 @@ head2 = copy.copy(head)
 #
 #
 
-# 22-08-2026 (Day 28)
-
-"Lowest Common Ancestor in Binary Search Tree"
-# LeetCode: 235
-
-# Here a Binary search tree(all elements to the left of root is smaller than root and all elements to the right of root are larger) is given.
-# so if immeadiate ancestor must be returned
-#Ex:
-root = [5,3,8,1,4,7,9,None,2]   # Draw this and understand how it works
-p,q = 3,8
-output=5
-
-root = [5,3,8,1,4,7,9,None,2]
-p,q = 3,4
-output=3
-
-####Soln:
-# Use the fact this is a binary search tree and if the both p,q are on one side of root then check that side or otherwise return root
-
-def ancestor_finder(root,p,q):
-    while True:
-        if p.val<root.val and q.val<root.val:
-            root=root.left
-        elif p.val>root.val and q.val>root.val:
-            root=root.right
-        else:
-            return root
-# We can also do it in the recursion format by calling the root.right or left according to the conditions instead of while loop.
-
-
-
