@@ -194,3 +194,43 @@ param_2 = obj.findMedian()
 
 # First we add element to the max heap in small and then to the min heap in large so, if we are adding elements like this instead of directly adding it to large then we get to the correct median.i.e the order of elements will be sorted
 # Then if large have more than 1 element than small then it is added to the small again to get the both medians in each of the lists
+
+
+
+
+# 26-08-2026(day31)
+
+'''Task scheduler'''
+
+# Leetcode: 621
+
+# Here we are given with a set of taks=["A","A","A","A","A","A","B","C","D","E","F","G"] and a number n=2 for ex.
+# so, we need to execte all the taks and between similar tasks there must be a gap of n. so in this time others can execute. so whats the minimum time.
+
+# Here We think like taking 1 data structure of heap and put the taks and their next available time. But this is wrong. As this is useful when there are 2 things 1 is processor and other is processe or similar things.
+# so, here we use 2 data structures 1 is queue and other is maxHeap
+#1. q stores(count,idle time) here count is the frequency left for a particular character to execute and idle time is after how much time it can execute similar task
+#2. maxHeap contains only the frequency of all the characters left. see here characters are not needed as only the time when the similar instruction can be execute later is needed
+
+from collections import Counter,deque
+def leastInterval(self, tasks: list[str], n: int) -> int:
+    maxHeap=Counter(tasks)
+    maxHeap=[-x for x in maxHeap.values()]
+    heapq.heapify(maxHeap)
+    time=0
+    q=deque() #this is for the pairs of (cnt,idle time) - is for max Heap
+
+    while q or maxHeap:
+        if maxHeap:
+            cnt=1+heapq.heappop(maxHeap)
+            if cnt:
+                q.append([cnt,time+n])
+        
+        if q and q[0][1]==time:
+            heapq.heappush(maxHeap,q.popleft()[0])
+        time+=1
+
+    return time
+
+
+

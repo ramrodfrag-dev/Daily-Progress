@@ -9,6 +9,22 @@
         "documentation": {}
     },
     {
+        "label": "Counter",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "deque",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
         "label": "deque",
         "importPath": "collections",
         "description": "collections",
@@ -402,6 +418,15 @@
         "documentation": {}
     },
     {
+        "label": "leastInterval",
+        "kind": 2,
+        "importPath": "dsa.day13&14_heaps",
+        "description": "dsa.day13&14_heaps",
+        "peekOfCode": "def leastInterval(self, tasks: list[str], n: int) -> int:\n    maxHeap=Counter(tasks)\n    maxHeap=[-x for x in maxHeap.values()]\n    heapq.heapify(maxHeap)\n    time=0\n    q=deque() #this is for the pairs of (cnt,idle time) - is for max Heap\n    while q or maxHeap:\n        if maxHeap:\n            cnt=1+heapq.heappop(maxHeap)\n            if cnt:",
+        "detail": "dsa.day13&14_heaps",
+        "documentation": {}
+    },
+    {
         "label": "animals",
         "kind": 5,
         "importPath": "dsa.day13&14_heaps",
@@ -442,7 +467,7 @@
         "kind": 5,
         "importPath": "dsa.day13&14_heaps",
         "description": "dsa.day13&14_heaps",
-        "peekOfCode": "obj = MedianFinder()\nnum=5   #any number given in a stream\nobj.addNum(num)\nparam_2 = obj.findMedian()\n# First we add element to the max heap in small and then to the min heap in large so, if we are adding elements like this instead of directly adding it to large then we get to the correct median.i.e the order of elements will be sorted\n# Then if large have more than 1 element than small then it is added to the small again to get the both medians in each of the lists",
+        "peekOfCode": "obj = MedianFinder()\nnum=5   #any number given in a stream\nobj.addNum(num)\nparam_2 = obj.findMedian()\n# First we add element to the max heap in small and then to the min heap in large so, if we are adding elements like this instead of directly adding it to large then we get to the correct median.i.e the order of elements will be sorted\n# Then if large have more than 1 element than small then it is added to the small again to get the both medians in each of the lists\n# 26-08-2026(day31)\n'''Task scheduler'''\n# Leetcode: 621\n# Here we are given with a set of taks=[\"A\",\"A\",\"A\",\"A\",\"A\",\"A\",\"B\",\"C\",\"D\",\"E\",\"F\",\"G\"] and a number n=2 for ex.",
         "detail": "dsa.day13&14_heaps",
         "documentation": {}
     },
@@ -451,7 +476,7 @@
         "kind": 5,
         "importPath": "dsa.day13&14_heaps",
         "description": "dsa.day13&14_heaps",
-        "peekOfCode": "param_2 = obj.findMedian()\n# First we add element to the max heap in small and then to the min heap in large so, if we are adding elements like this instead of directly adding it to large then we get to the correct median.i.e the order of elements will be sorted\n# Then if large have more than 1 element than small then it is added to the small again to get the both medians in each of the lists",
+        "peekOfCode": "param_2 = obj.findMedian()\n# First we add element to the max heap in small and then to the min heap in large so, if we are adding elements like this instead of directly adding it to large then we get to the correct median.i.e the order of elements will be sorted\n# Then if large have more than 1 element than small then it is added to the small again to get the both medians in each of the lists\n# 26-08-2026(day31)\n'''Task scheduler'''\n# Leetcode: 621\n# Here we are given with a set of taks=[\"A\",\"A\",\"A\",\"A\",\"A\",\"A\",\"B\",\"C\",\"D\",\"E\",\"F\",\"G\"] and a number n=2 for ex.\n# so, we need to execte all the taks and between similar tasks there must be a gap of n. so in this time others can execute. so whats the minimum time.\n# Here We think like taking 1 data structure of heap and put the taks and their next available time. But this is wrong. As this is useful when there are 2 things 1 is processor and other is processe or similar things.\n# so, here we use 2 data structures 1 is queue and other is maxHeap",
         "detail": "dsa.day13&14_heaps",
         "documentation": {}
     },
@@ -480,6 +505,87 @@
         "description": "dsa.day26_linkedList",
         "peekOfCode": "head2 = copy.copy(head)\n# head  ──► Node(1) ───────► Node(2) ───► Node(3)\n# head2 ──► Node(1) ────────┘\n# so, only the first node will be copied and others will be pointing to the same things.\n\"Deep copy\"\n# Original:\n# head\n#  ↓\n# 1 → 2 → 3\n# Deep copy:",
         "detail": "dsa.day26_linkedList",
+        "documentation": {}
+    },
+    {
+        "label": "bt_dfs",
+        "kind": 2,
+        "importPath": "dsa.day31_backtracking",
+        "description": "dsa.day31_backtracking",
+        "peekOfCode": "def bt_dfs(path, n, result):\n    if len(path) == n:\n        result.append(\"\".join(path))        # this is base condition where we need to stop\n        return\n    for char in [\"A\", \"B\"]:\n        path.append(char)\n        bt_dfs(path, n, result)     # Here we will traverse from through invisible tree and build tree and store values. See the pic in reference pics for more info\n        path.pop()          # Here pop is necessary because it is the root of backtracking of how to change the decisions we have taken earlier and make new ones later.\nresult = []\nbt_dfs([], 2, result)       # Here the result remains same and the empty array is used as temporary stack and it gets updated continuously.",
+        "detail": "dsa.day31_backtracking",
+        "documentation": {}
+    },
+    {
+        "label": "subsets",
+        "kind": 2,
+        "importPath": "dsa.day31_backtracking",
+        "description": "dsa.day31_backtracking",
+        "peekOfCode": "def subsets(nums):\n    res = []\n    path = []\n    def dfs(i):\n        # Every element has been decided\n        if i == len(nums):\n            res.append(path.copy())\n            return\n        # TAKE\n        path.append(nums[i])",
+        "detail": "dsa.day31_backtracking",
+        "documentation": {}
+    },
+    {
+        "label": "subsetsWithDup",
+        "kind": 2,
+        "importPath": "dsa.day31_backtracking",
+        "description": "dsa.day31_backtracking",
+        "peekOfCode": "def subsetsWithDup(nums):\n    nums.sort()\n    res = []\n    path = []\n    def dfs(i):\n        if i == len(nums):\n            res.append(path.copy())\n            return\n        # TAKE\n        path.append(nums[i])",
+        "detail": "dsa.day31_backtracking",
+        "documentation": {}
+    },
+    {
+        "label": "combinationSum",
+        "kind": 2,
+        "importPath": "dsa.day31_backtracking",
+        "description": "dsa.day31_backtracking",
+        "peekOfCode": "def combinationSum(nums, target):\n    res = []\n    path = []\n    def dfs(i, total):\n        if total == target:\n            res.append(path.copy())\n            return\n        if total > target or i == len(nums):\n            return\n        # TAKE -> reuse allowed",
+        "detail": "dsa.day31_backtracking",
+        "documentation": {}
+    },
+    {
+        "label": "combinationSum2",
+        "kind": 2,
+        "importPath": "dsa.day31_backtracking",
+        "description": "dsa.day31_backtracking",
+        "peekOfCode": "def combinationSum2(nums, target):\n    nums.sort()\n    res = []\n    path = []\n    def dfs(i, total):\n        if total == target:\n            res.append(path.copy())\n            return\n        if total > target or i == len(nums):\n            return",
+        "detail": "dsa.day31_backtracking",
+        "documentation": {}
+    },
+    {
+        "label": "permute",
+        "kind": 2,
+        "importPath": "dsa.day31_backtracking",
+        "description": "dsa.day31_backtracking",
+        "peekOfCode": "def permute(nums):\n    res = []\n    path = []\n    used = set()\n    def dfs():\n        if len(path) == len(nums):\n            res.append(path.copy())\n            return\n        # Try every unused element\n        for num in nums:",
+        "detail": "dsa.day31_backtracking",
+        "documentation": {}
+    },
+    {
+        "label": "generateParenthesis",
+        "kind": 2,
+        "importPath": "dsa.day31_backtracking",
+        "description": "dsa.day31_backtracking",
+        "peekOfCode": "def generateParenthesis(n):\n    res = []\n    path = []\n    def dfs(open_count, close_count):\n        # Complete valid answer\n        if open_count == n and close_count == n:\n            res.append(\"\".join(path))\n            return\n        # Add '('\n        if open_count < n:",
+        "detail": "dsa.day31_backtracking",
+        "documentation": {}
+    },
+    {
+        "label": "backtracking_template",
+        "kind": 2,
+        "importPath": "dsa.day31_backtracking",
+        "description": "dsa.day31_backtracking",
+        "peekOfCode": "def backtracking_template():\n    def dfs(state):\n        # 1. BASE CASE\n        if solution_found:\n            save_answer()\n            return\n        # 2. TRY CHOICES\n        for choice in choices:\n            # Skip invalid choices\n            if invalid:",
+        "detail": "dsa.day31_backtracking",
+        "documentation": {}
+    },
+    {
+        "label": "result",
+        "kind": 5,
+        "importPath": "dsa.day31_backtracking",
+        "description": "dsa.day31_backtracking",
+        "peekOfCode": "result = []\nbt_dfs([], 2, result)       # Here the result remains same and the empty array is used as temporary stack and it gets updated continuously.\nprint(result)\n# See here how each time one element is placed and goes to check for others and later pops\n# ============================================================\n# BACKTRACKING - QUICK NOTES\n# ============================================================\n# MAIN IDEA:\n# Choose -> Explore (DFS) -> Undo choice\n#",
+        "detail": "dsa.day31_backtracking",
         "documentation": {}
     },
     {

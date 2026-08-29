@@ -102,8 +102,8 @@ def height(self, root: Optional[TreeNode]):
 #-> BFS is a general algorithm which is used for travesing the trees or the graphs level by level like meeting neighbourhood first
 #-> Level order traversal is a speacial case of BFS which is used for only Binary trees.
 
-
-
+# Note:
+# ->DFS is an recursive algorithm while the BFS is an iterative algorithm.
 
 
 
