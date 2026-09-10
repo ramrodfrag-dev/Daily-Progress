@@ -1,5 +1,143 @@
 [
     {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "reportlab.lib",
+        "description": "reportlab.lib",
+        "isExtraImport": true,
+        "detail": "reportlab.lib",
+        "documentation": {}
+    },
+    {
+        "label": "letter",
+        "importPath": "reportlab.lib.pagesizes",
+        "description": "reportlab.lib.pagesizes",
+        "isExtraImport": true,
+        "detail": "reportlab.lib.pagesizes",
+        "documentation": {}
+    },
+    {
+        "label": "SimpleDocTemplate",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "Paragraph",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "Spacer",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "Table",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "TableStyle",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "PageBreak",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "KeepTogether",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "Preformatted",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "Flowable",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "HRFlowable",
+        "importPath": "reportlab.platypus",
+        "description": "reportlab.platypus",
+        "isExtraImport": true,
+        "detail": "reportlab.platypus",
+        "documentation": {}
+    },
+    {
+        "label": "getSampleStyleSheet",
+        "importPath": "reportlab.lib.styles",
+        "description": "reportlab.lib.styles",
+        "isExtraImport": true,
+        "detail": "reportlab.lib.styles",
+        "documentation": {}
+    },
+    {
+        "label": "ParagraphStyle",
+        "importPath": "reportlab.lib.styles",
+        "description": "reportlab.lib.styles",
+        "isExtraImport": true,
+        "detail": "reportlab.lib.styles",
+        "documentation": {}
+    },
+    {
+        "label": "canvas",
+        "importPath": "reportlab.pdfgen",
+        "description": "reportlab.pdfgen",
+        "isExtraImport": true,
+        "detail": "reportlab.pdfgen",
+        "documentation": {}
+    },
+    {
         "label": "collections",
         "kind": 6,
         "isExtraImport": true,
@@ -199,6 +337,222 @@
         "description": "xgboost",
         "isExtraImport": true,
         "detail": "xgboost",
+        "documentation": {}
+    },
+    {
+        "label": "NumberedCanvas",
+        "kind": 6,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "class NumberedCanvas(canvas.Canvas):\n    def __init__(self, *args, **kwargs):\n        super().__init__(*args, **kwargs)\n        self._saved_page_states = []\n    def showPage(self):\n        self._saved_page_states.append(dict(self.__dict__))\n        self._startPage()\n    def save(self):\n        num_pages = len(self._saved_page_states)\n        for state in self._saved_page_states:",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "BookmarkFlowable",
+        "kind": 6,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "class BookmarkFlowable(Flowable):\n    def __init__(self, key, title, level=0):\n        super().__init__()\n        self.key = key\n        self.title = title\n        self.level = level\n    def draw(self):\n        self.canv.bookmarkPage(self.key)\n        self.canv.addOutlineEntry(self.title, self.key, level=self.level, closed=False)\ndef create_pdf(output_path):",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "RecentCounter",
+        "kind": 6,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "class RecentCounter:\n    def __init__(self):\n        self.q = deque()\n    def ping(self, t: int) -> int:\n        self.q.append(t)\n        # Evict timestamps older than t - 3000\n        while self.q and self.q[0] < t - 3000:\n            self.q.popleft()\n        return len(self.q)\"\"\"\n    story.append(make_code_block(code_recent_calls, \"Number of Recent Calls (LC 933)\"))",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "MedianFinder",
+        "kind": 6,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "class MedianFinder:\n    def __init__(self):\n        self.small = []  # Max-heap (store inverted values)\n        self.large = []  # Min-heap\n    def addNum(self, num: int) -> None:\n        heapq.heappush(self.small, -num)\n        # Ensure max element of small <= min element of large\n        if self.small and self.large and (-self.small[0] > self.large[0]):\n            heapq.heappush(self.large, -heapq.heappop(self.small))\n        # Rebalance sizes (small can have at most 1 more element than large)",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "create_pdf",
+        "kind": 2,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "def create_pdf(output_path):\n    doc = SimpleDocTemplate(\n        output_path,\n        pagesize=letter,\n        leftMargin=36,\n        rightMargin=36,\n        topMargin=40,\n        bottomMargin=40\n    )\n    styles = getSampleStyleSheet()",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "removeDuplicates",
+        "kind": 2,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "def removeDuplicates(nums: list[int]) -> int:\n    if not nums: return 0\n    write_idx = 1\n    for read_idx in range(1, len(nums)):\n        if nums[read_idx] != nums[read_idx - 1]:\n            nums[write_idx] = nums[read_idx]\n            write_idx += 1\n    return write_idx\n# LC 283: Move Zeroes (In-Place Swap Partition)\ndef moveZeroes(nums: list[int]) -> None:",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "moveZeroes",
+        "kind": 2,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "def moveZeroes(nums: list[int]) -> None:\n    insert_pos = 0\n    for i in range(len(nums)):\n        if nums[i] != 0:\n            nums[insert_pos], nums[i] = nums[i], nums[insert_pos]\n            insert_pos += 1\"\"\"\n    story.append(make_code_block(code_inplace, \"Parallel Pointers in Action\"))\n    story.append(PageBreak())\n    # =========================================================================\n    # CHAPTER 3: FAST & SLOW POINTERS (FLOYD'S CYCLE FINDING)",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "detectCycle",
+        "kind": 2,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "def detectCycle(head: ListNode) -> ListNode:\n    slow = fast = head\n    # Phase 1: Detect cycle intersection\n    while fast and fast.next:\n        slow = slow.next\n        fast = fast.next.next\n        if slow == fast:\n            break\n    else:\n        return None  # No cycle exists",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "minEatingSpeed",
+        "kind": 2,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "def minEatingSpeed(piles: list[int], h: int) -> int:\n    l, r = 1, max(piles)\n    while l <= r:\n        k = (l + r) // 2\n        total_hours = sum(math.ceil(p / k) for p in piles)\n        if total_hours <= h:\n            r = k - 1  # Feasible; try smaller speed\n        else:\n            l = k + 1  # Infeasible; must eat faster\n    return l  # l holds the minimal feasible speed\"\"\"",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "leastInterval",
+        "kind": 2,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "def leastInterval(tasks: list[str], n: int) -> int:\n    counts = Counter(tasks)\n    max_heap = [-cnt for cnt in counts.values()]\n    heapq.heapify(max_heap)\n    q = deque()  # stores [remaining_count, available_at_time]\n    time = 0\n    while max_heap or q:\n        time += 1\n        if max_heap:\n            cnt = 1 + heapq.heappop(max_heap)",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "subsets",
+        "kind": 2,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "def subsets(nums: list[int]) -> list[list[int]]:\n    res, path = [], []\n    def dfs(i):\n        if i == len(nums):\n            res.append(path.copy())\n            return\n        # TAKE\n        path.append(nums[i])\n        dfs(i + 1)\n        path.pop()",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "subsetsWithDup",
+        "kind": 2,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "def subsetsWithDup(nums: list[int]) -> list[list[int]]:\n    nums.sort()\n    res, path = [], []\n    def dfs(i):\n        if i == len(nums):\n            res.append(path.copy())\n            return\n        path.append(nums[i])\n        dfs(i + 1)\n        path.pop()",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "combinationSum",
+        "kind": 2,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "def combinationSum(candidates: list[int], target: int) -> list[list[int]]:\n    res, path = [], []\n    def dfs(i, total):\n        if total == target:\n            res.append(path.copy())\n            return\n        if total > target or i >= len(candidates):\n            return\n        # TAKE (can reuse current element -> pass i)\n        path.append(candidates[i])",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "climbStairs",
+        "kind": 2,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "def climbStairs(n: int) -> int:\n    one, two = 1, 1\n    for _ in range(n - 1):\n        one, two = one + two, one\n    return one\n# LC 198: House Robber\n# dp[i] = max(dp[i-1], dp[i-2] + nums[i])\ndef rob(nums: list[int]) -> int:\n    rob1, rob2 = 0, 0\n    for num in nums:",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "rob",
+        "kind": 2,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "def rob(nums: list[int]) -> int:\n    rob1, rob2 = 0, 0\n    for num in nums:\n        new_rob = max(rob1 + num, rob2)\n        rob1 = rob2\n        rob2 = new_rob\n    return rob2\"\"\"\n    story.append(make_code_block(code_dp_basics, \"Climbing Stairs & House Robber Tabulation\"))\n    story.append(Paragraph(\"2. Unbounded Knapsack: LC 322 — Coin Change\", h3_style))\n    code_coins = \"\"\"def coinChange(coins: list[int], amount: int) -> int:",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "a",
+        "kind": 5,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "a = [1, 2, 3]\nb = a\nb.append(4)  # a is now [1, 2, 3, 4]\n# 2. Shallow Copy: Copies outer container; inner nested objects remain shared!\nnested = [[1, 2], [3, 4]]\nshallow = copy.copy(nested)\nshallow[0].append(99)  # nested[0] is now [1, 2, 99]!\n# 3. Deep Copy: Recursively duplicates all nested objects independently\ndeep = copy.deepcopy(nested)\ndeep[0].append(100)  # nested[0] remains untouched!\"\"\"",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "b",
+        "kind": 5,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "b = a\nb.append(4)  # a is now [1, 2, 3, 4]\n# 2. Shallow Copy: Copies outer container; inner nested objects remain shared!\nnested = [[1, 2], [3, 4]]\nshallow = copy.copy(nested)\nshallow[0].append(99)  # nested[0] is now [1, 2, 99]!\n# 3. Deep Copy: Recursively duplicates all nested objects independently\ndeep = copy.deepcopy(nested)\ndeep[0].append(100)  # nested[0] remains untouched!\"\"\"\n    story.append(make_code_block(code_copy, \"Shallow vs Deep Copy\"))",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "nested",
+        "kind": 5,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "nested = [[1, 2], [3, 4]]\nshallow = copy.copy(nested)\nshallow[0].append(99)  # nested[0] is now [1, 2, 99]!\n# 3. Deep Copy: Recursively duplicates all nested objects independently\ndeep = copy.deepcopy(nested)\ndeep[0].append(100)  # nested[0] remains untouched!\"\"\"\n    story.append(make_code_block(code_copy, \"Shallow vs Deep Copy\"))\n    story.append(Spacer(1, 4))\n    story.append(make_callout(\n        \"Critical Gotcha: Mutable Objects in Recursive Stack Frames\",",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "shallow",
+        "kind": 5,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "shallow = copy.copy(nested)\nshallow[0].append(99)  # nested[0] is now [1, 2, 99]!\n# 3. Deep Copy: Recursively duplicates all nested objects independently\ndeep = copy.deepcopy(nested)\ndeep[0].append(100)  # nested[0] remains untouched!\"\"\"\n    story.append(make_code_block(code_copy, \"Shallow vs Deep Copy\"))\n    story.append(Spacer(1, 4))\n    story.append(make_callout(\n        \"Critical Gotcha: Mutable Objects in Recursive Stack Frames\",\n        \"When passing a mutable list (e.g., <code>arr</code>) down recursive calls: each stack frame receives its own local reference to the <b>same underlying list object</b> in heap memory. Operations like <code>arr.append()</code> alter the shared object across all frames and persist after returning. To isolate state per branch, pass <code>path.copy()</code> or explicitly append and pop (Backtracking).\",",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "deep",
+        "kind": 5,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "deep = copy.deepcopy(nested)\ndeep[0].append(100)  # nested[0] remains untouched!\"\"\"\n    story.append(make_code_block(code_copy, \"Shallow vs Deep Copy\"))\n    story.append(Spacer(1, 4))\n    story.append(make_callout(\n        \"Critical Gotcha: Mutable Objects in Recursive Stack Frames\",\n        \"When passing a mutable list (e.g., <code>arr</code>) down recursive calls: each stack frame receives its own local reference to the <b>same underlying list object</b> in heap memory. Operations like <code>arr.append()</code> alter the shared object across all frames and persist after returning. To isolate state per branch, pass <code>path.copy()</code> or explicitly append and pop (Backtracking).\",\n        \"warn\"\n    ))\n    story.append(Paragraph(\"2. Essential Dictionary & Hashing Idioms\", h2_style))",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "freq",
+        "kind": 5,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "freq = {}\nfor num in nums:\n    freq[num] = freq.get(num, 0) + 1\n# Sorting Dictionary by Value (e.g., Top K Frequent)\n# unique.items() yields (key, val) pairs; key=lambda x: x[1] sorts by value\nsorted_by_val = sorted(freq.items(), key=lambda x: x[1], reverse=True)\n# Finding Key with Max Value\nmax_key = max(freq, key=freq.get)\n# Enumerate Index Trap:\n# enumerate(arr[1:]) starts indexing at 0, NOT 1!",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "sorted_by_val",
+        "kind": 5,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "sorted_by_val = sorted(freq.items(), key=lambda x: x[1], reverse=True)\n# Finding Key with Max Value\nmax_key = max(freq, key=freq.get)\n# Enumerate Index Trap:\n# enumerate(arr[1:]) starts indexing at 0, NOT 1!\n# If original indices matter, always use range(1, len(arr)).\"\"\"\n    story.append(make_code_block(code_dict, \"Hashing Idioms & Enumerate Trap\"))\n    story.append(PageBreak())\n    # =========================================================================\n    # CHAPTER 2: TWO POINTERS PATTERN",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "max_key",
+        "kind": 5,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "max_key = max(freq, key=freq.get)\n# Enumerate Index Trap:\n# enumerate(arr[1:]) starts indexing at 0, NOT 1!\n# If original indices matter, always use range(1, len(arr)).\"\"\"\n    story.append(make_code_block(code_dict, \"Hashing Idioms & Enumerate Trap\"))\n    story.append(PageBreak())\n    # =========================================================================\n    # CHAPTER 2: TWO POINTERS PATTERN\n    # =========================================================================\n    add_chapter_header(2, \"Two Pointers Pattern (4 Archetypes)\", \"ch2\")",
+        "detail": "documents.generate_dsa_pdf",
+        "documentation": {}
+    },
+    {
+        "label": "diff",
+        "kind": 5,
+        "importPath": "documents.generate_dsa_pdf",
+        "description": "documents.generate_dsa_pdf",
+        "peekOfCode": "diff = [0] * (n + 1)\nfor l, r, val in queries:\n    diff[l] += val\n    diff[r + 1] -= val\n# Reconstruct final array via prefix sum in O(N) total\nfor i in range(1, n):\n    diff[i] += diff[i - 1]\"\"\"\n    story.append(make_code_block(code_diff_arr, \"Difference Array (O(1) Range Updates)\"))\n    story.append(PageBreak())\n    # =========================================================================",
+        "detail": "documents.generate_dsa_pdf",
         "documentation": {}
     },
     {
@@ -499,6 +853,15 @@
         "documentation": {}
     },
     {
+        "label": "intervals",
+        "kind": 5,
+        "importPath": "dsa.day17_sortingAlgos",
+        "description": "dsa.day17_sortingAlgos",
+        "peekOfCode": "intervals = [(0,30),(5,10),(15,20)]\nintervals.sort(key=lambda x:x.start) #type:ignore",
+        "detail": "dsa.day17_sortingAlgos",
+        "documentation": {}
+    },
+    {
         "label": "head2",
         "kind": 5,
         "importPath": "dsa.day26_linkedList",
@@ -580,12 +943,57 @@
         "documentation": {}
     },
     {
+        "label": "dfs",
+        "kind": 2,
+        "importPath": "dsa.day31_backtracking",
+        "description": "dsa.day31_backtracking",
+        "peekOfCode": "def dfs(i):\n    if i>=len(s):\n        result.append(res.copy())\n        return\n    for j in range(i,len(s)):\n        if ispalin(s,i,j):  #type:ignore\n            res.append(s[i:j+1])\n            dfs(j+1)\n            res.pop()\ndfs(0)",
+        "detail": "dsa.day31_backtracking",
+        "documentation": {}
+    },
+    {
         "label": "result",
         "kind": 5,
         "importPath": "dsa.day31_backtracking",
         "description": "dsa.day31_backtracking",
-        "peekOfCode": "result = []\nbt_dfs([], 2, result)       # Here the result remains same and the empty array is used as temporary stack and it gets updated continuously.\nprint(result)\n# See here how each time one element is placed and goes to check for others and later pops\n# ============================================================\n# BACKTRACKING - QUICK NOTES\n# ============================================================\n# MAIN IDEA:\n# Choose -> Explore (DFS) -> Undo choice\n#",
+        "peekOfCode": "result = []\nbt_dfs([], 2, result)       # Here the result remains same and the empty array is used as temporary stack and it gets updated continuously.\nprint(result)\n# See here how each time one element is placed and goes to check for others and later pops\n# 29-09-2026(Day 31)\n# ============================================================\n''' BACKTRACKING - QUICK NOTES'''\n# ============================================================\n# MAIN IDEA:\n# Choose -> Explore (DFS) -> Undo choice",
         "detail": "dsa.day31_backtracking",
+        "documentation": {}
+    },
+    {
+        "label": "insert_Interval",
+        "kind": 2,
+        "importPath": "dsa.day33_intervals",
+        "description": "dsa.day33_intervals",
+        "peekOfCode": "def insert_Interval(intervals:list[list],newInterval:list):\n    res=[]\n    for i in range(len(intervals)):\n        if newInterval[1] < intervals[i][0]:\n            res.append(newInterval)\n            return res + intervals[i:]\n        elif newInterval[0] > intervals[i][1]:\n            res.append(intervals[i])\n        else:\n            newInterval = [",
+        "detail": "dsa.day33_intervals",
+        "documentation": {}
+    },
+    {
+        "label": "eraseOverlapIntervals",
+        "kind": 2,
+        "importPath": "dsa.day33_intervals",
+        "description": "dsa.day33_intervals",
+        "peekOfCode": "def eraseOverlapIntervals(self, intervals: list[list[int]]) -> int:\n    intervals.sort()\n    count=0\n    prev=intervals[0]\n    for i in range(1,len(intervals)):\n        if prev[1]<=intervals[i][0]:\n            prev=intervals[i]\n        else:\n            if prev[1]>=intervals[i][1]:\n                prev=intervals[i]",
+        "detail": "dsa.day33_intervals",
+        "documentation": {}
+    },
+    {
+        "label": "intervals",
+        "kind": 5,
+        "importPath": "dsa.day33_intervals",
+        "description": "dsa.day33_intervals",
+        "peekOfCode": "intervals = [[1,3],[4,6]]\nnewInterval = [2,5]\nprint(insert_Interval(intervals,newInterval))\n\"Non Overlapping Intervals\" # LeetCode ->435\n# Here all intervals are given and if there are overlapping ones then we have to return the number of intervals we need to remove to get all non-overlapping intervals.\n# Here we can use the Back propagation thing as we can include one interval once and then remove it and check for others. As we have 2 options for each one we end up with exponential time.\n# Better is greedy as we can delete the ones which end later than the ones which ends before for the sorted intervals.(Comparing adjacent intervals after sorting)\n# This can be done by sorting the intervals with starting points and then comparing end points or using them oppositely.\ndef eraseOverlapIntervals(self, intervals: list[list[int]]) -> int:\n    intervals.sort()",
+        "detail": "dsa.day33_intervals",
+        "documentation": {}
+    },
+    {
+        "label": "newInterval",
+        "kind": 5,
+        "importPath": "dsa.day33_intervals",
+        "description": "dsa.day33_intervals",
+        "peekOfCode": "newInterval = [2,5]\nprint(insert_Interval(intervals,newInterval))\n\"Non Overlapping Intervals\" # LeetCode ->435\n# Here all intervals are given and if there are overlapping ones then we have to return the number of intervals we need to remove to get all non-overlapping intervals.\n# Here we can use the Back propagation thing as we can include one interval once and then remove it and check for others. As we have 2 options for each one we end up with exponential time.\n# Better is greedy as we can delete the ones which end later than the ones which ends before for the sorted intervals.(Comparing adjacent intervals after sorting)\n# This can be done by sorting the intervals with starting points and then comparing end points or using them oppositely.\ndef eraseOverlapIntervals(self, intervals: list[list[int]]) -> int:\n    intervals.sort()\n    count=0",
+        "detail": "dsa.day33_intervals",
         "documentation": {}
     },
     {
@@ -859,6 +1267,15 @@
         "documentation": {}
     },
     {
+        "label": "Interval",
+        "kind": 6,
+        "importPath": "Python Advanced Concepts.day23_different_func",
+        "description": "Python Advanced Concepts.day23_different_func",
+        "peekOfCode": "class Interval(object):\n    def __init__(self, start, end):\n        self.start = start\n        self.end = end\nintervals = [(0,30),(5,10),(15,20)]\nintervals.sort(key=lambda x:x.start) #type:ignore\n# or\ndicts={1:3,5:6,-1:7}\ndicts=sorted(dicts.items(),key=lambda x:x[1]) # Here we get the output as list instead of dict as it is sorted and based on key it is being sorted.\n# Note: dictionary does not have sort function which others have.",
+        "detail": "Python Advanced Concepts.day23_different_func",
+        "documentation": {}
+    },
+    {
         "label": "Node",
         "kind": 6,
         "importPath": "Python Advanced Concepts.day23_different_func",
@@ -935,7 +1352,7 @@
         "kind": 5,
         "importPath": "Python Advanced Concepts.day23_different_func",
         "description": "Python Advanced Concepts.day23_different_func",
-        "peekOfCode": "result = list(map(lambda x: x * x, [1, 2, 3]))              #Ex:1\n# Unlike normal functions which can be used any number of times once initialized but this can be only used once when initialized.\nsquare = lambda x: x * x                #Ex:2\nprint(square(5))\n\"lambda input: operation\"               #->This is the format how the lambda is written\nlambda x: x * 2                 #Ex:3\nlambda x: x + 10\nlambda x: x % 2 == 0\nlambda x: x[0]\n#",
+        "peekOfCode": "result = list(map(lambda x: x * x, [1, 2, 3]))              #Ex:1\n# Unlike normal functions which can be used any number of times once initialized but this can be only used once when initialized.\nsquare = lambda x: x * x                #Ex:2\nprint(square(5))\n\"lambda input: operation\"               #->This is the format how the lambda is written\nlambda x: x * 2                 #Ex:3\nlambda x: x + 10\nlambda x: x % 2 == 0\nlambda x: x[0]\n# It is also used when we are doing the sorting things we use this inside a inline function:",
         "detail": "Python Advanced Concepts.day23_different_func",
         "documentation": {}
     },
@@ -944,8 +1361,35 @@
         "kind": 5,
         "importPath": "Python Advanced Concepts.day23_different_func",
         "description": "Python Advanced Concepts.day23_different_func",
-        "peekOfCode": "square = lambda x: x * x                #Ex:2\nprint(square(5))\n\"lambda input: operation\"               #->This is the format how the lambda is written\nlambda x: x * 2                 #Ex:3\nlambda x: x + 10\nlambda x: x % 2 == 0\nlambda x: x[0]\n#\n#\n#",
+        "peekOfCode": "square = lambda x: x * x                #Ex:2\nprint(square(5))\n\"lambda input: operation\"               #->This is the format how the lambda is written\nlambda x: x * 2                 #Ex:3\nlambda x: x + 10\nlambda x: x % 2 == 0\nlambda x: x[0]\n# It is also used when we are doing the sorting things we use this inside a inline function:\n# Definition of Interval:\nclass Interval(object):",
         "detail": "Python Advanced Concepts.day23_different_func",
+        "documentation": {}
+    },
+    {
+        "label": "intervals",
+        "kind": 5,
+        "importPath": "Python Advanced Concepts.day23_different_func",
+        "description": "Python Advanced Concepts.day23_different_func",
+        "peekOfCode": "intervals = [(0,30),(5,10),(15,20)]\nintervals.sort(key=lambda x:x.start) #type:ignore\n# or\ndicts={1:3,5:6,-1:7}\ndicts=sorted(dicts.items(),key=lambda x:x[1]) # Here we get the output as list instead of dict as it is sorted and based on key it is being sorted.\n# Note: dictionary does not have sort function which others have.\n\" The important thing is that sorted() itself always returns a new list, regardless of whether you're sorting tuples, objects, dictionaries, strings, etc,\"\n\"while the .sort sorted the elements inplace instead of creating new structure, but only some data structure have .sort and for others like dictionaries we have to use sorted function \"\n#\n#",
+        "detail": "Python Advanced Concepts.day23_different_func",
+        "documentation": {}
+    },
+    {
+        "label": "func",
+        "kind": 2,
+        "importPath": "Python Advanced Concepts.python_usage",
+        "description": "Python Advanced Concepts.python_usage",
+        "peekOfCode": "def func():\n    x+=1    #type:ignore\n    print(x)\nprint(x)\n#Remove the type ignore and see the difference.\n# Whenever we are trying to update a variable which is already intialized outside the function then it accepts it.\n# But when we are trying to reinitialize the variable then the error appears as we cannot do it.\n###Soln:\n# Place a nonlocal keyword or the global keyword to access the variables and let then reintialize.\ny=10",
+        "detail": "Python Advanced Concepts.python_usage",
+        "documentation": {}
+    },
+    {
+        "label": "func2",
+        "kind": 2,
+        "importPath": "Python Advanced Concepts.python_usage",
+        "description": "Python Advanced Concepts.python_usage",
+        "peekOfCode": "def func2():\n    global y\n    y+=1\n    print(x)\nprint(y)\n# Here both executes.\n# global is used when we need to acess the variables which are not in any parent outer loops.\n# nonlocal is used to acess the variables which is in parent outer loops.",
+        "detail": "Python Advanced Concepts.python_usage",
         "documentation": {}
     }
 ]

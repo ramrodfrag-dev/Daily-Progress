@@ -58,6 +58,25 @@ lambda x: x + 10
 lambda x: x % 2 == 0
 lambda x: x[0]
 
+# It is also used when we are doing the sorting things we use this inside a inline function:
+
+# Definition of Interval:
+class Interval(object):
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+
+intervals = [(0,30),(5,10),(15,20)]
+intervals.sort(key=lambda x:x.start) #type:ignore
+# or
+dicts={1:3,5:6,-1:7}
+dicts=sorted(dicts.items(),key=lambda x:x[1]) # Here we get the output as list instead of dict as it is sorted and based on key it is being sorted.
+
+# Note: dictionary does not have sort function which others have.
+
+" The important thing is that sorted() itself always returns a new list, regardless of whether you're sorting tuples, objects, dictionaries, strings, etc,"
+"while the .sort sorted the elements inplace instead of creating new structure, but only some data structure have .sort and for others like dictionaries we have to use sorted function "
+
 #
 #
 #
