@@ -179,6 +179,22 @@
         "documentation": {}
     },
     {
+        "label": "deque",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "deque",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
         "label": "Optional",
         "importPath": "typing",
         "description": "typing",
@@ -994,6 +1010,24 @@
         "description": "dsa.day33_intervals",
         "peekOfCode": "newInterval = [2,5]\nprint(insert_Interval(intervals,newInterval))\n\"Non Overlapping Intervals\" # LeetCode ->435\n# Here all intervals are given and if there are overlapping ones then we have to return the number of intervals we need to remove to get all non-overlapping intervals.\n# Here we can use the Back propagation thing as we can include one interval once and then remove it and check for others. As we have 2 options for each one we end up with exponential time.\n# Better is greedy as we can delete the ones which end later than the ones which ends before for the sorted intervals.(Comparing adjacent intervals after sorting)\n# This can be done by sorting the intervals with starting points and then comparing end points or using them oppositely.\ndef eraseOverlapIntervals(self, intervals: list[list[int]]) -> int:\n    intervals.sort()\n    count=0",
         "detail": "dsa.day33_intervals",
+        "documentation": {}
+    },
+    {
+        "label": "canJump",
+        "kind": 2,
+        "importPath": "dsa.day34_greedy",
+        "description": "dsa.day34_greedy",
+        "peekOfCode": "def canJump(self, nums: list[int]) -> bool:\n    goal=len(nums)-1\n    for i in range(len(nums)-1,-1,-1):\n        if  i+nums[i]>=goal:\n            goal=i\n    return goal==0\n# In the code we move the goal from last position to the first position slowly based on nums if they can cross the goal the it is the new goal.\n\"Leetcode: 45 -> Jump2\"\n# Here we will definately reach the final point but what are the minimum no.of steps to make to the end. \n## We will take a variable farthest and make it 0. first we will insert the first element in to the queue and then we will pop it and check all the elemnts which can reach farthet and then we will add all the elements until then to the queue and continue",
+        "detail": "dsa.day34_greedy",
+        "documentation": {}
+    },
+    {
+        "label": "nums",
+        "kind": 5,
+        "importPath": "dsa.day34_greedy",
+        "description": "dsa.day34_greedy",
+        "peekOfCode": "nums = [1,-1,-2,4,-7,3]\nk=2\ndp=[0]*len(nums)\ndp[len(nums)-1]=nums[-1]\nq.append(len(nums)-1)\nfor i in range(len(nums)-2,-1,-1):\n    if q[0]>i+k:                    #if the last index is more than the window size then pop it out\n        q.popleft()\n    dp[i]=nums[i]+dp[q[0]]\n    while q and dp[q[-1]]<dp[i]:    #pop all the results out of queue which are less than the current result from back",
+        "detail": "dsa.day34_greedy",
         "documentation": {}
     },
     {

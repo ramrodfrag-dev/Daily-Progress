@@ -755,5 +755,13 @@ def pivotIndex(self, nums: list[int]) -> int:
 #
 #
 
+" Kadanes Algorithm -> Maximum Subarray Sum"
+#It only worksin this case and not anyother subarray sum==k or product divisible by k or anthing else.
 
+# How it works:
+# We are given an array of numbers with +ve and -ve numbers and we need to find the maximum sum that can be achieved by a contiguous array.
+# First we will consider a variable current_sum and a max_sum and we will calculate the prefix sum.
+# While clculating prefix sum if the prefix sum at that index is <0 then we will update the current_sum=0.
+# And in each iteration if the current_sum>max_sum then the max_sum is changed to current_sum
 
+# Why this works is if the prefix sum < 0 then it does not contribute to the max_sum at all so we make it to 0 and start from atleast next one hoping it contributes.

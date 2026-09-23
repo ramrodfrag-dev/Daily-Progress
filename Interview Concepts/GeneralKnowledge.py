@@ -48,3 +48,20 @@ The `p` means **progressive scan**.
 For YouTube, monitors, TVs, and general consumer video, **1440p = QHD** and **3840×2160 = 4K UHD** are the useful terms to remember.
 
 '''
+
+
+
+
+
+
+
+
+" Difference Between JPEG and PNG:"
+
+# ->JPEG and PNG are two widely used image formats, each suited for specific purposes based on their compression methods and features.
+
+# ->JPEG, which stands for Joint Photographic Experts Group, uses lossy compression. This means some image data is discarded during compression, resulting in smaller file sizes but a reduction in image quality.
+# JPEG is ideal for photographs and images with many colors, as it supports millions of colors. However, it does not support transparency, making it less suitable for graphics requiring clear backgrounds or sharp edges.
+
+# ->PNG, or Portable Network Graphics, employs lossless compression, preserving all image data and quality. This makes PNG files larger in size compared to JPEGs.
+# PNG supports transparency, making it perfect for logos, icons, and graphics with sharp lines and solid colors. It is less efficient for large, detailed photographs due to its larger file size.

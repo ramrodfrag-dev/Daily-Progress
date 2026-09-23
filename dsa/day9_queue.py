@@ -63,4 +63,92 @@ See how order changes in extendleft.It's just like using appendleft continously 
 # First I though of counting them when they are added by using a for loop from starting or backwards but it takes lots of time
 # Approach Used: Delete elements whose difference is >3000 with the current entering element before adding it. So in this way we only have values whose maximum differences is <=3000 and the length of the deque can be returned as the output.
 
-#102: 
+
+
+
+
+# 12-09-2026 (Day 34)
+
+# Open Text Company Question:
+
+arr=[-11,-2,-19,19,37]
+length=len(arr) #these are total elements
+k=3 #this is the window size that can be appeared on window at one time.
+
+"SO, after each iteration one elemnt from beginning goes and one element appends until the end always the size will be same as k"
+
+# here we have to find the summ of first negative number and first positive number on screen
+
+from collections import deque
+
+pos=deque()
+neg=deque()
+res=[]
+
+for i in range(0,k):
+    if arr[i]>0:
+        pos.append(i)
+    elif arr[i]<0:
+        neg.append(i)
+      
+end=k
+start=0
+
+while start<=len(arr)-k:
+    sum=0
+    if pos and pos[0]<=start+k-1:
+        sum+=arr[pos[0]]
+    if neg and neg[0]<=start+k-1:
+        sum+=arr[neg[0]]
+    res.append(sum)
+    
+    if start<len(arr)-k:
+        if pos and start==pos[0]:
+            pos.popleft()
+        elif neg and start==neg[0]:
+            neg.popleft()
+        
+        if arr[end]>0:
+            pos.append(end)
+        elif arr[end]<0:
+            neg.append(end)
+    
+    start+=1
+    
+print(res)
+
+# Here the important thing is that we have to place the indexes in the heaps instead of the numberws itself as we need to check whether they belong to that window or not.
+# Other best way is to first remove all the indexes which are below that index from both pos and neg at each iteration after the window becomes k and then add the 1st value of both deque if exists.
+
+
+
+''' Instead of the above code we can also use the below one which is simple:'''
+for i in range(len(arr)):
+
+    # Add current element
+    if arr[i] > 0:
+        pos.append(i)
+    elif arr[i] < 0:
+        neg.append(i)
+
+    # Start processing when window size = k
+    if i >= k - 1:
+
+        # Remove elements outside current window
+        while pos and pos[0] < i - k + 1:
+            pos.popleft()
+
+        while neg and neg[0] < i - k + 1:
+            neg.popleft()
+
+        total = 0
+
+        if neg:
+            total += arr[neg[0]]
+
+        if pos:
+            total += arr[pos[0]]
+
+        res.append(total)
+
+
