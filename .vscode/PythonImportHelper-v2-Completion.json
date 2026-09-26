@@ -968,6 +968,15 @@
         "documentation": {}
     },
     {
+        "label": "robber",
+        "kind": 2,
+        "importPath": "dsa.day31_backtracking",
+        "description": "dsa.day31_backtracking",
+        "peekOfCode": "def robber(i):\n    dp[i]=max(nums[i]+robber(i+2),robber(i+1))\n    return dp[i]\n# See how we are selecting one and leaving others the option\n''' House Robber-II'''\n# Similar to I but only the neighbourhood is in circular form. so first and last house are neighbours so we cannot steal them both.\n#Soln:\n# Options:\n#     1.Apply House Robber -I from array[:-1] and \n#     2.then for aray[1:] then here we are excluding 1 element 1st or last compulsory 1 at a time.",
+        "detail": "dsa.day31_backtracking",
+        "documentation": {}
+    },
+    {
         "label": "result",
         "kind": 5,
         "importPath": "dsa.day31_backtracking",
@@ -1051,127 +1060,127 @@
     {
         "label": "NumArray",
         "kind": 6,
-        "importPath": "dsa.python_core_practice",
-        "description": "dsa.python_core_practice",
+        "importPath": "dsa.DSA_core_practice",
+        "description": "dsa.DSA_core_practice",
         "peekOfCode": "class NumArray:\n    def __init__(self, nums: list[int]):    # see self is include in that method\n        self.prefix=[0]\n        for i in range(0,len(nums)):\n            self.prefix.append(nums[i]+self.prefix[i])\n    def sumRange(self, left: int, right: int) -> int:\n        return self.prefix[right+1]-self.prefix[left]\n# Observe the code carefully see if one function or variable which is being initialized or written in one method of a class is to be accessed by another method of the same class then use self before that variable or method always and also include self in the methods while initializing\n#Leetcode: 303->Range Sum Query Immutable and  598->Range Addition\n# 303: It is just the prefix sum concept just only the classes and how to use self when some variables of one method is called by another method is known now. It is like adding a self tag infront of it just like self.variablename to call and access it.",
-        "detail": "dsa.python_core_practice",
+        "detail": "dsa.DSA_core_practice",
         "documentation": {}
     },
     {
         "label": "anagram",
         "kind": 2,
-        "importPath": "dsa.python_core_practice",
-        "description": "dsa.python_core_practice",
+        "importPath": "dsa.DSA_core_practice",
+        "description": "dsa.DSA_core_practice",
         "peekOfCode": "def anagram(strs):\n    group={}\n    for word in strs:\n        st=\"\".join(sorted(word))\n        if st not in group:\n            group[st]=[]\n        group[st].append(word)\n    return list(group.values())\n# Here Observe the grouping thing and do not over think it. when they are saying group them by anagrams then their sorted words will be same or their frequency will be same. So, first make dictionaries with these content and then sort them with values and later\n# group them with respect to values pair and all keys come together and make a list and return them. but here null strings duplicates will be removed and answer goes wrong",
-        "detail": "dsa.python_core_practice",
+        "detail": "dsa.DSA_core_practice",
         "documentation": {}
     },
     {
         "label": "subarraySum",
         "kind": 2,
-        "importPath": "dsa.python_core_practice",
-        "description": "dsa.python_core_practice",
+        "importPath": "dsa.DSA_core_practice",
+        "description": "dsa.DSA_core_practice",
         "peekOfCode": "def subarraySum(self,nums: list[int], k: int):\n    hashe={}\n    sum=0\n    count=0\n    for i,num in enumerate(nums):\n        sum+=num\n        if sum==k:\n            count+=1\n        if sum-k in hashe:\n            j=hashe.get(sum-k,0)",
-        "detail": "dsa.python_core_practice",
+        "detail": "dsa.DSA_core_practice",
         "documentation": {}
     },
     {
         "label": "isPalin",
         "kind": 2,
-        "importPath": "dsa.python_core_practice",
-        "description": "dsa.python_core_practice",
+        "importPath": "dsa.DSA_core_practice",
+        "description": "dsa.DSA_core_practice",
         "peekOfCode": "def isPalin():\n    left=0\n    right=len(s)-1\n    res=True\n    def palindrome(left: int,right: int):\n        while left<right:\n            if s[left]!=s[right]:\n                return False\n            left+=1\n            right-=1",
-        "detail": "dsa.python_core_practice",
+        "detail": "dsa.DSA_core_practice",
         "documentation": {}
     },
     {
         "label": "dict_max",
         "kind": 2,
-        "importPath": "dsa.python_core_practice",
-        "description": "dsa.python_core_practice",
+        "importPath": "dsa.DSA_core_practice",
+        "description": "dsa.DSA_core_practice",
         "peekOfCode": "def dict_max():\n    # return max(frequency,key=frequency.get)     #For getting the key even thorugh the max is found between values (Remember this)\n    return max(frequency.values())\n# ->Now use sliding window increment and if it follows condition then move l++,r++ however in every iteration just increment and at the same time update dictionary. calculate length at last\n### Condition:\nif (r-l+1-dict_max())>k:    # Here r-l+1 is length of current window and dict_max() will give max value in dict\n    l+=1\n# Why we are doing is like if we have enough number of operation to change the elements in the window which are not the max_frequncy element then all the window will become the max_frequency element.\n# For max_count always do in the loop:\nmax_count=max(max_count,r-l+1)",
-        "detail": "dsa.python_core_practice",
+        "detail": "dsa.DSA_core_practice",
         "documentation": {}
     },
     {
         "label": "binary",
         "kind": 2,
-        "importPath": "dsa.python_core_practice",
-        "description": "dsa.python_core_practice",
+        "importPath": "dsa.DSA_core_practice",
+        "description": "dsa.DSA_core_practice",
         "peekOfCode": "def binary(l,r,arr):\n    # Normal binary search\n    pass\ndef binary_mat(l,r):\n    if l>r:\n        return False\n    m=(l+r)//2\n    if matrix[m][0]<=target and matrix[m][-1]>=target:\n        return binary(0,len(matrix[0]),matrix[m])\n    # else: again traverse in binary_mat and change the rows value",
-        "detail": "dsa.python_core_practice",
+        "detail": "dsa.DSA_core_practice",
         "documentation": {}
     },
     {
         "label": "binary_mat",
         "kind": 2,
-        "importPath": "dsa.python_core_practice",
-        "description": "dsa.python_core_practice",
+        "importPath": "dsa.DSA_core_practice",
+        "description": "dsa.DSA_core_practice",
         "peekOfCode": "def binary_mat(l,r):\n    if l>r:\n        return False\n    m=(l+r)//2\n    if matrix[m][0]<=target and matrix[m][-1]>=target:\n        return binary(0,len(matrix[0]),matrix[m])\n    # else: again traverse in binary_mat and change the rows value\nprint(binary_mat(l,r))\n\"Koko eating bananas\"\n# LeetCode: ->875",
-        "detail": "dsa.python_core_practice",
+        "detail": "dsa.DSA_core_practice",
         "documentation": {}
     },
     {
         "label": "pivotIndex",
         "kind": 2,
-        "importPath": "dsa.python_core_practice",
-        "description": "dsa.python_core_practice",
+        "importPath": "dsa.DSA_core_practice",
+        "description": "dsa.DSA_core_practice",
         "peekOfCode": "def pivotIndex(self, nums: list[int]) -> int:\n    pivot=0\n    prefix=[0]*(len(nums)+1)\n    for i in range(len(nums)-1,-1,-1):\n            prefix[i]=prefix[i+1]+nums[i]       # found the suffix array\n    leftsum=0\n    while pivot<len(nums):\n        if prefix[pivot+1]==leftsum:            # Checking if the left and right sums are equal\n            return pivot\n        leftsum+=nums[pivot]",
-        "detail": "dsa.python_core_practice",
+        "detail": "dsa.DSA_core_practice",
         "documentation": {}
     },
     {
         "label": "piles",
         "kind": 5,
-        "importPath": "dsa.python_core_practice",
-        "description": "dsa.python_core_practice",
+        "importPath": "dsa.DSA_core_practice",
+        "description": "dsa.DSA_core_practice",
         "peekOfCode": "piles = [3,6,7,11] # in each hour it has to select one pile and eat exact a number of bananas as decided in the beginning and it has to complete all piles before time h which is given\nh=8\n# When this question appears first think what could be the no.of bananas that could be eaten at a time. \n# res=1 to max(piles), because only 1 pile is able to chose and eat. So minimum it requires len(piles) hours and generally h>=len(piles)\n# Now We have extreme values the original minimum no. of bananas to eat to complete all piles will be between them which we should find by some algorithm\n# By linear search it takes time as many conditions needs to be checked so, we use binary search and the conditions will be like:\nimport math\n# In each check we do:\nm=(l+r)//2\ncount=0",
-        "detail": "dsa.python_core_practice",
+        "detail": "dsa.DSA_core_practice",
         "documentation": {}
     },
     {
         "label": "b",
         "kind": 5,
-        "importPath": "dsa.python_core_practice",
-        "description": "dsa.python_core_practice",
+        "importPath": "dsa.DSA_core_practice",
+        "description": "dsa.DSA_core_practice",
         "peekOfCode": "b = copy.copy(a)\n# The outer lists are different objects for a ,b.\n# a ───► [1, 2, 3]\n# b ───► [1, 2, 3]\n\"Problem comes with nested objects\"\n# Ex:\na = [[1, 2], [3, 4]]\nb = a.copy()\n# a ───► [ ──────┐, ──────┐ ]\n#            │            │",
-        "detail": "dsa.python_core_practice",
+        "detail": "dsa.DSA_core_practice",
         "documentation": {}
     },
     {
         "label": "a",
         "kind": 5,
-        "importPath": "dsa.python_core_practice",
-        "description": "dsa.python_core_practice",
+        "importPath": "dsa.DSA_core_practice",
+        "description": "dsa.DSA_core_practice",
         "peekOfCode": "a = [[1, 2], [3, 4]]\nb = a.copy()\n# a ───► [ ──────┐, ──────┐ ]\n#            │            │\n#            ▼            ▼\n#          [1,2]        [3,4]\n# b ───► [ ──────┘, ──────┘ ]\n# So, if we change in the inner object the other variable also reflects.\n\"3.Deep copy → recursively creates independent copies of nested objects\"\nimport copy",
-        "detail": "dsa.python_core_practice",
+        "detail": "dsa.DSA_core_practice",
         "documentation": {}
     },
     {
         "label": "b",
         "kind": 5,
-        "importPath": "dsa.python_core_practice",
-        "description": "dsa.python_core_practice",
+        "importPath": "dsa.DSA_core_practice",
+        "description": "dsa.DSA_core_practice",
         "peekOfCode": "b = a.copy()\n# a ───► [ ──────┐, ──────┐ ]\n#            │            │\n#            ▼            ▼\n#          [1,2]        [3,4]\n# b ───► [ ──────┘, ──────┘ ]\n# So, if we change in the inner object the other variable also reflects.\n\"3.Deep copy → recursively creates independent copies of nested objects\"\nimport copy\na = [[1, 2], [3, 4]]",
-        "detail": "dsa.python_core_practice",
+        "detail": "dsa.DSA_core_practice",
         "documentation": {}
     },
     {
         "label": "a",
         "kind": 5,
-        "importPath": "dsa.python_core_practice",
-        "description": "dsa.python_core_practice",
+        "importPath": "dsa.DSA_core_practice",
+        "description": "dsa.DSA_core_practice",
         "peekOfCode": "a = [[1, 2], [3, 4]]\nb = copy.deepcopy(a)\n# a ───► [ ───► [1,2], ───► [3,4] ]\n# b ───► [ ───► [1,2], ───► [3,4] ]\n# Now if we change in one object then other will remain untouched it does not reflects any changes\n\"Slow and fast num\"\n# Generally start both pointers at one place so that the floyds algorithm works good, otherwise some errors may come.\n#\n#\n#",
-        "detail": "dsa.python_core_practice",
+        "detail": "dsa.DSA_core_practice",
         "documentation": {}
     },
     {
         "label": "b",
         "kind": 5,
-        "importPath": "dsa.python_core_practice",
-        "description": "dsa.python_core_practice",
+        "importPath": "dsa.DSA_core_practice",
+        "description": "dsa.DSA_core_practice",
         "peekOfCode": "b = copy.deepcopy(a)\n# a ───► [ ───► [1,2], ───► [3,4] ]\n# b ───► [ ───► [1,2], ───► [3,4] ]\n# Now if we change in one object then other will remain untouched it does not reflects any changes\n\"Slow and fast num\"\n# Generally start both pointers at one place so that the floyds algorithm works good, otherwise some errors may come.\n#\n#\n#\n#",
-        "detail": "dsa.python_core_practice",
+        "detail": "dsa.DSA_core_practice",
         "documentation": {}
     },
     {
@@ -1215,7 +1224,61 @@
         "kind": 6,
         "importPath": "Interview Concepts.OOPS",
         "description": "Interview Concepts.OOPS",
-        "peekOfCode": "class ProcessScheduler:\n    def __init__(self,processList):\n        self.processList=processList\nprocessList=[(\"A\",)]",
+        "peekOfCode": "class ProcessScheduler:\n    def __init__(self,processList):\n        self.processList=processList\nprocessList=[(\"A\",)]\n'''Encapsulation'''\n# Restaurant r = new Restaurant();\n# Here the first restaurent is the datatype and the r is refernece and the new Restaurent is the object cretion thing.\n# So, class allows restricted acess to the others which decide the state. Hence it has some 4 acess levels for providing the acess of its elements to others.\n''' These are for fucntions which update state. direct state can be changed only within the class but its also not recommended when there are strict validation checks.\n| Modifier | Same class | Same package | Subclass in different package | Everywhere |",
+        "detail": "Interview Concepts.OOPS",
+        "documentation": {}
+    },
+    {
+        "label": "hello",
+        "kind": 6,
+        "importPath": "Interview Concepts.OOPS",
+        "description": "Interview Concepts.OOPS",
+        "peekOfCode": "class hello:\n    def greet(self):    #type:ignore\n        return \"User\"\n    def greet(self,name):\n        self.name=name\n        return self.name\nobj=hello().greet(\"anjan\")\n# See how the self works just like that that is in java.\n''' Python does not provide method overloading as it is compiletime. It only does method overriding by inheritance'''\nclass Parents:",
+        "detail": "Interview Concepts.OOPS",
+        "documentation": {}
+    },
+    {
+        "label": "Parents",
+        "kind": 6,
+        "importPath": "Interview Concepts.OOPS",
+        "description": "Interview Concepts.OOPS",
+        "peekOfCode": "class Parents:\n    def __init__(self):\n        self.value = 5\n''' Constructor ->See above __init__'''\n# It does not have return types, invoke during the object creation, cannot be inherited.\n# If the child does not have a constructor then it executes the parent, else if it has then child constructor only runs\n# If we want to specifically call parents constructor then use super key word\n# In python constructor overloading is not there but in other languages it is there.\nclass Parent:\n    def __init__(self):",
+        "detail": "Interview Concepts.OOPS",
+        "documentation": {}
+    },
+    {
+        "label": "Parent",
+        "kind": 6,
+        "importPath": "Interview Concepts.OOPS",
+        "description": "Interview Concepts.OOPS",
+        "peekOfCode": "class Parent:\n    def __init__(self):\n        print(\"1. Parent Constructor\")\nclass Child(Parent): # see how it is inheriting without keywords like extends in java.\n    def __init__(self):\n        super().__init__()  # Runs Parent constructor first\n        print(\"2. Child Constructor\")\nc = Child()\n'''Constructor Chaining:'''\n# in java:",
+        "detail": "Interview Concepts.OOPS",
+        "documentation": {}
+    },
+    {
+        "label": "Child",
+        "kind": 6,
+        "importPath": "Interview Concepts.OOPS",
+        "description": "Interview Concepts.OOPS",
+        "peekOfCode": "class Child(Parent): # see how it is inheriting without keywords like extends in java.\n    def __init__(self):\n        super().__init__()  # Runs Parent constructor first\n        print(\"2. Child Constructor\")\nc = Child()\n'''Constructor Chaining:'''\n# in java:\n# class Order {\n#     int id;\n#     double amount;",
+        "detail": "Interview Concepts.OOPS",
+        "documentation": {}
+    },
+    {
+        "label": "D",
+        "kind": 6,
+        "importPath": "Interview Concepts.OOPS",
+        "description": "Interview Concepts.OOPS",
+        "peekOfCode": "class D:\n    pass\nprint(D.mro())\n# Problems with inheritance:\n# a. Tight Coupling: One component can affect other.\n# b. Deep Inheritance Trees. so if 1 part in root level breaks then all tree need to be updated again.\n# c. Reduced flexibility: Inheritance makes us follow a hirarchy which is not good\n# What should we follow:\n#Soln: \n# a. Composition which is not a hierarchial process. It is just building class by using objects of other classes.",
+        "detail": "Interview Concepts.OOPS",
+        "documentation": {}
+    },
+    {
+        "label": "c",
+        "kind": 5,
+        "importPath": "Interview Concepts.OOPS",
+        "description": "Interview Concepts.OOPS",
+        "peekOfCode": "c = Child()\n'''Constructor Chaining:'''\n# in java:\n# class Order {\n#     int id;\n#     double amount;\n#     Order() {\n#         this(0, 0);\n#     }\n#     Order(int id, double amount) {",
         "detail": "Interview Concepts.OOPS",
         "documentation": {}
     },

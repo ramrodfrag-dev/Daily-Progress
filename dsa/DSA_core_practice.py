@@ -765,3 +765,5 @@ def pivotIndex(self, nums: list[int]) -> int:
 # And in each iteration if the current_sum>max_sum then the max_sum is changed to current_sum
 
 # Why this works is if the prefix sum < 0 then it does not contribute to the max_sum at all so we make it to 0 and start from atleast next one hoping it contributes.
+
+

@@ -504,3 +504,32 @@ res=["".join(x) for x in board]
 # See how to intialize the nxn matrix with all '.' and then update required accordingly.
 
 
+
+
+# 27-09-2026 (Day 36)
+
+''' House Robber-I '''
+# Here we are given with a array which represents houses stash in a colony. And we can take adjacent houses stash. So, what is the maximum we can stole
+#Soln:
+# Here we have 2 choices 1 choose current house which leaves us to deselect neighbouring houses
+# Other if we deselect current then we can select adjacent houses stash.
+
+nums=[2,1,1,2]
+dp=[-1]* (len(nums)+2)   # Contains optimal soln maximum cash we can earn from i to end at each index. so, intiaize end with 2 extra dummies 0.
+def robber(i):
+    dp[i]=max(nums[i]+robber(i+2),robber(i+1))
+    return dp[i]
+
+# See how we are selecting one and leaving others the option
+
+
+''' House Robber-II'''
+
+# Similar to I but only the neighbourhood is in circular form. so first and last house are neighbours so we cannot steal them both.
+#Soln:
+# Options:
+#     1.Apply House Robber -I from array[:-1] and 
+#     2.then for aray[1:] then here we are excluding 1 element 1st or last compulsory 1 at a time.
+#     3.Return max of these above 2 as anything can be bigger.
+    
+
