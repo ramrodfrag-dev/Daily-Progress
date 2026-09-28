@@ -112,3 +112,38 @@ def sum(a:int,b:int)->int:
 
 
 
+'''Ordered,mutable,duplicates(Remember)'''
+
+# | Type | Ordered | Mutable | Duplicates |
+# |---|---|---|---|
+# | `list` | Yes | Yes | Yes |
+# | `tuple` | Yes | No | Yes |
+# | `set` | No meaningful index order | Yes | No |
+# | `dict` | Yes* | Yes | Keys unique |
+
+
+# Why set and dictionary is fast?
+# Beacause they do not store values based on contiguous locations or memory. They use Hashing, They hash the value and then they store the original object at that hash value
+# If we want to find that particular object then we hash it and directly go to the hash value, so that's why set and dict takes like O(1) for lookup and all.
+
+# Note: Always remember that the hashing only works if the object is immutable like tuple,int,str and not workson mutable objects like lists,dict,set.
+# Set:  set(),{x},add,remove,clear
+# Dict: dict(),{x:y},dic[x]=y,del,clear
+
+
+
+''' COLLECTIONS '''
+
+# Python:
+# list   → ordered, duplicates
+# tuple  → immutable sequence
+# set    → unique, fast membership
+# dict   → key → value
+
+# Java:
+# ArrayList → dynamic array
+# LinkedList → linked nodes
+# HashSet → unique + hash lookup
+# TreeSet → unique + sorted
+# HashMap → key/value + hash lookup
+# TreeMap → key/value + sorted keys

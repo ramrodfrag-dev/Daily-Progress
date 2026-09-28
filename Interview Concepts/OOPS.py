@@ -127,12 +127,12 @@ for a in animals:
     
 #Note: Here see the method name is same but the operations they are performing are different.
 # Polymorphism are of 2 types:
-#1. Runtime Polymorphism ->Method Overriding and duck typing
-#2. Compiler time Polymorphism ->Method overloading
+#1. Runtime Polymorphism(Late Binding/Dynamic Binding) ->Method Overriding and duck typing
+#2. Compiler time Polymorphism(Early Binding/Static Binding) ->Method overloading ->Not available in Python
 
 '''
 Method Overriding: There is one parent and one child which extends from parent which has same method names but different functionalities.
-There has to be a inheritence relationship between 2 classes
+There has to be a inheritence relationship between 2 classes(Classical subtype problem) or else ducktyping is also comes under this.
 
 Method Overloading: Within the same class if 2 methods have same name but different functionalities or change in parameters.
 They must be there in same class
@@ -235,7 +235,9 @@ obj=hello().greet("anjan")
 
 # See how the self works just like that that is in java.
 
-''' Python does not provide method overloading as it is compiletime. It only does method overriding by inheritance'''
+''' Python does not provide method overloading as it is compiletime like Java but it implements them by using the *args and **kwargs,etc. 
+Python only does method overriding by inheritance or by using the Ducktyping Principal'''
+# If we try to keep the same name for 2nd method then the 2nd method replaces first one
 
 class Parents:
     def __init__(self):
@@ -324,3 +326,209 @@ print(D.mro())
 '''Note: When a child calls a parent method then also no parent object is created, always only child object is created and it may use parent methods and variables'''
 
 
+
+
+
+# 27-09-2026
+
+res=isinstance(payment,CardPayment) #type:ignore
+#-> Here payment is a other new object. If this object is an instance of CardPayment then it returns True else False
+
+# ->Polymorphism which does not contain Inheritance are loosely coupled, cleaner code, easy maintainability,etc
+
+'''Dynamic Dispatch(C++,Java) totally works with the Hierarchial System and the Ducktyping(Python,go) totally works on the Existing of the methods in the code'''
+
+
+def add(self, *args):
+    return sum(args)    # Like this python makes the compiler time po;ymorphism. so if the 2 arguments add comes or 3 comes then always it gives correct solution.
+
+# ->In java Overoading happens if we change the no.of parameters or their return types but no with their return type as it still be ambiguous
+
+
+'''In java Dynamic Dispatch we generally take the created objects methods only and no the references methods '''
+# Ex:
+class UPIPayments():
+    def pay(self):
+        pass
+    pass
+# Payment p = new UPIPayment()  ->Eventhough the reference is Project but the real object created is simple so its methods are used. This is done by Dynamic Method Dispatch
+
+# Note: Python does have the Static reference thing only it just stores in a variable without any data type. So, it always checks objects methods and executes them, no issue.
+p= UPIPayments()
+p.pay()
+
+
+'''What things cannot be overridden in the objects:
+1. final keyword methods: These cannot be fixed once initialized
+2. static keyword methods: These are not visible only
+3. Constructors: These are not inherited by the child. so it cannot be overridden
+4.Private methods: These are not accessible to child as an inherited methods, so they cannot
+'''
+
+'''override Method'''
+# This is not at all for the runtime. It is just for the compiler time error finding. While compiling if we write any method in child which we want to override name inccorectly
+# Then it does not throw any error and directly executes the parents class. In order to prevent this we use @override to make compiler understand we are overriding a function which already exists.
+# If the name is incorrect then it say you are not overriding and method and raises error which we can check and solve later.
+
+
+# Encapsulation: Control acess to data/implementation while the Abstraction: Hides unnecessary Implementation Complexity.
+
+'''Abstract Method'''
+#Ex:
+from abc import ABC, abstractmethod
+class Payment(ABC):
+
+    def validate(self):
+        print("Common validation")  #This method is shared across all subclasses of it and they do not need to compulsorily define this method. ->See this is concrete method in abstarct class
+
+    @abstractmethod
+    def pay(self, amount):          # Ensures all subclasses must have this method or behaviour with them as this is not shared to them
+        pass
+    
+class UPIPayment(Payment):
+
+    def pay(self, amount):
+        print("Pay using UPI")
+
+
+class CardPayment(Payment):
+
+    def pay(self, amount):
+        print("Pay using card")
+        
+# Payment()        # ❌ cannot instantiate  #Remove comment and check
+UPIPayment()     # ✅
+
+#Definition:
+# 1.Abstract Methods:It is a method that is declared, but contains no implementation (no body). It acts as a contract or requirement for child classes(Concrete classes).
+# 2.Abstract class:It is a base class that cannot be instantiated directly (you cannot create an object using new AbstractClass() or AbstractClass()). It exists solely to serve as a common parent blueprint for other classes.
+
+# ->If we put the abstract method to a method then the class also becomes abstract
+# ->If a concrete classs does not declare the things that the abstarct class said then this class also becomes abstarct.
+# ->Abstract classes cannot be instantiated and results in error.
+# ->Abstarct classes enforces a Uniform Interface: It ensures all child classes implement a standardized set of behaviors while sharing common functionality.
+# ->Abstarct class can have concrete methods
+# Ex: Vechile is very abstarct to include methods like horn or engine performance, or fuel capacity, So it acts like a abstarct class to enforce all concrete classes under it to have all these variables and methods(Car,bike)
+
+
+# Abstract class → "What kind of thing are you?"
+# Interface      → "What can you do?"           See in word file
+
+# Ex:
+# Vehicle
+#   └── abstract class
+
+# Flyable
+#   └── interface/capability
+
+# Bird
+#   ├── is a Vehicle? maybe not
+#   └── can Fly
+
+
+
+# UML(Unified modeling language): How we can represent relations between objects or others
+
+# 1. Association: Two Independent objects which can sustain independently have a relation(IS-A) are related.
+# 2. Aggregation: Two objects(Parent and child) which have relation(HAS-A weak ownership) and can exists independently are related.
+# 3. Composition: Two objects(Parent and child) which have relation(HAS-A strong ownership) and cannot exists independently are related.
+# See all 3 details in the word file.
+
+# Understand:
+#                 OOP
+#                  │
+#      ┌───────────┼────────────┐
+#      ▼           ▼            ▼
+# Encapsulation Abstraction Inheritance
+#      │           │            │
+#      └───────────┴────────────┘
+#                  │
+#                  ▼
+#             Polymorphism
+
+
+
+'''Exception Handling: It is something which we use to handle an error instead of making it crash.'''
+
+# Without Exceptional handling our Program will terminate suddenly, if we handle it then it can be recovered and continued
+# Use these only where there is a potential risk of getting an error.
+
+#
+#       Throwable (Root)
+#          /       \
+#   Error           Exception
+#                  /         \
+#   Unchecked (Runtime)     Checked (Compile-Time)
+#
+
+# Checked vs UnChecked Exceptions (Only java)
+# Checked: These are the exceptions which the compiler excepts to solve beforehand running Ex: IOException, SQLException
+# UnChecked: These are exceptions which the compiler ignore in the beginning Ex: ArithmaticException, NullPointerException
+
+# Note: Python does not have such kind of exceptions
+
+''' Common terms:'''
+#1.(try,except,finally)Ex:
+x=0
+try:                                        # This will initially run.
+    result = 10 / x
+except ValueError:                          # If there is ValueError in the try block then this is excepted here.
+    print("Value must be positive")
+except ZeroDivisionError:                   # If there is ZeroDivisionError then it excepted here in this except block
+    print("Cannot divide by zero")
+except Exception as e:                      # If there is any other error other than we excepted then it come here and we can handle it here
+    print(f"An unexpected error occurred: {e}")
+else:                                       # If it runs sucessfully then it executes this thing
+    print("Successful")
+finally:                                    # This runs regardless of what happens in the try and except blocks
+    print("Cleanup")
+
+
+#2.(raise)How to raise/propagate a Error:
+amount=10
+if amount <= 0:
+    raise ValueError("Amount must be positive")
+
+
+#3.(Custome Exception Handling) There are custom generated Exception handlings also:
+class InsufficientBalanceError(Exception):
+    pass
+balance=20
+if  amount > balance:
+    raise InsufficientBalanceError()
+
+
+
+# throw new ValueError ->in java just like raise
+#void readFile() throws IOException { } -> this says we can expect a error from this function   -> this equivalent is not there in python
+
+
+'''Exception Hierarchy'''
+#BaseException
+    # │
+    # └── Exception
+    #       ├── ValueError
+    #       ├── TypeError
+    #       ├── KeyError
+    #       ├── IndexError
+    #       └── ...
+    
+
+'''Differnce between raising and the handling(When to use what)'''
+#Raising is used when a function detects an invalid state and needs to trigger an error signal (raise),
+# while handling is used by the calling code (try-except) to catch that signal and recover so the program doesn't crash.
+# In a good program both will be there and if there is any user mistakes or small mistakes then an error is raised otherwise they need to be handled by the system.
+
+# EXCEPTIONS
+# try       → risky code
+# except    → handle
+# else      → no exception
+# finally   → cleanup
+# raise     → explicitly raise
+# custom    → domain-specific errors
+
+# JAVA:
+# checked   → compiler-enforced handling/declaration
+# unchecked → RuntimeException hierarchy
+# throw     → throw exception
+# throws    → declare possible exception

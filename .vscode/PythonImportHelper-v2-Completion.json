@@ -282,6 +282,22 @@
         "documentation": {}
     },
     {
+        "label": "ABC",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "abstractmethod",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
         "label": "train_test_split",
         "importPath": "sklearn.model_selection",
         "description": "sklearn.model_selection",
@@ -1215,7 +1231,7 @@
         "kind": 6,
         "importPath": "Interview Concepts.OOPS",
         "description": "Interview Concepts.OOPS",
-        "peekOfCode": "class Dog:\n    def speak(self):\n        print(\"Bark\")\nanimals=[Dog(),Cat()]\nfor a in animals:\n    a.speak()\n#Note: Here see the method name is same but the operations they are performing are different.\n# Polymorphism are of 2 types:\n#1. Runtime Polymorphism ->Method Overriding and duck typing\n#2. Compiler time Polymorphism ->Method overloading",
+        "peekOfCode": "class Dog:\n    def speak(self):\n        print(\"Bark\")\nanimals=[Dog(),Cat()]\nfor a in animals:\n    a.speak()\n#Note: Here see the method name is same but the operations they are performing are different.\n# Polymorphism are of 2 types:\n#1. Runtime Polymorphism(Late Binding/Dynamic Binding) ->Method Overriding and duck typing\n#2. Compiler time Polymorphism(Early Binding/Static Binding) ->Method overloading ->Not available in Python",
         "detail": "Interview Concepts.OOPS",
         "documentation": {}
     },
@@ -1233,7 +1249,7 @@
         "kind": 6,
         "importPath": "Interview Concepts.OOPS",
         "description": "Interview Concepts.OOPS",
-        "peekOfCode": "class hello:\n    def greet(self):    #type:ignore\n        return \"User\"\n    def greet(self,name):\n        self.name=name\n        return self.name\nobj=hello().greet(\"anjan\")\n# See how the self works just like that that is in java.\n''' Python does not provide method overloading as it is compiletime. It only does method overriding by inheritance'''\nclass Parents:",
+        "peekOfCode": "class hello:\n    def greet(self):    #type:ignore\n        return \"User\"\n    def greet(self,name):\n        self.name=name\n        return self.name\nobj=hello().greet(\"anjan\")\n# See how the self works just like that that is in java.\n''' Python does not provide method overloading as it is compiletime like Java but it implements them by using the *args and **kwargs,etc. \nPython only does method overriding by inheritance or by using the Ducktyping Principal'''",
         "detail": "Interview Concepts.OOPS",
         "documentation": {}
     },
@@ -1270,6 +1286,60 @@
         "importPath": "Interview Concepts.OOPS",
         "description": "Interview Concepts.OOPS",
         "peekOfCode": "class D:\n    pass\nprint(D.mro())\n# Problems with inheritance:\n# a. Tight Coupling: One component can affect other.\n# b. Deep Inheritance Trees. so if 1 part in root level breaks then all tree need to be updated again.\n# c. Reduced flexibility: Inheritance makes us follow a hirarchy which is not good\n# What should we follow:\n#Soln: \n# a. Composition which is not a hierarchial process. It is just building class by using objects of other classes.",
+        "detail": "Interview Concepts.OOPS",
+        "documentation": {}
+    },
+    {
+        "label": "UPIPayments",
+        "kind": 6,
+        "importPath": "Interview Concepts.OOPS",
+        "description": "Interview Concepts.OOPS",
+        "peekOfCode": "class UPIPayments():\n    def pay(self):\n        pass\n    pass\n# Payment p = new UPIPayment()  ->Eventhough the reference is Project but the real object created is simple so its methods are used. This is done by Dynamic Method Dispatch\n# Note: Python does have the Static reference thing only it just stores in a variable without any data type. So, it always checks objects methods and executes them, no issue.\np= UPIPayments()\np.pay()\n'''What things cannot be overridden in the objects:\n1. final keyword methods: These cannot be fixed once initialized",
+        "detail": "Interview Concepts.OOPS",
+        "documentation": {}
+    },
+    {
+        "label": "Payment",
+        "kind": 6,
+        "importPath": "Interview Concepts.OOPS",
+        "description": "Interview Concepts.OOPS",
+        "peekOfCode": "class Payment(ABC):\n    def validate(self):\n        print(\"Common validation\")  #This method is shared across all subclasses of it and they do not need to compulsorily define this method. ->See this is concrete method in abstarct class\n    @abstractmethod\n    def pay(self, amount):          # Ensures all subclasses must have this method or behaviour with them as this is not shared to them\n        pass\nclass UPIPayment(Payment):\n    def pay(self, amount):\n        print(\"Pay using UPI\")\nclass CardPayment(Payment):",
+        "detail": "Interview Concepts.OOPS",
+        "documentation": {}
+    },
+    {
+        "label": "UPIPayment",
+        "kind": 6,
+        "importPath": "Interview Concepts.OOPS",
+        "description": "Interview Concepts.OOPS",
+        "peekOfCode": "class UPIPayment(Payment):\n    def pay(self, amount):\n        print(\"Pay using UPI\")\nclass CardPayment(Payment):\n    def pay(self, amount):\n        print(\"Pay using card\")\n# Payment()        # ❌ cannot instantiate  #Remove comment and check\nUPIPayment()     # ✅\n#Definition:\n# 1.Abstract Methods:It is a method that is declared, but contains no implementation (no body). It acts as a contract or requirement for child classes(Concrete classes).",
+        "detail": "Interview Concepts.OOPS",
+        "documentation": {}
+    },
+    {
+        "label": "CardPayment",
+        "kind": 6,
+        "importPath": "Interview Concepts.OOPS",
+        "description": "Interview Concepts.OOPS",
+        "peekOfCode": "class CardPayment(Payment):\n    def pay(self, amount):\n        print(\"Pay using card\")\n# Payment()        # ❌ cannot instantiate  #Remove comment and check\nUPIPayment()     # ✅\n#Definition:\n# 1.Abstract Methods:It is a method that is declared, but contains no implementation (no body). It acts as a contract or requirement for child classes(Concrete classes).\n# 2.Abstract class:It is a base class that cannot be instantiated directly (you cannot create an object using new AbstractClass() or AbstractClass()). It exists solely to serve as a common parent blueprint for other classes.\n# ->If we put the abstract method to a method then the class also becomes abstract\n# ->If a concrete classs does not declare the things that the abstarct class said then this class also becomes abstarct.",
+        "detail": "Interview Concepts.OOPS",
+        "documentation": {}
+    },
+    {
+        "label": "InsufficientBalanceError",
+        "kind": 6,
+        "importPath": "Interview Concepts.OOPS",
+        "description": "Interview Concepts.OOPS",
+        "peekOfCode": "class InsufficientBalanceError(Exception):\n    pass\nbalance=20\nif  amount > balance:\n    raise InsufficientBalanceError()\n# throw new ValueError ->in java just like raise\n#void readFile() throws IOException { } -> this says we can expect a error from this function   -> this equivalent is not there in python\n'''Exception Hierarchy'''\n#BaseException\n    # │",
+        "detail": "Interview Concepts.OOPS",
+        "documentation": {}
+    },
+    {
+        "label": "add",
+        "kind": 2,
+        "importPath": "Interview Concepts.OOPS",
+        "description": "Interview Concepts.OOPS",
+        "peekOfCode": "def add(self, *args):\n    return sum(args)    # Like this python makes the compiler time po;ymorphism. so if the 2 arguments add comes or 3 comes then always it gives correct solution.\n# ->In java Overoading happens if we change the no.of parameters or their return types but no with their return type as it still be ambiguous\n'''In java Dynamic Dispatch we generally take the created objects methods only and no the references methods '''\n# Ex:\nclass UPIPayments():\n    def pay(self):\n        pass\n    pass\n# Payment p = new UPIPayment()  ->Eventhough the reference is Project but the real object created is simple so its methods are used. This is done by Dynamic Method Dispatch",
         "detail": "Interview Concepts.OOPS",
         "documentation": {}
     },
@@ -1377,7 +1447,7 @@
         "kind": 6,
         "importPath": "Python Advanced Concepts.day23_different_func",
         "description": "Python Advanced Concepts.day23_different_func",
-        "peekOfCode": "class Node:\n    def __init__(self, x: int, next: \"Node | None\" = None): # Here next can be Node or None\n        self.val = int(x)\n        self.next = next\n# see how the default values are written.\ndef sum(a:int,b:int)->int:\n    return a+b\n# See how the return values are written in code",
+        "peekOfCode": "class Node:\n    def __init__(self, x: int, next: \"Node | None\" = None): # Here next can be Node or None\n        self.val = int(x)\n        self.next = next\n# see how the default values are written.\ndef sum(a:int,b:int)->int:\n    return a+b\n# See how the return values are written in code\n'''Ordered,mutable,duplicates(Remember)'''\n# | Type | Ordered | Mutable | Duplicates |",
         "detail": "Python Advanced Concepts.day23_different_func",
         "documentation": {}
     },
@@ -1386,7 +1456,7 @@
         "kind": 2,
         "importPath": "Python Advanced Concepts.day23_different_func",
         "description": "Python Advanced Concepts.day23_different_func",
-        "peekOfCode": "def sum(a:int,b:int)->int:\n    return a+b\n# See how the return values are written in code",
+        "peekOfCode": "def sum(a:int,b:int)->int:\n    return a+b\n# See how the return values are written in code\n'''Ordered,mutable,duplicates(Remember)'''\n# | Type | Ordered | Mutable | Duplicates |\n# |---|---|---|---|\n# | `list` | Yes | Yes | Yes |\n# | `tuple` | Yes | No | Yes |\n# | `set` | No meaningful index order | Yes | No |\n# | `dict` | Yes* | Yes | Keys unique |",
         "detail": "Python Advanced Concepts.day23_different_func",
         "documentation": {}
     },
