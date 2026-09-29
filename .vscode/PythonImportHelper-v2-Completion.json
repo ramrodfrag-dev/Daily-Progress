@@ -298,6 +298,15 @@
         "documentation": {}
     },
     {
+        "label": "os,sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os.sys",
+        "description": "os.sys",
+        "detail": "os.sys",
+        "documentation": {}
+    },
+    {
         "label": "train_test_split",
         "importPath": "sklearn.model_selection",
         "description": "sklearn.model_selection",
@@ -1350,6 +1359,33 @@
         "description": "Interview Concepts.OOPS",
         "peekOfCode": "c = Child()\n'''Constructor Chaining:'''\n# in java:\n# class Order {\n#     int id;\n#     double amount;\n#     Order() {\n#         this(0, 0);\n#     }\n#     Order(int id, double amount) {",
         "detail": "Interview Concepts.OOPS",
+        "documentation": {}
+    },
+    {
+        "label": "executable",
+        "kind": 5,
+        "importPath": "Interview Concepts.OS&Linux",
+        "description": "Interview Concepts.OS&Linux",
+        "peekOfCode": "executable = \"/bin/ls\"\nargs = [\"ls\", \"-la\"]\nenv = os.environ\nprint(\"Child: Executing /bin/ls now...\")\nos.execve(executable, args, env)\n# Reached only if execve fails\nprint(\"Exec failed!\", file=sys.stderr)\nsys.exit(1)\n# See how the code works and if it fails to replace then it prints failure message as the message is in same old process\n# Termination:",
+        "detail": "Interview Concepts.OS&Linux",
+        "documentation": {}
+    },
+    {
+        "label": "args",
+        "kind": 5,
+        "importPath": "Interview Concepts.OS&Linux",
+        "description": "Interview Concepts.OS&Linux",
+        "peekOfCode": "args = [\"ls\", \"-la\"]\nenv = os.environ\nprint(\"Child: Executing /bin/ls now...\")\nos.execve(executable, args, env)\n# Reached only if execve fails\nprint(\"Exec failed!\", file=sys.stderr)\nsys.exit(1)\n# See how the code works and if it fails to replace then it prints failure message as the message is in same old process\n# Termination:\n# -> A process is terminated if it completes normally or an error occurs or another process terminates  or it calls an exit mechanism.",
+        "detail": "Interview Concepts.OS&Linux",
+        "documentation": {}
+    },
+    {
+        "label": "env",
+        "kind": 5,
+        "importPath": "Interview Concepts.OS&Linux",
+        "description": "Interview Concepts.OS&Linux",
+        "peekOfCode": "env = os.environ\nprint(\"Child: Executing /bin/ls now...\")\nos.execve(executable, args, env)\n# Reached only if execve fails\nprint(\"Exec failed!\", file=sys.stderr)\nsys.exit(1)\n# See how the code works and if it fails to replace then it prints failure message as the message is in same old process\n# Termination:\n# -> A process is terminated if it completes normally or an error occurs or another process terminates  or it calls an exit mechanism.\n# Some times the parents might wait for the result of the child with the wait() system call. But if the child has terminated earlier without giving a responce,",
+        "detail": "Interview Concepts.OS&Linux",
         "documentation": {}
     },
     {
