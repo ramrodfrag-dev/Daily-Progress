@@ -1389,6 +1389,60 @@
         "documentation": {}
     },
     {
+        "label": "page",
+        "kind": 5,
+        "importPath": "Interview Concepts.OS&Linux",
+        "description": "Interview Concepts.OS&Linux",
+        "peekOfCode": "page = virtual_address // page_size\noffset = virtual_address % page_size\nphysical_address = frame * page_size + offset\n# For bit-based questions:\nPage_size = 2^n(bytes)\nOffset = n(bits)\n# Then:\nPage-number_bits = Virtual-address_bits - Offset_bits",
+        "detail": "Interview Concepts.OS&Linux",
+        "documentation": {}
+    },
+    {
+        "label": "offset",
+        "kind": 5,
+        "importPath": "Interview Concepts.OS&Linux",
+        "description": "Interview Concepts.OS&Linux",
+        "peekOfCode": "offset = virtual_address % page_size\nphysical_address = frame * page_size + offset\n# For bit-based questions:\nPage_size = 2^n(bytes)\nOffset = n(bits)\n# Then:\nPage-number_bits = Virtual-address_bits - Offset_bits",
+        "detail": "Interview Concepts.OS&Linux",
+        "documentation": {}
+    },
+    {
+        "label": "physical_address",
+        "kind": 5,
+        "importPath": "Interview Concepts.OS&Linux",
+        "description": "Interview Concepts.OS&Linux",
+        "peekOfCode": "physical_address = frame * page_size + offset\n# For bit-based questions:\nPage_size = 2^n(bytes)\nOffset = n(bits)\n# Then:\nPage-number_bits = Virtual-address_bits - Offset_bits",
+        "detail": "Interview Concepts.OS&Linux",
+        "documentation": {}
+    },
+    {
+        "label": "Page_size",
+        "kind": 5,
+        "importPath": "Interview Concepts.OS&Linux",
+        "description": "Interview Concepts.OS&Linux",
+        "peekOfCode": "Page_size = 2^n(bytes)\nOffset = n(bits)\n# Then:\nPage-number_bits = Virtual-address_bits - Offset_bits",
+        "detail": "Interview Concepts.OS&Linux",
+        "documentation": {}
+    },
+    {
+        "label": "Offset",
+        "kind": 5,
+        "importPath": "Interview Concepts.OS&Linux",
+        "description": "Interview Concepts.OS&Linux",
+        "peekOfCode": "Offset = n(bits)\n# Then:\nPage-number_bits = Virtual-address_bits - Offset_bits",
+        "detail": "Interview Concepts.OS&Linux",
+        "documentation": {}
+    },
+    {
+        "label": "Page-number_bits",
+        "kind": 5,
+        "importPath": "Interview Concepts.OS&Linux",
+        "description": "Interview Concepts.OS&Linux",
+        "peekOfCode": "Page-number_bits = Virtual-address_bits - Offset_bits",
+        "detail": "Interview Concepts.OS&Linux",
+        "documentation": {}
+    },
+    {
         "label": "#predictions",
         "kind": 5,
         "importPath": "ml.ml_core_practice",

@@ -274,6 +274,14 @@ sys.exit(1)
 # 4.Signals
 # 5.Message Queues
 
+
+'''Threads: These are the smallest unit of CPU execution in the system'''
+# A process provides the resource container and the threads provides the execution.
+# Why use them?
+# 1.These are responsive as if one thread is waiting other threads can work
+# 2.These share common resources so, creating them and managing them is easy.
+# 3.Multiple threads can run on a single CPU core which improves our system's Parallelism and concurrency
+
 ''' ****Process vs Thread (So so Important)'''
 # A process is an independent execution environment with its own address space.
 # A thread is an execution unit within a process.
@@ -290,10 +298,310 @@ PROCESS
 # | Thread 3                       |
 # +--------------------------------+
 
-# 1,2,3,4 are shared among all threads, But each thread has its own execution state, including:
+# 1,2,3,4 are shared among all threads(So, these are light weight than processes), But each thread has its own execution state, including:
 # - program Counter
 # - registers
 # - stack
 
 # Threads are needed beacuse If everything were one execution path, one blocking operation could make the entire application appear stuck.
 # Threads allow multiple execution flows within a process.
+
+'''Threads Types: 1.User level threads and 2.Kernel level threads'''
+#1.User level threads: These are managed by the User Thread Library(User-space) only
+# Advantages: Fast thread creation and switching as these are managed by user so, no system calls(less kernel involvement),
+# Disadvantages: Kernel cannot map directly to the threads. so, if 1 thread is blocking then all threads needs to wait.
+
+# [ User Thread 1 ]   [ User Thread 2 ]   [ User Thread 3 ]
+#         \                   |                   /
+#          \                  |                  /
+#   ═════════════════════════════════════════════════════  [ User Space ]
+#                      User Thread Library 
+#                  (Schedules threads locally)
+#   ═════════════════════════════════════════════════════  [ Kernel Boundary ]
+#                             │
+#                      1 Kernel Thread
+#                             │
+#                             ▼
+#                         CPU Core
+
+#2.Kernel level threads: These are managed by the kernel direclty
+# Advantages: Better support for multi parallesim and the kernel can handle/manage all threads independently
+# Disadvantages: Slow execution as all threads are managed by the Kernel itself so, switching takes time.
+
+# [ User Thread 1 ]    [ User Thread 2 ]    [ User Thread 3 ]
+#         │                    │                    │
+#   ══════│════════════════════│════════════════════│════  [ User Space ]
+#         │                    │                    │
+#   ══════│════════════════════│════════════════════│════  [ Kernel Boundary ]
+#         ▼                    ▼                    ▼
+# [ Kernel Thread 1 ]  [ Kernel Thread 2 ]  [ Kernel Thread 3 ]
+#         │                    │                    │
+#         ▼                    ▼                    ▼
+#     CPU Core 1           CPU Core 2           CPU Core 3
+
+
+'''a. Concurrency vs b. Parallelism Note: Concurrency does not require multiple cores. Parallelism does.'''
+#a.Multiple tasks are in progress during overlapping periods.   ->Progressing
+# Ex: CPU core 1: A A B B A B A
+#b.Multiple tasks execute simultaneously on different CPU cores ->Executing
+# Ex: CPU core 1: A A A
+    # CPU core 2: B B B
+    
+
+'''CPU Scheduling: It is the process of selecting some ready process out of many for execution ->Selection Process'''
+# Representation of all process and time for understanding is done in a chart named as 'ghantt chart'.
+
+# Evaluation metrics:
+# AT = Arrival Time ->When it arrives
+# BT = Burst Time ->Amount it takes to complete it's execution
+# CT = Completion Time  ->When its execution completes
+# TAT = Turn around time=> CT-AT    ->Total time spend in the system
+# WT = Waiting time=> TAT-BT    ->It's wait in the Ready queue
+# RT = Response time=> First CPU start time-AT  ->Time until the process gets CPU for the first time (or) Time until first CPU allocation
+
+#Types:
+# 1. Preemptive: The OS can interrupt a running process and give the CPU to other process
+# Ex:
+# a.SRTF(Shortest remaining time first): At the current time which process has the minimum remaining time to execute that is selected and executed
+# b.Round Robin: So, time is divided in to quadrons and Each process receives a fixed time quantum. Designed primarily for time-sharing systems. IF not completed in that quadron it gets after all gets a chance
+
+# 2. Non-Preemptive: Once a process gets CPU then it keeps the CPU with it until it's execution is done
+# Ex:
+# a.FCFS(First Come First serve): Whichever comes first will be executed and in an order. ***Convoy effect***So if there is a large process then many short processes later can starve
+# b.SJP(Shortest job first): At the current time which processes has the lowest burst time then that is taken and executed completely.
+
+# Priority shceduling is present in both preemptive and non-preemptive ones and it is nothing but each process gets a priority number and based on that number the processes are executed
+# But the process with lower priority never executes if higher priority processes keep commming->This is called ***Starvation***
+# To counter attact starvation we have ***Aging***: this is a process to increase the priority value if it stays in redy queue for long time which makes it to execute at any time gaurantely.
+
+#Note: SJF  → burst time SRTF → remaining time and SRTF ia the non-preemptive part of SJF
+
+
+
+
+''' Synchronization and Critical section '''
+# When 2 or more threads aceess a same part concurrently then the final result can depend on execution order, as both threads are working on same vvariables and performing different operations
+# So, the whole code will be divided into the 2 parts. one is non-critical code which does not have to acess any shared memory of others and the critical one which requires the shared memory for its execution.
+
+# SOlution for the critical section thing will be, it should provide:
+# 1.Mutual Exclusion: only one thread enters critical section at one time
+# 2.Progress: If there is no thread is inside the critical section then selection of next one must nt be delyed
+# 3. Bounded Waiting: A thread should not wait indefinitely to enter critical section.
+
+'''***Mutex(Mutual exclusion lock)***'''
+# It allows only 1 thread to own a lock at a time
+#Ex:
+lock.acquire()
+# Critical section
+lock.release()
+
+# This is ownership based mutual exclusion. Only the thread which locks a mutex should unlock it.
+
+'''***Semaphore***'''
+# It is a synchronization primite based on a counter
+#Operations:
+wait() / P()
+signal() / V()
+# wait->decrement/possibly block
+# signal->increment/wake a waiter
+
+#Types:
+#a.Binary semaphore: 0 or 1. It can provide the mutual exclusion even though they are not related to the mutex conceptually.
+#b.Countng semaphore: Can represent multiple available resourrces.
+#Ex: Semaphore=3    =>Up to 3 units of the resource can be acquired concurrently.
+
+'''Monitor'''
+# It is a high level synchronization where everything is done autoomatically instead of manually.
+# The code to allocate the lock to the current process is directly injected by the monitor and looks after it.
+# We just need to mention the monitor abstract class and intialize it, inner functions it will fill up automatically
+
+#-> Condition variables allow a thread to sleep until a particular condition becomes true.
+# A condition variable is generally used with a lock/monitor, not as an independent replacement for one.
+# Typicall operations are: wait() and signal() operations
+
+
+'''Dead Lock'''
+# A deadlock occurs when a set of processes/threads are permanently blocked because each is waiting for resources/events that cannot become available due to the same dependency cycle.
+# It needs 4 conditions:
+# a.Mutual Exclusion: Atleast there must be one resource which cannot be shared simultaneously.
+# b.Hold and wait: A process holds 1 resources while waiting for another.
+# c.No-Preemption: Resources cannot be forcibly taken away, they must release resources themselves.
+# d.Circular-wait: A circular chain exists of hold and wait of resources
+
+# ->Deadlock Prevention: means Designing system so that atleast 1/4 conditions can never hold(static method)
+# ->Deadlock Avoidance: means Solving the probelm dynamically(If I gave resouce to this process will the state be safe)
+#   It uses Banker's Algorithm see in word file
+# ->Deadlock Detection: Instead of preventing/avoiding, the OS allows it and periodically check for dependency cycle of these processes
+# ->Deadlock Recovery: After detection we will use possible approaches like terminating struck process and so on.
+
+#Some terms:
+# 1.Starvation: A process waits indefinitely because scheduling/resource allocation favours others.
+# 2.Safe state: It is the state of all the process which have atleast one possible safe sequence.
+# 3.Unsafe state: It is the state of all the process which does not have a possible safe sequence
+#   ->There might be dead lock or not for the unsafe state. we cannot guarantee.
+# 4.Safe sequence: It is the sequence of the execution of all the process such that it lead to all execution of process without Deadlock
+# 5.Live lock: Unlike deadlock where there is not action(only waiting) here there is some work happening here no noticable progress is happening
+#   ->Ex:If there are 2 persons standing opposite way and expecting other to move aside and standing still is deadlock whereas moving in the sae direction such that they end up in same opposite way is called livelock
+
+# Synchronization problem solves coordination problems but create additional deadlock problems.
+
+
+
+'''Memory Management:'''
+# Physical Memory: It is the actual ram installed in the machine
+# Virtual memory: Each process sees its own virtual address space, which hardware and the OS maps it to the Physical address
+# Uses: Isolation, Larger logical adress space than physical ram, efficent memory management by only loading required pages, cannot need to get larger ram in a contiguous locations as we can store each page in different locations
+
+# Processes Virtual Address
+#       ↓
+#   Page Table / MMU(Memory Management Unit)
+#       ↓
+# Physical Address
+#       ↓
+#      RAM
+
+# Note: The process normally doesn't need to know the actual physical RAM location.
+# Each process get's a Logical address space:
+# High Address
+# +----------------+    
+# | Stack          |    ->These are parts of process's Virtual space(contains function call frames, local variables, return info,function states)->usually grows as the functional calls increases
+# +----------------+
+# |                |
+# | Free space     |
+# |                |
+# +----------------+
+# | Heap           |    ->Used for dynamically allocated memory(which is allocated by the runtime only unlike stack which got storage by function execution state)
+# +----------------+
+# | Data           |
+# +----------------+
+# | Code           |
+# +----------------+
+# Low Address
+
+# Two processes can use the same virtual address while mapping to different physical locations. See this how exactly this works out
+# Due to the above thing Isolation works
+
+# MMU performs the hard-ware supported address translation using information supplied by the OS.
+
+'''Paging: It divides memory into fixed-size blocks'''
+# The Virtual memory is divided into P0,P1,P2,... where each are pages and each has same size.
+# These are accessed by the virtual address which is generally asked or storeed by the process
+# +------------------+--------------+
+# |   Page Number    |    Offset    |   ->Virtual Address Stucture
+# +------------------+--------------+
+# Base address/page number identifies the virtual page. and the offset identifies the exact byte within that page.
+
+# Just like the Pages are made in the virtual address **Frames** are made from the actual ram which are of fixed size
+# Note: The size of Frame and the Page is same in the concept of Paging and also each page is mapped to each frame(Its not necessary pages are occupying the contiguous physical memory)
+# The frames are divided based on the hardware. its not in our hands, so to keep the page size same as the frame size is known as paging
+# Uses as each page is fit into 1 frame so, we can manage and retrive required frames from anywhere in ram
+# Without paging, allocating large contiguous physical regions can cause external fragmentation.
+# As the size of both of frame and page size are same so, the virtual and physical address offests are same because it represents how many bytes are there in each block(These are same as they have same size)
+
+'''Page Table: It is the concept of keeping the relation btw virtual page and physical frame.'''
+# It is usually maintained by OS
+# These page tables are also stored in the ram like pages.SO first it checks page table and get frames
+
+# Numericals see in the dox file
+''' CPU Execution Layer: Virtual Address Request'''
+#                         │
+#                         ▼
+#             [ Split: VPN vs Offset ]
+#                         │
+#                         ▼
+#              Check TLB Hardware Cache
+#                         │
+#         ┌───────────────┴───────────────┐
+#         ▼                               ▼
+#     [ TLB HIT ]                     [ TLB MISS ]
+#         │                               │
+#         │                       Walk Page Table in RAM
+#         │                               │
+#         │               ┌───────────────┴───────────────┐
+#         │               ▼                               ▼
+#         │        [ Valid Bit = 1 ]              [ Valid Bit = 0 ]
+#         │               │                               │
+#         │        Update TLB Cache                [ PAGE FAULT ]
+#         │               │                               │
+#         └───────┬───────┘                    Trap to OS Kernel to
+#                 │                            load page from Disk
+#                 ▼                                       │
+#     [ Combine PFN + Offset ]                            ▼
+#                 │                            Retry Instruction
+#                 ▼
+#   [ Access Physical Hardware RAM ]
+
+
+''' And the convertion looks like:'''
+# Virtual Address:  [ Virtual Page Number (20 bits) ] [ Offset (12 bits) ]
+#                                  │                         │
+#                        (Look up in Page Table)             │
+#                                  │                         │
+#                                  ▼                         ▼
+# Physical Address: [ Physical Frame Number (12 bits) ] [ Offset (12 bits) ]
+
+# Important steps to remember: Unallocated pages take no space in the storage.
+# ->Frames are never on the hard disk.
+#1. Hardware RAM is divided into fixed physical slots called Frames.
+#2. Programs are divided into matching virtual chunks called Pages.
+#3. When a program runs, its Pages are stored on the Hard Disk/SSD (in files or swap space).
+#4. When the CPU needs a specific page, the Operating System copies that Page from the hard disk and drops it into an empty Frame in RAM.
+
+'''TLB(Translation lookaside Buffer):'''
+# It is a small buffer which store the fast cache storing the mappings of the page no to the frame no.
+# If OS finds the required page here then it hits otherwise it misses and go to the mapping in the ram.
+# Generally CPU asks from it(physical frame by giving the virtual address) as it is faster and then if it misses check the ram and load it into the TLB by removing some existing mapping.
+
+'''Page Fault'''
+# It is the error stating the required page is not in the main memory, so OS brings the required page from harddisk.
+# This occurs after TLB miss occurs generally. see the flow of how the cpu requirement of page is done through tlb,ram,disk
+# When a new page/pages comes into memory then all the mappings in the main memory and the tlb mappings must be updated.IF not then the stale tlb problem occurs that it gives other pages which are not the required ones
+# Majority of time the pages are present in both the ram and the disk but the data in the disk may be outdated, so it must be updatted continuously. It's done by the dirty bit
+# If the Dirty bit(Hardware bit)==1 then the data is outdated and if it is 0 then the data is current one
+# After a page fault occurs os will bring the page from drive and update tables as well as restart instrcution to make it work in next try.
+
+# **Demand Paging: It is a process where we only bring the required pages to the ram instead of bringing every page.It makes the startup faster and efficient use of memory.
+
+'''Page Replacement'''
+# It is the process of replacing the new page which is required by the CPU with that of other page.
+# The common ways to select the vistim page(which is going to be removed):
+# 1.FIFO, 2.LRU(Least recently used), Optimal(replace with page whose next use is very far in future)
+# In reality the optimal method will not work as our system cannot identify which may be used in the future(It just cannot simply predict the future)
+
+'''Thrashing'''
+# If a system spends more of its time in handling page faults instead of executing the instructions
+# This happens when the system has insufficient number of frames requird to complte their processes
+
+'''Segmentation'''
+# It is similar to the Paging but here the pages are not the same size as that of frame as here the pages are divided based on the user logic instead just by their fixed size.
+# Ex: If there are 5 functions then in the paging part first 2.5 is in one page and the other in another, so the function is divided which is not good as we cannot execute whole process without it but
+# In the segmentation each function is stored in a page so, all their variables and required data will be in 1 single page.
+# Because segments have different sizes, physical RAM cannot be divided into uniform frames.
+# Instead, a segment is placed directly into a contiguous block of RAM, starting at an exact physical byte location called the Base Address.
+
+# Logical Address = Segment Number + offset
+
+# SO, the segment table contains the main physical address(Base) + limit(Until where it needs to capture it) instead of only frame number like in paging
+# If the limit> segment size then it return trap(which is handled by the OS) otherwise it gives the exact values required
+
+# Types:
+#1. Internal Segmentation: Allocated block contains unused space inside it, Paging can produce internal fragmentation, especially in the last page of an allocation.
+#2. External Segmentation: Free memory exists but is split into separate regions, making a sufficiently large contiguous allocation difficult.
+
+
+# ->In paging the we can place the whole process in to different frames as it needs not to be contiguous but only thing is that each frame must be allocated to only one page.
+# For more details about Segmentation,paging, Fixed partioning(Old approach) see dox file
+
+'''Some Calculations'''
+page = virtual_address // page_size
+offset = virtual_address % page_size
+
+physical_address = frame * page_size + offset
+
+# For bit-based questions:
+Page_size = 2^n(bytes)
+Offset = n(bits)
+
+# Then:
+Page-number_bits = Virtual-address_bits - Offset_bits
+
