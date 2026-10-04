@@ -1393,7 +1393,7 @@
         "kind": 5,
         "importPath": "Interview Concepts.OS&Linux",
         "description": "Interview Concepts.OS&Linux",
-        "peekOfCode": "page = virtual_address // page_size\noffset = virtual_address % page_size\nphysical_address = frame * page_size + offset\n# For bit-based questions:\nPage_size = 2^n(bytes)\nOffset = n(bits)\n# Then:\nPage-number_bits = Virtual-address_bits - Offset_bits",
+        "peekOfCode": "page = virtual_address // page_size\noffset = virtual_address % page_size\nphysical_address = frame * page_size + offset\n# For bit-based questions:\nPage_size = 2^n(bytes)\nOffset = n(bits)\n# Then:\nPage-number_bits = Virtual-address_bits - Offset_bits\n# -> A page fault is therefore a control transfer to the OS, potentially followed by storage I/O.\n'''Belady's Anomoly'''",
         "detail": "Interview Concepts.OS&Linux",
         "documentation": {}
     },
@@ -1402,7 +1402,7 @@
         "kind": 5,
         "importPath": "Interview Concepts.OS&Linux",
         "description": "Interview Concepts.OS&Linux",
-        "peekOfCode": "offset = virtual_address % page_size\nphysical_address = frame * page_size + offset\n# For bit-based questions:\nPage_size = 2^n(bytes)\nOffset = n(bits)\n# Then:\nPage-number_bits = Virtual-address_bits - Offset_bits",
+        "peekOfCode": "offset = virtual_address % page_size\nphysical_address = frame * page_size + offset\n# For bit-based questions:\nPage_size = 2^n(bytes)\nOffset = n(bits)\n# Then:\nPage-number_bits = Virtual-address_bits - Offset_bits\n# -> A page fault is therefore a control transfer to the OS, potentially followed by storage I/O.\n'''Belady's Anomoly'''\n# It is an unusual property of FIFO where the increasing the no.of frames will also increases the no. of page faults.",
         "detail": "Interview Concepts.OS&Linux",
         "documentation": {}
     },
@@ -1411,7 +1411,7 @@
         "kind": 5,
         "importPath": "Interview Concepts.OS&Linux",
         "description": "Interview Concepts.OS&Linux",
-        "peekOfCode": "physical_address = frame * page_size + offset\n# For bit-based questions:\nPage_size = 2^n(bytes)\nOffset = n(bits)\n# Then:\nPage-number_bits = Virtual-address_bits - Offset_bits",
+        "peekOfCode": "physical_address = frame * page_size + offset\n# For bit-based questions:\nPage_size = 2^n(bytes)\nOffset = n(bits)\n# Then:\nPage-number_bits = Virtual-address_bits - Offset_bits\n# -> A page fault is therefore a control transfer to the OS, potentially followed by storage I/O.\n'''Belady's Anomoly'''\n# It is an unusual property of FIFO where the increasing the no.of frames will also increases the no. of page faults.\n# Generally it must be opposite but for some reason it happens oppositely for FIFO.",
         "detail": "Interview Concepts.OS&Linux",
         "documentation": {}
     },
@@ -1420,7 +1420,7 @@
         "kind": 5,
         "importPath": "Interview Concepts.OS&Linux",
         "description": "Interview Concepts.OS&Linux",
-        "peekOfCode": "Page_size = 2^n(bytes)\nOffset = n(bits)\n# Then:\nPage-number_bits = Virtual-address_bits - Offset_bits",
+        "peekOfCode": "Page_size = 2^n(bytes)\nOffset = n(bits)\n# Then:\nPage-number_bits = Virtual-address_bits - Offset_bits\n# -> A page fault is therefore a control transfer to the OS, potentially followed by storage I/O.\n'''Belady's Anomoly'''\n# It is an unusual property of FIFO where the increasing the no.of frames will also increases the no. of page faults.\n# Generally it must be opposite but for some reason it happens oppositely for FIFO.\n# For the LRU and the Optimal algos have the stack-based behaviour which prevents the anomoly\n'''Locality of Reference'''",
         "detail": "Interview Concepts.OS&Linux",
         "documentation": {}
     },
@@ -1429,7 +1429,7 @@
         "kind": 5,
         "importPath": "Interview Concepts.OS&Linux",
         "description": "Interview Concepts.OS&Linux",
-        "peekOfCode": "Offset = n(bits)\n# Then:\nPage-number_bits = Virtual-address_bits - Offset_bits",
+        "peekOfCode": "Offset = n(bits)\n# Then:\nPage-number_bits = Virtual-address_bits - Offset_bits\n# -> A page fault is therefore a control transfer to the OS, potentially followed by storage I/O.\n'''Belady's Anomoly'''\n# It is an unusual property of FIFO where the increasing the no.of frames will also increases the no. of page faults.\n# Generally it must be opposite but for some reason it happens oppositely for FIFO.\n# For the LRU and the Optimal algos have the stack-based behaviour which prevents the anomoly\n'''Locality of Reference'''\n# Page replacements works beacuse programs tend to exhibit locality patterns.",
         "detail": "Interview Concepts.OS&Linux",
         "documentation": {}
     },
@@ -1438,7 +1438,43 @@
         "kind": 5,
         "importPath": "Interview Concepts.OS&Linux",
         "description": "Interview Concepts.OS&Linux",
-        "peekOfCode": "Page-number_bits = Virtual-address_bits - Offset_bits",
+        "peekOfCode": "Page-number_bits = Virtual-address_bits - Offset_bits\n# -> A page fault is therefore a control transfer to the OS, potentially followed by storage I/O.\n'''Belady's Anomoly'''\n# It is an unusual property of FIFO where the increasing the no.of frames will also increases the no. of page faults.\n# Generally it must be opposite but for some reason it happens oppositely for FIFO.\n# For the LRU and the Optimal algos have the stack-based behaviour which prevents the anomoly\n'''Locality of Reference'''\n# Page replacements works beacuse programs tend to exhibit locality patterns.\n# There are 2 types:\n# a. Temporal Locality: Recently acsessed data are likely to be accessed again(A->B->A so, A or B is going to be acessed soon)",
+        "detail": "Interview Concepts.OS&Linux",
+        "documentation": {}
+    },
+    {
+        "label": "TLB_lookup",
+        "kind": 5,
+        "importPath": "Interview Concepts.OS&Linux",
+        "description": "Interview Concepts.OS&Linux",
+        "peekOfCode": "TLB_lookup = t\nMemory_access = m\nTLB_hit_ratio = h\npage_table_lookup=p\nEAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum then the avg of the Page faults and page_table_lookups will be reduced\n'''File System(6/6)'''\n#",
+        "detail": "Interview Concepts.OS&Linux",
+        "documentation": {}
+    },
+    {
+        "label": "Memory_access",
+        "kind": 5,
+        "importPath": "Interview Concepts.OS&Linux",
+        "description": "Interview Concepts.OS&Linux",
+        "peekOfCode": "Memory_access = m\nTLB_hit_ratio = h\npage_table_lookup=p\nEAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum then the avg of the Page faults and page_table_lookups will be reduced\n'''File System(6/6)'''\n#",
+        "detail": "Interview Concepts.OS&Linux",
+        "documentation": {}
+    },
+    {
+        "label": "TLB_hit_ratio",
+        "kind": 5,
+        "importPath": "Interview Concepts.OS&Linux",
+        "description": "Interview Concepts.OS&Linux",
+        "peekOfCode": "TLB_hit_ratio = h\npage_table_lookup=p\nEAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum then the avg of the Page faults and page_table_lookups will be reduced\n'''File System(6/6)'''\n#",
+        "detail": "Interview Concepts.OS&Linux",
+        "documentation": {}
+    },
+    {
+        "label": "EAT",
+        "kind": 5,
+        "importPath": "Interview Concepts.OS&Linux",
+        "description": "Interview Concepts.OS&Linux",
+        "peekOfCode": "EAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum then the avg of the Page faults and page_table_lookups will be reduced\n'''File System(6/6)'''\n#",
         "detail": "Interview Concepts.OS&Linux",
         "documentation": {}
     },

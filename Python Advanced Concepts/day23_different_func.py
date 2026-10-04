@@ -147,3 +147,19 @@ def sum(a:int,b:int)->int:
 # TreeSet → unique + sorted
 # HashMap → key/value + hash lookup
 # TreeMap → key/value + sorted keys
+
+
+
+
+# To find a number is a power of 2 or not
+import math
+i=8
+if (math.log(i,2))%1==0:
+    print("It's a power of 2")
+    
+# Convertion of binary to int and int to binary
+integer1=int('1011')  # Takes base as 10 default
+integer2=int('1010',16)   #Takes base as 16
+
+binary1=bin(9)[2:]  #The slicing is done at last to make sure the convention/symbol does not comes with the number
+
