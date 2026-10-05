@@ -1447,7 +1447,7 @@
         "kind": 5,
         "importPath": "Interview Concepts.OS&Linux",
         "description": "Interview Concepts.OS&Linux",
-        "peekOfCode": "TLB_lookup = t\nMemory_access = m\nTLB_hit_ratio = h\npage_table_lookup=p\nEAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum then the avg of the Page faults and page_table_lookups will be reduced\n'''File System(6/6)'''\n# It organizes and manages data stored on persistent storage.\n# It handles Files, Directories, Metadata, Permissions, File access, Naming, Links,etc\nWorkFlow,\n#Python program",
+        "peekOfCode": "TLB_lookup = t\nMemory_access = m\nTLB_hit_ratio = h\npage_table_lookup=p\nEAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum then the avg of the Page faults and page_table_lookups will be reduced\n'''File System(6/6)'''\n# It is a part of the Kernel and it helps in managing all files\n# It organizes and manages data stored on persistent storage.\n# It handles Files, Directories, Metadata, Permissions, File access, Naming, Links,etc\nWorkFlow,",
         "detail": "Interview Concepts.OS&Linux",
         "documentation": {}
     },
@@ -1456,7 +1456,7 @@
         "kind": 5,
         "importPath": "Interview Concepts.OS&Linux",
         "description": "Interview Concepts.OS&Linux",
-        "peekOfCode": "Memory_access = m\nTLB_hit_ratio = h\npage_table_lookup=p\nEAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum then the avg of the Page faults and page_table_lookups will be reduced\n'''File System(6/6)'''\n# It organizes and manages data stored on persistent storage.\n# It handles Files, Directories, Metadata, Permissions, File access, Naming, Links,etc\nWorkFlow,\n#Python program\n    #   ↓",
+        "peekOfCode": "Memory_access = m\nTLB_hit_ratio = h\npage_table_lookup=p\nEAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum then the avg of the Page faults and page_table_lookups will be reduced\n'''File System(6/6)'''\n# It is a part of the Kernel and it helps in managing all files\n# It organizes and manages data stored on persistent storage.\n# It handles Files, Directories, Metadata, Permissions, File access, Naming, Links,etc\nWorkFlow,\n#Python program",
         "detail": "Interview Concepts.OS&Linux",
         "documentation": {}
     },
@@ -1465,7 +1465,7 @@
         "kind": 5,
         "importPath": "Interview Concepts.OS&Linux",
         "description": "Interview Concepts.OS&Linux",
-        "peekOfCode": "TLB_hit_ratio = h\npage_table_lookup=p\nEAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum then the avg of the Page faults and page_table_lookups will be reduced\n'''File System(6/6)'''\n# It organizes and manages data stored on persistent storage.\n# It handles Files, Directories, Metadata, Permissions, File access, Naming, Links,etc\nWorkFlow,\n#Python program\n    #   ↓\n# Python runtime",
+        "peekOfCode": "TLB_hit_ratio = h\npage_table_lookup=p\nEAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum then the avg of the Page faults and page_table_lookups will be reduced\n'''File System(6/6)'''\n# It is a part of the Kernel and it helps in managing all files\n# It organizes and manages data stored on persistent storage.\n# It handles Files, Directories, Metadata, Permissions, File access, Naming, Links,etc\nWorkFlow,\n#Python program\n    #   ↓",
         "detail": "Interview Concepts.OS&Linux",
         "documentation": {}
     },
@@ -1474,7 +1474,7 @@
         "kind": 5,
         "importPath": "Interview Concepts.OS&Linux",
         "description": "Interview Concepts.OS&Linux",
-        "peekOfCode": "EAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum then the avg of the Page faults and page_table_lookups will be reduced\n'''File System(6/6)'''\n# It organizes and manages data stored on persistent storage.\n# It handles Files, Directories, Metadata, Permissions, File access, Naming, Links,etc\nWorkFlow,\n#Python program\n    #   ↓\n# Python runtime\n#       ↓\n# OS interface / system calls",
+        "peekOfCode": "EAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum then the avg of the Page faults and page_table_lookups will be reduced\n'''File System(6/6)'''\n# It is a part of the Kernel and it helps in managing all files\n# It organizes and manages data stored on persistent storage.\n# It handles Files, Directories, Metadata, Permissions, File access, Naming, Links,etc\nWorkFlow,\n#Python program\n    #   ↓\n# Python runtime\n#       ↓",
         "detail": "Interview Concepts.OS&Linux",
         "documentation": {}
     },

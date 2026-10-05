@@ -659,6 +659,7 @@ EAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum th
 
 
 '''File System(6/6)'''
+# It is a part of the Kernel and it helps in managing all files
 # It organizes and manages data stored on persistent storage.
 # It handles Files, Directories, Metadata, Permissions, File access, Naming, Links,etc
 WorkFlow,
@@ -802,3 +803,113 @@ r,w,x=4,2,1
 # Mounting makes that filesystem accessible at a directory in the existing filesystem hierarchy.
 # OS can combine filesystems into a unified directory hierarchy instead of seperate file systems, that's why mounting matters
 
+# =========================
+# OPERATING SYSTEM TYPES
+# =========================
+
+# 1. TIGHTLY COUPLED / MULTIPROCESSOR SYSTEM
+# - Multiple CPUs in one computer system.
+# - CPUs share memory/resources.
+# - Enables parallel execution and better performance.
+#
+# SMP (Symmetric Multiprocessing):
+# - All CPUs are equal.
+# - Any CPU can execute OS/user tasks.
+#
+# AMP (Asymmetric Multiprocessing):
+# - Master CPU controls/assigns work.
+# - Other CPUs execute assigned tasks.
+#
+# MEMORY: Many CPUs + One System
+
+
+# 2. MULTIPROGRAMMING
+# - Multiple programs kept in memory.
+# - If one program waits for I/O, CPU switches to another.
+# - Main goal: maximize CPU utilization.
+#
+# MEMORY: Switch when I/O wait
+
+
+# 3. MULTITASKING
+# - CPU rapidly switches among multiple tasks.
+# - Uses small time slices/time quanta.
+# - Gives the appearance of simultaneous execution.
+# - Main goal: quick response.
+#
+# MEMORY: Switch after TIME SLICE
+
+
+# 4. DISTRIBUTED / LOOSELY COUPLED SYSTEM
+# - Multiple independent computers connected by a network.
+# - Each computer has its own CPU and memory.
+# - Computers cooperate and share work/resources.
+#
+# MEMORY: Many Computers + Network
+
+
+# 5. BATCH OPERATING SYSTEM
+# - Similar jobs are grouped into batches.
+# - Jobs are processed with little/no user interaction.
+# - Reduces repeated setup/loading overhead.
+#
+# MEMORY: Batch = Group Similar Jobs
+
+
+# 6. MULTIUSER SYSTEM
+# - Multiple users can use the system/resources.
+# - Resources are shared among users/processes.
+#
+# MEMORY: Many Users + Shared Resources
+
+
+# 7. TIME-SHARING SYSTEM
+# - CPU time is divided into small time slices (quantum).
+# - Each process/user gets a turn.
+# - Round Robin is commonly used.
+# - Designed for interactive/fair CPU sharing.
+#
+# DIFFERENCE:
+# Multiprogramming -> Switch when I/O wait
+# Time-sharing    -> Switch after fixed time quantum
+#
+# MEMORY: Fair CPU Time
+
+
+# 8. REAL-TIME OPERATING SYSTEM (RTOS)
+# - Must produce a response within a specified deadline.
+# - Correctness = Correct result + Correct timing.
+#
+# HARD REAL-TIME:
+# - Deadline is strict.
+# - Missing deadline may be unacceptable.
+#
+# SOFT REAL-TIME:
+# - Deadline is important.
+# - Occasional delay can be tolerated.
+#
+# MEMORY: Finish Within Deadline
+
+# =========================
+# QUICK REVISION
+# =========================
+#
+# Tightly Coupled  -> Many CPUs in one system
+# Multiprogramming -> Switch when I/O wait
+# Multitasking     -> Switch among tasks using time slices
+# Distributed      -> Independent computers + network
+# Batch OS         -> Group similar jobs
+# Multiuser        -> Multiple users share resources
+# Time-sharing     -> Fair CPU time using quanta
+# Real-time OS     -> Must meet deadlines
+#
+# KEY DIFFERENCE:
+#
+# Multiprogramming:
+#     I/O wait -> switch
+#
+# Multitasking:
+#     Time slice -> switch
+#
+# Time-sharing:
+#     Fair time slices for interactive users/processes
