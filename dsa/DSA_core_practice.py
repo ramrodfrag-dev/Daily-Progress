@@ -767,3 +767,5 @@ def pivotIndex(self, nums: list[int]) -> int:
 # Why this works is if the prefix sum < 0 then it does not contribute to the max_sum at all so we make it to 0 and start from atleast next one hoping it contributes.
 
 
+'''Remember:'''
+# log n solution usually means binary search or some sort of divide and conquer.

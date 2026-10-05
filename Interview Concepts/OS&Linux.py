@@ -63,7 +63,7 @@ b.free -h: gives the abogve info but in the human redeable format that is in gig
 
 #-> These functionalities are just returning the socket which is currently available for the connection.
 
-'''Some basic file descripters:
+'''Some basic file Descripters:
 0->stdin
 1->stdout
 2->stderr
@@ -659,4 +659,146 @@ EAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum th
 
 
 '''File System(6/6)'''
-#
+# It organizes and manages data stored on persistent storage.
+# It handles Files, Directories, Metadata, Permissions, File access, Naming, Links,etc
+WorkFlow,
+#Python program
+    #   ↓
+# Python runtime
+#       ↓
+# OS interface / system calls
+#       ↓
+# Kernel
+#       ↓
+# Filesystem
+#       ↓
+# Storage/device layer
+#       ↓
+# SSD/HDD
+
+'''Some Important Trerminologies'''
+# 1.File: It is a named collection of persistent data managed by the filesystem -> It has both data and metadata
+# 2.Directory: A Directory organizes file names and references to filesystem objects ->It provides hierarchial organization and naming
+# 3.File Descriptor: It is a small integer used by a process to refer to an open file/resouce
+#   0->stdin 1->stdout 2->stderr 3,4,.. for next files  ->Process uses these fd for operations such as reading and writing
+#   File descriptor!=file   ->It'sjust a process-level handle to an open source
+
+'''File System Calls'''
+# Common Calls are: (Execution order is 1->2/3->4)
+'''open()  ->used to check file what os asked and check permissions and if allowed then returns a file descriptor to it for more functionalities of it''' 
+'''read()  ->used to read the contetns of the file '''
+'''write()  ->used to write contents to the file'''
+'''close()  ->used to release the process's refernce to the open file'''
+# Mode Uses: 'a' for append, 'w' for write/replacing older content, 'r' for reading
+
+# Python can expose these from os interface:
+import os
+fd = os.open("data.txt", os.O_RDONLY)
+data = os.read(fd, 100)
+os.close(fd)                            # Here we are manually closing the refernce but if we forget then it could lead to resource leaks
+
+# (Simple way) With open keyword which handles close itself even our program runs successfully or ended in between(Safe):
+with open("data.txt", "r") as f:
+    data = f.read()
+# for write use the 'a' or 'w' mode and also file.write("hi") for 1 single line or lines=['l1','l2'] file.writelines(lines)
+
+'''File Permissions:'''
+# Generally we have 3 Permissions: read,(r) write(w), execute(x)
+# We have 3 users each having differnt fucntionalities:
+# 1.Owner: rwx
+# 2.Group: r-x
+# 3.Others: r--
+# All together permissions we can write then as rwxr-xr--
+
+#Ex:
+r,w,x=4,2,1
+# then the Owner will become rwx => 4+2+1 => 7
+# Group becomes r-x => 4+1 =>5 similarly Other becomes 4
+
+'''Inode: It is a filesystem data structure containing metadata about file and info used to locate file'''
+# Each Inode has a unique number.
+# File name != Inode as File name is a directory entry that refers to an inode while the indoe has all info except where is blocks stored and file name
+
+# Linux File System Structure Architecture Diagram
+# --------------------------------------------------
+"""
++-------------------------------------------------------------------------+
+|                              DIRECTORY                                  |
+|                                                                         |
+|  Maps human-readable file names to system inode numbers                 |
+|                                                                         |
+|  +------------------------+------------------------------------------+  |
+|  | File Name              | Inode Number                             |  |
+|  +------------------------+------------------------------------------+  |
+|  | "my_file.txt"          | #10482                                   |  |
+|  +------------------------+------------------------------------------+  |
++-----------------------------------|-------------------------------------+
+                                    |
+                                    v
++-------------------------------------------------------------------------+
+|                           INODE (#10482)                                |
+|                                                                         |
+|  +-------------------------------------------------------------------+  |
+|  | 1. METADATA                                                       |  |
+|  |                                                                   |  |
+|  |   - Permissions   : -rw-r--r-- (0644)                             |  |
+|  |   - File Size     : 4096 bytes                                    |  |
+|  |   - Owner (UID)   : 1000 (user)                                   |  |
+|  |   - Group (GID)   : 1000 (user)                                   |  |
+|  |   - Timestamps    : Access (atime), Modify (mtime), Change (ctime)|  |
+|  |   - Link Count    : 1                                             |  |
+|  +-------------------------------------------------------------------+  |
+|  | 2. BLOCK REFERENCES (Pointers)                                    |  |
+|  |                                                                   |  |
+|  |   - Direct Pointers    : [ Block #501 ] ---> Data Block 501       |  |
+|  |                        : [ Block #502 ] ---> Data Block 502       |  |
+|  |   - Indirect Pointers  : [ Block #789 ] ---> Multi-level Index     |  |
+|  +-----------------------------------|-------------------------------+  |
++--------------------------------------|----------------------------------+
+                                       |
+                                       v
++-------------------------------------------------------------------------+
+|                             DATA BLOCKS                                 |
+|                                                                         |
+|  +-------------------------+      +----------------------------------+  |
+|  | DATA BLOCK #501         |      | DATA BLOCK #502                  |  |
+|  | "Hello, World! This..." |      | "...is actual file contents."    |  |
+|  +-------------------------+      +----------------------------------+  |
++-------------------------------------------------------------------------+
+"""
+
+'''File Allocation'''
+# The File system must determine where file data is stored on disk, so it only allocates space for the files in different ways:
+# a.Contiguous allocation: A file Occupies consecutive blocks
+# ex:[10][11][12][13][14]
+#           +ve's                                                      -ve's
+#   -Excellent sequential access                              External fragmentation
+#   -Efficient direct/random access         Growing a file can be difficult if adjacent space is unavailable
+#   -Simple addressing
+
+# b.Linked Allocation: Fileblocks can be scattered. Each block points to the next block
+# ex:[10] → [27] → [4] → [19]
+#           +ve's                                                      -ve's
+#   -No need for contiguous free space                             Pointer overhead
+#   -Files can grow easily                                        Poor random access
+#                                                               A damaged pointer can affect the chain and get wrong results
+
+# c.Indexed Allocation: A seperate index block stores pointers to the file's data blocks
+# Ex:        Index Block
+        #    /    |    \
+        #   ↓     ↓     ↓
+        # [10]  [27]  [4]
+#           +ve's                                                                   -ve's
+#   -Supports direct access better than linked allocation         Index structure consumes additional storage.
+#   -File blocks need not be contiguous
+
+
+'''Links: Hard and Soft/Symbolic Links'''
+# See the links parts in the dox for more picture representation
+
+
+'''Mounting'''
+# A filesystem may exist on a disk partition, logical volume, network resource, etc.
+# Mounting makes that filesystem accessible at a directory in the existing filesystem hierarchy.
+# OS can combine filesystems into a unified directory hierarchy instead of seperate file systems, that's why mounting matters
+

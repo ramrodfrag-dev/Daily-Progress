@@ -1447,7 +1447,7 @@
         "kind": 5,
         "importPath": "Interview Concepts.OS&Linux",
         "description": "Interview Concepts.OS&Linux",
-        "peekOfCode": "TLB_lookup = t\nMemory_access = m\nTLB_hit_ratio = h\npage_table_lookup=p\nEAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum then the avg of the Page faults and page_table_lookups will be reduced\n'''File System(6/6)'''\n#",
+        "peekOfCode": "TLB_lookup = t\nMemory_access = m\nTLB_hit_ratio = h\npage_table_lookup=p\nEAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum then the avg of the Page faults and page_table_lookups will be reduced\n'''File System(6/6)'''\n# It organizes and manages data stored on persistent storage.\n# It handles Files, Directories, Metadata, Permissions, File access, Naming, Links,etc\nWorkFlow,\n#Python program",
         "detail": "Interview Concepts.OS&Linux",
         "documentation": {}
     },
@@ -1456,7 +1456,7 @@
         "kind": 5,
         "importPath": "Interview Concepts.OS&Linux",
         "description": "Interview Concepts.OS&Linux",
-        "peekOfCode": "Memory_access = m\nTLB_hit_ratio = h\npage_table_lookup=p\nEAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum then the avg of the Page faults and page_table_lookups will be reduced\n'''File System(6/6)'''\n#",
+        "peekOfCode": "Memory_access = m\nTLB_hit_ratio = h\npage_table_lookup=p\nEAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum then the avg of the Page faults and page_table_lookups will be reduced\n'''File System(6/6)'''\n# It organizes and manages data stored on persistent storage.\n# It handles Files, Directories, Metadata, Permissions, File access, Naming, Links,etc\nWorkFlow,\n#Python program\n    #   ↓",
         "detail": "Interview Concepts.OS&Linux",
         "documentation": {}
     },
@@ -1465,7 +1465,7 @@
         "kind": 5,
         "importPath": "Interview Concepts.OS&Linux",
         "description": "Interview Concepts.OS&Linux",
-        "peekOfCode": "TLB_hit_ratio = h\npage_table_lookup=p\nEAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum then the avg of the Page faults and page_table_lookups will be reduced\n'''File System(6/6)'''\n#",
+        "peekOfCode": "TLB_hit_ratio = h\npage_table_lookup=p\nEAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum then the avg of the Page faults and page_table_lookups will be reduced\n'''File System(6/6)'''\n# It organizes and manages data stored on persistent storage.\n# It handles Files, Directories, Metadata, Permissions, File access, Naming, Links,etc\nWorkFlow,\n#Python program\n    #   ↓\n# Python runtime",
         "detail": "Interview Concepts.OS&Linux",
         "documentation": {}
     },
@@ -1474,7 +1474,25 @@
         "kind": 5,
         "importPath": "Interview Concepts.OS&Linux",
         "description": "Interview Concepts.OS&Linux",
-        "peekOfCode": "EAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum then the avg of the Page faults and page_table_lookups will be reduced\n'''File System(6/6)'''\n#",
+        "peekOfCode": "EAT = (h * (t + m)) + ((1-h) * (t + m + p)) #see If the TLB Lookup is maximum then the avg of the Page faults and page_table_lookups will be reduced\n'''File System(6/6)'''\n# It organizes and manages data stored on persistent storage.\n# It handles Files, Directories, Metadata, Permissions, File access, Naming, Links,etc\nWorkFlow,\n#Python program\n    #   ↓\n# Python runtime\n#       ↓\n# OS interface / system calls",
+        "detail": "Interview Concepts.OS&Linux",
+        "documentation": {}
+    },
+    {
+        "label": "fd",
+        "kind": 5,
+        "importPath": "Interview Concepts.OS&Linux",
+        "description": "Interview Concepts.OS&Linux",
+        "peekOfCode": "fd = os.open(\"data.txt\", os.O_RDONLY)\ndata = os.read(fd, 100)\nos.close(fd)                            # Here we are manually closing the refernce but if we forget then it could lead to resource leaks\n# (Simple way) With open keyword which handles close itself even our program runs successfully or ended in between(Safe):\nwith open(\"data.txt\", \"r\") as f:\n    data = f.read()\n# for write use the 'a' or 'w' mode and also file.write(\"hi\") for 1 single line or lines=['l1','l2'] file.writelines(lines)\n'''File Permissions:'''\n# Generally we have 3 Permissions: read,(r) write(w), execute(x)\n# We have 3 users each having differnt fucntionalities:",
+        "detail": "Interview Concepts.OS&Linux",
+        "documentation": {}
+    },
+    {
+        "label": "data",
+        "kind": 5,
+        "importPath": "Interview Concepts.OS&Linux",
+        "description": "Interview Concepts.OS&Linux",
+        "peekOfCode": "data = os.read(fd, 100)\nos.close(fd)                            # Here we are manually closing the refernce but if we forget then it could lead to resource leaks\n# (Simple way) With open keyword which handles close itself even our program runs successfully or ended in between(Safe):\nwith open(\"data.txt\", \"r\") as f:\n    data = f.read()\n# for write use the 'a' or 'w' mode and also file.write(\"hi\") for 1 single line or lines=['l1','l2'] file.writelines(lines)\n'''File Permissions:'''\n# Generally we have 3 Permissions: read,(r) write(w), execute(x)\n# We have 3 users each having differnt fucntionalities:\n# 1.Owner: rwx",
         "detail": "Interview Concepts.OS&Linux",
         "documentation": {}
     },
