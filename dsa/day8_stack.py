@@ -116,3 +116,35 @@ is found now and all elements in the stack are lower than this element then all 
 
 # so, like wise in each layer we would know until this layer which is smaller if the elements above is deleted also.
 
+
+# 6-10-26 (DSA Day 37)
+
+'''Max score of the parantheses'''
+# Leetcode:856  ->Here we are given with a string which is valid for sure and we have to find it score
+# "()" has score 1.
+# AB has score A + B, where A and B are balanced parentheses strings.
+# (A) has score 2 * A, where A is a balanced parentheses string.
+
+## Intuition: Here we will use stack as they are paranthesis and then First we think adding the paranthesis in it and if we get calculate whent there is right paranthesis but how to keep track how many inner brackets are there in each and in the A+B format or AB format?
+# So, we are here storing the values in the stack so that at each level we can checkare there any inner subbrackets before if yes multiply the score with 2 and if not leave it and at last add all those things to get result
+
+def scoreOfParentheses(self, s: str) -> int:
+    stack=[]
+    score=0
+
+    for i in s:
+        if i=='(':
+            stack.append(-1)
+        else:
+            score=0
+            while stack[-1]!=-1:
+                score+=stack.pop()      # Here add all scores until -1 comes as we are getting all the inner brakets a,b scores(()())
+            
+            if score==0:
+                stack[-1]=1
+            else:
+                stack[-1]=2*score       # if the score!=-1 then there are some inner brackets and we multiply those score with 2 and put in the stack
+    
+    return sum(stack)       # Here we are summing because there are left overs like ()() so we need to combine them and give result
+
+

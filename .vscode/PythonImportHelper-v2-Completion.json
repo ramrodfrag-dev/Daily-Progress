@@ -1074,6 +1074,15 @@
         "documentation": {}
     },
     {
+        "label": "scoreOfParentheses",
+        "kind": 2,
+        "importPath": "dsa.day8_stack",
+        "description": "dsa.day8_stack",
+        "peekOfCode": "def scoreOfParentheses(self, s: str) -> int:\n    stack=[]\n    score=0\n    for i in s:\n        if i=='(':\n            stack.append(-1)\n        else:\n            score=0\n            while stack[-1]!=-1:\n                score+=stack.pop()      # Here add all scores until -1 comes as we are getting all the inner brakets a,b scores(()())",
+        "detail": "dsa.day8_stack",
+        "documentation": {}
+    },
+    {
         "label": "Queue",
         "kind": 6,
         "importPath": "dsa.day9_queue",

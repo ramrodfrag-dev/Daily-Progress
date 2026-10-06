@@ -243,6 +243,8 @@ print("Hello", flush=True)      # -> 2 hello are printed as 2 processes are runn
 # fork() creates a new process and return 0 to child process and the pid of the child to the parent in order to keep track of it.
 # exec() replaces the current process's program image with another program, so with same pid only the program in it is completely changed.
 
+# fork returns 0 for child process and pid no for parent to keep track of child but the execute does not return anything.
+
 executable = "/bin/ls"
 args = ["ls", "-la"]
 env = os.environ
@@ -913,3 +915,12 @@ r,w,x=4,2,1
 #
 # Time-sharing:
 #     Fair time slices for interactive users/processes
+
+'''Exception vs Interrupt'''
+# Interrput occurs due to outside entity user, or hardware while the Exception occurs due to the error in the process itself
+
+'''Maskable and non-maskable Interrupts'''
+# If a high priority interrupt signal comes then it is non maskable so, these must be resolved first inorder to resume previous execution
+# While a low priority interrupt comes then we can mask it(Disable and then enable) to do it in later stages
+# There will be a Interrupt flag so, if one process is being handled then then interrupt flag is 1. If it is handled then the flag is set to 0 and others can not raise interrupts.
+

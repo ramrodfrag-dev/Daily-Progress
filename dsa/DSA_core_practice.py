@@ -769,3 +769,6 @@ def pivotIndex(self, nums: list[int]) -> int:
 
 '''Remember:'''
 # log n solution usually means binary search or some sort of divide and conquer.
+
+
+
