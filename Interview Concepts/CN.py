@@ -165,3 +165,159 @@
 # MAC address: Used primarily for local network delivery.(Switches uses this)
 # IP address: Used for logical addressing and routing between networks.(Routers uses this)
 
+
+'''Switch vs Hub'''
+# Switch forwards intelligently using MAC address(Layer 2) Using Mac lookup table(MAC->Port No)
+# Hub broadcasts incoming data to all ports(Physical layer) Dumb way to send
+
+# Our computer gets the Ip address of the home router when it is connected to that and when it wants to send some data it check whether the dest ip is within the network or outside. If outside then our computer asks who has this ip then 
+#- our home router answers with its mac address, Now our computer packs teh data with a frame and place the dest mac to our home router default gateway.
+# Our computer uses ARP(Address Resolution Protocol) to covert the IP->MAC. ANd it also has the arp cache so that it can use it when needed for the next time, without performing arp again.
+
+### Note: ARP only works for IPv4. IPv6 uses the NDP(Neighbor Discovery Protocol) for this task.
+# We do not need any to know the final destination's mac address. We only need to know Final dest IP and also next HOP's MAC address(Found by IP by ARP)
+# Each router has 2 tables one is What should be next HOP Ip address to reach final IP add(Routing table) and then it sees the MAC address related to the IP to send next(ARP cache)
+
+'''IP(Internet Protocol): IPv4, IPv6'''
+# IP primary responsibilities are: logical addressing, packet forwarding and routing through network
+# Ip is connectionless, best effort, does not gurantee delivery or ordering of packets or any retransmit of lost packets
+# So, thats's why we have TCP up on the IP to look after all the remaining  needs.
+
+# Therefore, IP-> addressing + routing, TCP-> reliability
+
+'''IPv4(32bits addresses)'''
+# Ex: 192.168.1.10 ->4 decimal Octets(Each octet is from 0-255) Decimal notations 
+# Address structure:  ->Divided in to 2 portions
+# Network portion | Host portion  -> The boundary is determined by the Subnet mask/prefix length(New style)
+# Ex: 192.168.1.10/24 ->24bits is given to Network and 8 bits to host
+
+# The process of dividing by the number /24(Prefix length) is new architectue. FOr old one there are 5 classes and each class has already predefined network and host bits.see in dox
+
+'''Private IPv4 Address'''
+# This is one of the way which we can use to counter less number of IP's.
+# Idea is like there will be some private addresses and are only intended for internal networks and are not directly routable acorss public
+#  10.0.0.0/8   172.16.0.0/12   192.168.0.0/16->For home addresses
+# These are present in many homes identical but upon these there will be a public IP which is routed in public instead of it. It maps to many devices with the private IP's
+
+# Note: the conversion of private and the public is done by the default gateway router by using the NAt(Network Addressing Translator)
+# Private devices(Many devices and many private IP's)
+#       ↓             ->Private Ip used inside the private network
+#    Router/NAT
+#       ↓
+#  Public IP          ->These are used globally for communication
+#       ↓
+#    Internet
+
+
+'''IPv6(128bits addresses)'''
+# Ex: 2001:db8::1 (Hexadecimal notation)
+
+'''# | IPv4 | IPv6 |
+# | 32-bit | 128-bit |
+# | Decimal notation | Hexadecimal notation |
+# | Limited address space | Extremely large address space |
+# | ARP(Address resolution protocol) | NDP(Neighbor Discovery Protocol) |
+# | Broadcast exists | No traditional broadcast(Anycast is there) |'''
+
+
+
+'''Subnetting'''
+# Subnetting divides an IP network into smaller logical networks by taking the host bits and convert to the Network bits
+# The hosts per network decreases but he no. of networks increases thats why its called subnetting.
+
+# Total addresses = 2^(32 - prefix)=256 ->The prefix is 24 (in /24)
+# if we take 2 bits and add them to network then the total network bit becomes 26 so,
+# 2^(32-26)=64 See the 256 is divided in to 4 parts with 64 hosts each.
+# Usable hosts = total addresses - 2  -> as 1 for network IP(first bit is 0) and other for broadcating IP(last bit is 1)
+# Now, for /26=> 64 - 2 = 62 usable hosts ->Here /24 is bigger network and /26 is smaller network
+
+
+'''CIDR(class less Inter-Domain Routing)'''
+# The process of using the prefix Notations /24 or /26 is this thing instead of using fixed classes this is better because:
+#1. SOlves less Ip addresses things
+#2. give exact amount of ips for users when asked instead of giving many additional ip's (in classes)
+
+
+''' 1.Default Gateway: A host needs to know where to send traffic destined outside its local subnet.That device is called default gateway. This is immediately the first router(home router) to send data to.'''
+# How our device or host decide the dest ip is inside the network or outside?
+# => We take the subnet mask and then perform bitwise and on both the local ip address(host one) and the dest ip. If both are same then same network otherwise differnt.
+# Subnet mask is got like: for /26: 11111111 11111111 11111111 11000000 ->see 26 1's and other 0's
+# Now if we calculate it will be 255.255.255.192 ->Subnet mask
+
+# If the dest ip is same as that of device then it sends packet through the switch otherwise it sends to default router by adding a frame around it by the routers mac address as dest mac.
+
+
+'''Routing'''
+# Which path/next hop should a packet take toward its destination network?
+# Routers maintain routing tables. => (dest-IP ->next hop Ip/Interface)
+
+
+### Some Important points:
+# -> Longest prefix match: A router may have multiple matching routes. It chooses the route with the longest matching prefix. max digits must match
+# If no such matches then he default route is commonly represented as: (0.0.0.0/0)
+# -> NAT(Netwrok Address Translation): Converts the Ip address to the mac addres by asking the neighbours by broadcating the Ip and getting the response
+# Laptop(192.168.1.10:50000) -> NAT -> Public IP(203.x.x.x:40001)
+# -> PAT / NAT Overloading: Port Address translation: In private networks there are many devices so, they share the same IPv4, so the router must distinguish all devices by using the ports.
+# SO, private ip <=> public ip  ->NAT
+# and private ip <=> port no  ->PAT
+# NAT is very useful because it brings the concepts of private networks and make more and more devices use same public ip. So, it solves less ip problem and all devices do not require seperate public ipv4
+#*****  NAT!=Firewall  ->The NAT may also implement firewall rules, but NAT itself is address/port translation
+
+
+'''| Switch | Router |
+|---|---|
+| Primarily Layer 2 | Primarily Layer 3 |
+| Uses MAC addresses | Uses IP addresses |
+| Connects devices/networks within local topology | Connects different IP networks |
+| Maintains MAC table | Maintains routing table |
+| Forwards frames | Forwards packets |'''
+
+
+'''How routing of packets and frames happen(Journey):'''
+# 1. If MAC matches Router:
+#    Strip Layer 2 -> Read Layer 3 IP -> Routing Table -> ARP Cache -> Rewrite MACs -> Forward out.
+# 2. If MAC DOES NOT match Router:
+#    The router drops the packet immediately.
+# 3. If a Switch gets a frame:
+#    It reads the Destination MAC, checks its MAC Address Table, and forwards the frame out the matching port.
+
+
+"""
+[ LAPTOP ]
+  │
+  ├─► Builds IP Packet: [Src IP: 192.168.1.10 | Dest IP: 10.0.2.5]
+  ├─► Bitwise AND check shows Dest IP is outside local subnet.
+  ├─► Checks *****ARP Cache for Gateway IP (192.168.1.1) -> MAC: R1-MAC
+  └─► Wraps frame: [Src MAC: Laptop-MAC | Dest MAC: R1-MAC]
+        │
+        ▼
+[ SWITCH 1 (Layer 2) ]
+  │
+  ├─► Reads ONLY Destination MAC (R1-MAC).
+  ├─► Checks ****MAC Address Table: R1-MAC is on Port 4.
+  └─► Forwards frame OUT Port 4 untouched (Does NOT read IP header or change MACs).
+        │
+        ▼
+[ ROUTER (Layer 3) ]
+  │
+  ├─► Destination MAC matches Router MAC?
+  │     ├── NO  ──► [ DROP PACKET IMMEDIATELY ]
+  │     └── YES ──► Strips Layer 2 header.
+  │
+  ├─► Reads Destination IP (10.0.2.5).
+  ├─► Searches *****Routing Table -> Next-Hop IP: 10.0.2.5 on Interface LAN-2.
+  ├─► Searches ARP Cache for 10.0.2.5 -> MAC: Server-MAC.
+  ├─► Rewrites Layer 2 header: [Src MAC: Router-LAN2-MAC | Dest MAC: Server-MAC].
+  └─► Forwards new frame out Interface LAN-2.
+        │
+        ▼
+[ SWITCH 2 (Layer 2) ]
+  │
+  ├─► Reads Destination MAC (Server-MAC).
+  ├─► Checks MAC Address Table: Server-MAC is on Port 2.
+  └─► Forwards frame OUT Port 2 untouched.
+        │
+        ▼
+[ SERVER ]
+  │
+  └─► Destination MAC matches Server MAC -> Strips Layer 2 -> Processes IP Packet!"""

@@ -1083,6 +1083,15 @@
         "documentation": {}
     },
     {
+        "label": "max_palin",
+        "kind": 2,
+        "importPath": "dsa.day8_stack",
+        "description": "dsa.day8_stack",
+        "peekOfCode": "def max_palin(l,r):\n    global longest,start,end\n    while l>=0 and r<len(s) and s[l]==s[r]:\n        if r-l+1>longest:\n            longest,start,end=r-l+1,l,r\n        l-=1\n        r+=1\nfor i in range(len(s)):\n    # For odd cases:\n    max_palin(i,i)",
+        "detail": "dsa.day8_stack",
+        "documentation": {}
+    },
+    {
         "label": "Queue",
         "kind": 6,
         "importPath": "dsa.day9_queue",

@@ -460,3 +460,13 @@ see all the elements are in increasing or not. For it you need to use the recurs
 
 
  
+## 8-10-2026(Day39)
+
+#### '''Longest Palindrome substring: Leetcode(5)'''
+- Here we are given with a string and we have to tell which is the longest palindrome in it.
+- Intuition: Always remember when there are paranthesis think of stacks and when there are Palindrome think of taking 2 pointer and traversing 1 from front and 1 from back.
+- But if we do 1 from front and 1 from back in this question then the over all complexity will become n^2 * n as n is for checking palindrome and the n^2 is for the selection of all palindrome of all lengths in the worst case complexity.
+
+- So, there's other way to think when asking about palindrom and (longest or no.of palindromes or ways) are asked:
+- => We will traverse the given string adn at each character we will expand towards the both sides by pointers and check whether the given string is a palindrome or not.
+

@@ -148,3 +148,77 @@ def scoreOfParentheses(self, s: str) -> int:
     return sum(stack)       # Here we are summing because there are left overs like ()() so we need to combine them and give result
 
 
+
+
+# 7-10-2026 (DSA Day 38)
+
+'''Longest Valid paranthesis'''
+# Leetcode 5:
+
+s=")()())()()(" # SO what is the longest valid palindrome of the string which is 4 here.
+
+###Intuition:
+# ->First for '(' bracket put this directly into the stack
+# ->If we encounter ')' then we will check whether we have numbers below if yes add all those until we find end of array or other character then if the character is '(' then add 2 to the score and pop the '(' and then check if there are any more numbers below the '(' and if yes add them and finally append score.
+# ->If the we did not encounter '(' then we will reappend the score we have taken and then append the closing bracket finally
+
+#                                  Char in String
+#                                       │
+#                    ┌──────────────────┴──────────────────┐
+#                    │                                     │
+#              char == '('                           char == ')'
+#                    │                                     │
+#                    ▼                                     ▼
+#              stack.append('(')                      score = 0
+#                    │                                     │
+#                    │                          ┌──────────┴──────────┐
+#                    │                          │ Pop & sum pre-ints: │
+#                    │                          │ score += stack.pop()│
+#                    │                          └──────────┬──────────┘
+#                    │                                     │
+#                    │                           ┌─────────┴─────────┐
+#                    │                           │ stack[-1] == '('? │
+#                    │                           └────┬──────────┬────┘
+#                    │                             Yes│        No│
+#                    │                                ▼          ▼
+#                    │                           MATCH!     UNMATCHED!
+#                    │                         1. score+=2  1. if score>0:
+#                    │                         2. stack.pop()    append(score)
+#                    │                         3. Pop/add   2. append(')')
+#                    │                            prev-ints
+#                    │                         4. append(score)
+#                    │                                │          │
+#                    └────────────────────────┬───────┴──────────┘
+#                                             │
+#                                             ▼
+#                                   Loop end: max(ints in stack)
+
+
+
+
+# 8-10-2026 (DSA Day 39)
+
+'''Longest Palindrome substring: Leetcode(5)'''
+# Here we are given with a string and we have to tell which is the longest palindrome in it.
+## Intuition: Always remember when there are paranthesis think of stacks and when there are Palindrome think of taking 2 pointer and traversing 1 from front and 1 from back.
+# But if we do 1 from front and 1 from back in this question then the over all complexity will become n^2 * n as n is for checking palindrome and the n^2 is for the selection of all palindrome of all lengths in the worst case complexity.
+
+# So, there's other way to think when asking about palindrom and (longest or no.of palindromes or ways) are asked:
+# => We will traverse the given string adn at each character we will expand towards the both sides by pointers and check whether the given string is a palindrome or not.
+
+longest,start,end=0,0,0
+def max_palin(l,r):
+    global longest,start,end
+    while l>=0 and r<len(s) and s[l]==s[r]:
+        if r-l+1>longest:
+            longest,start,end=r-l+1,l,r
+        l-=1
+        r+=1
+
+for i in range(len(s)):
+    # For odd cases:
+    max_palin(i,i)
+    # For even cases:
+    max_palin(i,i+1)
+
+'''This is one of most important pattern of expanding the palindrome and checking instead of always reducing the string from both sides and checking it'''
