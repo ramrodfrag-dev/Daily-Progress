@@ -95,6 +95,7 @@
 # Congestion Control: Network-driven protection mechanism preventing a sender from overloading intermediate router queues using the Congestion Window (cwnd).
 
 
+'''TCP flow control and the congestion control Mechanisms used by TCP to limit the user'''
 # [ Incoming Data Stream ] What happens when the packets are being lost by the device or by the network routers due to excess buffers overload
 #           |
 #           +---> Receives `rwnd = 0` in ACK Header? 
@@ -321,3 +322,152 @@
 [ SERVER ]
   │
   └─► Destination MAC matches Server MAC -> Strips Layer 2 -> Processes IP Packet!"""
+
+
+'''TCP(Transmission Control protocol)'''
+# TCP is connection-oriented. Before normal application data is exchanged, TCP establishes a logical connection between two endpoints.
+# A TCP endpoint is identified by: (IP address + port) and also the connection is identifies by (source IP, Source Port, Dest IP, Dest Port)
+# It responsibilties are establishes a connection, reliable delivery, Ordered delivery, detect lost data, retransmit them, flow control, congestion control, Connection Termination.
+# IP only gurantees bset of delivery thats it. it does not gurantee the delivery, ordering, Duplicate prevention, retransmission, flow control, congestion control
+# So, TCP adds these functionalities over the IP layer.
+
+# The TCP gets the data in unordered way but it puts them in order with the help of the sequence numbers and it then sends it to application.(Ordering Mechanism)
+
+
+'''=======================================================================================
+   CONCEPT / FEATURE                    TCP                                UDP
+=======================================================================================
+1. Reliability           ──►  [ 100% Guaranteed Delivery ]   ──►  [ Best-Effort / Unreliable ]
+2. Connection            ──►  [ Handshake Required (SYN) ]   ──►  [ Connectionless (No Handshake) ]
+3. Data Format           ──►  [ Continuous Byte Stream   ]   ──►  [ Discrete Message Packets ]
+4. Flow Control          ──►  [ Active (Sliding Window)  ]   ──►  [ None (Sends as fast as can) ]
+5. Congestion Control    ──►  [ Active (Reno, CUBIC, etc.)]  ──►  [ None (Ignores network load) ]
+6. Ordering              ──►  [ Guaranteed Order (Seq #s)]   ──►  [ Out of Order / No Guarantee ]
+7. Header Overhead       ──►  [ Large Header (20-60 Bytes)]  ──►  [ Tiny Header (8 Bytes Fixed) ]
+8. Speed & Latency       ──►  [ Slower (High Overhead)   ]   ──►  [ Ultra-Fast (Minimal Overhead) ]
+9. Transmission Modes    ──►  [ Unicast Only (1-to-1)    ]   ──►  [ Unicast, Broadcast, Multicast]
+10. Best Used For        ──►  [ Web, File Transfer, Email]   ──►  [ Gaming, Live Video, DNS, VoIP]
+======================================================================================='''
+
+# Before sending any data the TCP ensures both the devices are connected based on the logical connection btw end points(IP address + port)
+# TCP connection has a common combination to identify the connetion(Source IP, Source port, Dest Ip, Dest port)
+
+# In the 3 way handshake the TCP client first sends a message to the 
+# Sending packets limit of TCP = min(receive window, congestion window)
+
+  
+'''What each layer asks below layer'''  
+# +-------------------------------------------------------+
+# |  Application Layer (e.g., HTTP, SSH)                  |  Demands 100% reliable data
+# +-------------------------------------------------------+
+# |  TCP Layer (Transport Layer)                          |  Adds Sequence #s, ACKs, Retransmissions
+# +-------------------------------------------------------+
+# |  IP Layer (Network Layer)                             |  Sends packets on a "Best-Effort" basis
+# +-------------------------------------------------------+
+
+
+'''TCP does not have any application level boundaries'''
+# TCP is just a bit stream. Whatever data is gotten into the TCP it will pack certain bits irrecstive of the importance of application layer's prefernce.And when the bit strem is received by the receiver TCP the it puts in a ordered stream and send it to App
+# [ Application ]  Message 1: "Hello"   Message 2: "World"
+#                        │                   │
+#                        ▼                   ▼
+# [ TCP Stream  ]  [ H e l l o W o r l d ]  (Continuous byte stream in buffer)
+#                        │
+#                        ▼
+# [ IP Packet   ]  [ IP Header | TCP Header | H e l l o W o r l d ]  (Grouped into a packet)
+#                        │
+#                        ▼
+# [ Physical    ]  01001000 01100101 01101100 ... (Sent bit-by-bit as electrical/optical signals)
+
+#See how it just puts every packet in to same buffer and send but at last everything will be in order like helloworld only but what is 1st or 2nd word is not identifies by tcp.
+# IP can sent the whole buffer in any way withrespect to the available buffer in the networks bottleneck capacity.
+
+'''Complete TCP life cycle:'''
+#     CONNECTION ESTABLISHMENT
+
+# Client                  Server
+
+# SYN ─────────────────────────→            ->Client sends the synchronization signal to connect
+#      ←────────────────── SYN-ACK          ->Server accepts the signal and also sends servers syn to the client
+# ACK ─────────────────────────→            ->Client accepts the syn signal from the server by sending the ack to the server.
+
+#            DATA TRANSFER
+
+# Data ────────────────────────→            ->First any of those 2 client or a server can send the data and other accepts it.
+#      ←──────────────────── ACK
+# Data ────────────────────────→
+#      ←──────────────────── ACK
+
+
+#          CONNECTION CLOSE
+
+# FIN ─────────────────────────→             ->First any one of the client or the server will send the Finn signal stating it doe snot have anything to send and wanted to close this half signal(Meaning other half still exists and it can receive Info)
+#      ←──────────────────── ACK             ->The other part accepts the finn and then after its completion it sends the finn signal
+#      ←──────────────────── FIN
+# ACK ─────────────────────────→
+
+#               TIME_WAIT                    ->This is used after the Finn signal is used as it means it is still open to receive the acknowledgements which are slow and present in network (Protects against old delayed segments)
+
+
+'''Synchronize signal contains'''
+# 1. SYN = 1
+# 2. Sequence Number = y        ->1 and 2 are present in the syn signal and it means it wants to eastablish a connection and my sequence number is y
+
+# 3. ACK = 1
+# 4. Acknowledgment Number = y + 1      ->3 and 4 are present in acknowlegment signal and it means it has accepts the synchronize and the ack number is I have received until the y and I am waiting for y+1 block
+
+# -> In the syn-ack both are present.
+# -> Sequence numbers are put the for the ordered byte transmission and also for finding out the missing segemnts in the stream.
+
+
+'''Retransmittion Types:'''
+# 1. Timeout-based retransmission: Here if the timer for the waiting of acknowlegement goes off then the packet is resent again.
+# 2. Fast retransmission: Here if it receives multiple duplicate ACK's then it shows there is gap and retransmits from that packet again without waiting for the timer to go off
+
+'''Note: The reliability of TCP is maintained by the Sequence number, ACK's, Retransmission, Checksum, flow control, congestion control'''
+# The effective amount of data TCP can have in flight is affected by both the receiver window and the network Bottle neck window
+
+'''TCP:
++-------------------------------------------------------------------+
+|               Source Port               |    Destination Port     |  <-- 32 bits (4 bytes)
+|                [16 bits]                |        [16 bits]        |     [Port Numbers]
++-------------------------------------------------------------------+
+|                          Sequence Number                          |  <-- 32 bits (4 bytes)
+|                             [32 bits]                             |     [Byte Ordering]
++-------------------------------------------------------------------+
+|                       Acknowledgment Number                       |  <-- 32 bits (4 bytes)
+|                             [32 bits]                             |     [Expected Next Byte]
++-------------------------------------------------------------------+
+| Header | Reserved | U|A|P|R|S|F |         Receive Window          |  <-- 32 bits (4 bytes)
+| Length |          | R|C|S|S|Y|I |                           |     [Flow Control Buffer]
+| [4b]   |   [6b]   | G|K|H|T|N|N |            [16 bits]            |
+|        |          |  Flags [6b] |                                 |
++-------------------------------------------------------------------+
+|            Checksum             |          Urgent Pointer         |  <-- 32 bits (4 bytes)
+|            [16 bits]            |            [16 bits]            |     [Integrity & Priority]
++-------------------------------------------------------------------+
+|                               Options                             |  <-- 0 to 320 bits
+|                           [0 to 40 bytes]                         |     (e.g., MSS, Window Scale)
++-------------------------------------------------------------------+
+
+=====================================================================
+                      CONTROL FLAGS SUMMARY (6 bits)
+=====================================================================
+  URG (1 bit) ---> Marks urgent data (uses Urgent Pointer field)
+  ACK (1 bit) ---> Validates the Acknowledgment Number field
+  PSH (1 bit) ---> Pushes buffered data directly to the application
+  RST (1 bit) ---> Forcefully resets/aborts the connection
+  SYN (1 bit) ---> Synchronizes sequence numbers to initiate connection
+  FIN (1 bit) ---> Gracefully terminates the connection
+====================================================================='''
+
+
+# TCP connection in Python:
+import socket   # AF_INET->IPv4  and SOCK_STREAM->TCP-style byte stream
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # It returns the descriptor to work with.
+
+# Server performs: bind(), listen(), accept(), recv(), send(), close()
+# Client performs: connect(), send(), recv(), close()
+
+server.recv(1024) # Only the 1024 byte is not received instead all the bytes which are available in until that point is sent as TCP is a byte stream and sends everything.
+

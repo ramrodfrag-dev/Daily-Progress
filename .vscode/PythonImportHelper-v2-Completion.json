@@ -257,6 +257,15 @@
         "documentation": {}
     },
     {
+        "label": "socket",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "socket",
+        "description": "socket",
+        "detail": "socket",
+        "documentation": {}
+    },
+    {
         "label": "time",
         "kind": 6,
         "isExtraImport": true,
@@ -1224,6 +1233,15 @@
         "description": "dsa.DSA_core_practice",
         "peekOfCode": "b = copy.deepcopy(a)\n# a ───► [ ───► [1,2], ───► [3,4] ]\n# b ───► [ ───► [1,2], ───► [3,4] ]\n# Now if we change in one object then other will remain untouched it does not reflects any changes\n\"Slow and fast num\"\n# Generally start both pointers at one place so that the floyds algorithm works good, otherwise some errors may come.\n#\n#\n#\n#",
         "detail": "dsa.DSA_core_practice",
+        "documentation": {}
+    },
+    {
+        "label": "server",
+        "kind": 5,
+        "importPath": "Interview Concepts.CN",
+        "description": "Interview Concepts.CN",
+        "peekOfCode": "server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # It returns the descriptor to work with.\n# Server performs: bind(), listen(), accept(), recv(), send(), close()\n# Client performs: connect(), send(), recv(), close()\nserver.recv(1024) # Only the 1024 byte is not received instead all the bytes which are available in until that point is sent as TCP is a byte stream and sends everything.",
+        "detail": "Interview Concepts.CN",
         "documentation": {}
     },
     {
