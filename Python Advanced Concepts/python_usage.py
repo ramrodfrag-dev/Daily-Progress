@@ -31,3 +31,24 @@ print(y)
 # global is used when we need to acess the variables which are not in any parent outer loops.
 # nonlocal is used to acess the variables which is in parent outer loops.
 
+
+
+'''How to use the class keyword'''
+
+# When we want to initialize a class we will use the class keyword and some constructor and also some methods and variables in it.
+# Ex:
+
+class anjan:
+    def __init__(self):
+        st={}
+        op=True
+
+# When we want to inherit from other classes then we use the () and put the parent class name inside the brackets
+# Ex:
+
+class hero(anjan):
+    def __init__(self):
+        super().__init__
+        print("hello")
+        
+        

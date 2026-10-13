@@ -295,3 +295,12 @@ class Solution:
             return root
 
         return dfs(0, len(inorder) - 1)
+
+
+
+
+'''Prefix Tree or the Digital tree or Trie'''
+# Tries are particularly effective for tasks such as autocomplete, spell checking, and IP routing, offering advantages over hash tables due to their prefix-based organization and lack of hash collisions. Every child node shares a common prefix with its parent node, and the root node represents the empty string.
+
+
+

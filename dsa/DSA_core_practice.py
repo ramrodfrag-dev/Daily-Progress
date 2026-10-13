@@ -772,3 +772,94 @@ def pivotIndex(self, nums: list[int]) -> int:
 
 
 
+
+# 12-10-2026(Day 40)
+'''Applying bit-wise operations on the array and get maximum possible sum'''
+
+# Here we are given with an array and we can perform one operation any number of times.
+# Operation is select any two indices(i,j) and do nums[i]= nums[i] AND nums[j] and nums[j]= nums[i] OR nums[j]. Here the AND and OR are the bitwise operations performed on the array numbers.
+
+####Intuition:
+# If we closly look at the both indices numbers before and after the operation is performed then we can notice that total sum remains same, that is it is deducted from one number and added to other.
+# It happens like the bits. so we need to get maximum value and the maximum value of a n-bit number i only all the n-bits will be 1
+# With this we first take a 32 bit long arrray and calculate all the ones in each place of all the numbers combined.
+# Then now based on the integer given in the quesion we have to select some k numbers to do the sum of squares.
+# So, we check k numbers with all max possibilties of 1's
+# Ex:
+# count=[1,3,1,2,2], k=2 then:
+# 1st num= 11111 and the 2nd num=01011 as the count of 1's is limited and then finally the sum is calculated.
+# Learn how to find the 1's from a given integer number and how to left shift a number and add to a number and how to build a number from scatch if each position bit is known and some more operatons.
+
+'''nums & 1<<i      ->This tells whether the bit at ith position of nums is 1 or not. returns True if 1 else False'''
+
+#
+#
+#
+
+# 13-10-2026 (Day 41)
+'''Trie + DP (Word Break Optimization)'''
+
+# ==============================================================================
+# TRIE BASE TEMPLATE
+# ==============================================================================
+class TrieNode:
+    def __init__(self):
+        self.children = {}      # char -> TrieNode
+        self.endOfWord = False  # Valid word marker
+
+# For more code of how to search or how insert a word and check prefix exists see Leetcode 208
+
+'''# WORD BREAK LOGIC (Leetcode:139)'''
+# Goal: Check if string `s` can be partitioned using words from `wordDict`.
+
+#### Key Steps:
+# 1. Build Trie: Insert all `wordDict` words into a Trie for fast prefix matching.
+# 2. Match & Recurse: Traverse Trie starting at index `i`. Whenever `endOfWord == True`,
+#    recurse on `j + 1` for the remaining suffix.
+# 3. Memoization (DP): Cache result in `memo[i]` (True/False) to eliminate redundant 
+#    branching on overlapping prefixes (e.g., ["a", "aa", "aaa"]).
+
+#### Essential Code Pattern:
+'''
+memo = [None] * len(s)
+
+def search(i):
+    if i == len(s): return True      # Base case: reached string end
+    if memo[i] is not None: return memo[i] # DP cache hit
+    
+    curr = root
+    for j in range(i, len(s)):
+        if s[j] not in curr.children: break # Prefix path broken
+        curr = curr.children[s[j]]
+        
+        # Valid word match found -> test remaining suffix
+        if curr.endOfWord and search(j + 1):
+            memo[i] = True
+            return True
+            
+    memo[i] = False
+    return False
+
+return search(0)
+'''
+
+
+
+# 13-10-2026 (Day 42)
+'''Leetcode: 416 Partition array into 2 parts of equal sum'''
+
+###Intuition: If we need to get all the possible sums of elements taking any number of elements in a array can be done in this way.
+# ->Taking a set and putting each element one by one and while putting add it to entire elements present in it one by one including 0 to include only itself.
+
+def can_divide():
+    dp={0}
+    for i in range(len(nums)-1,-1,-1):
+        new_dp=set()
+        for t in dp:
+            if t+nums[i] == total:return True # type: ignore
+            new_dp.add(t+nums[i])
+            new_dp.add(t)
+        dp=new_dp
+        
+        
+        

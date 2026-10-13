@@ -1119,6 +1119,15 @@
         "documentation": {}
     },
     {
+        "label": "TrieNode",
+        "kind": 6,
+        "importPath": "dsa.DSA_core_practice",
+        "description": "dsa.DSA_core_practice",
+        "peekOfCode": "class TrieNode:\n    def __init__(self):\n        self.children = {}      # char -> TrieNode\n        self.endOfWord = False  # Valid word marker\n# For more code of how to search or how insert a word and check prefix exists see Leetcode 208\n'''# WORD BREAK LOGIC (Leetcode:139)'''\n# Goal: Check if string `s` can be partitioned using words from `wordDict`.\n#### Key Steps:\n# 1. Build Trie: Insert all `wordDict` words into a Trie for fast prefix matching.\n# 2. Match & Recurse: Traverse Trie starting at index `i`. Whenever `endOfWord == True`,",
+        "detail": "dsa.DSA_core_practice",
+        "documentation": {}
+    },
+    {
         "label": "anagram",
         "kind": 2,
         "importPath": "dsa.DSA_core_practice",
@@ -1182,6 +1191,24 @@
         "documentation": {}
     },
     {
+        "label": "search",
+        "kind": 2,
+        "importPath": "dsa.DSA_core_practice",
+        "description": "dsa.DSA_core_practice",
+        "peekOfCode": "def search(i):\n    if i == len(s): return True      # Base case: reached string end\n    if memo[i] is not None: return memo[i] # DP cache hit\n    curr = root\n    for j in range(i, len(s)):\n        if s[j] not in curr.children: break # Prefix path broken\n        curr = curr.children[s[j]]\n        # Valid word match found -> test remaining suffix\n        if curr.endOfWord and search(j + 1):\n            memo[i] = True",
+        "detail": "dsa.DSA_core_practice",
+        "documentation": {}
+    },
+    {
+        "label": "can_divide",
+        "kind": 2,
+        "importPath": "dsa.DSA_core_practice",
+        "description": "dsa.DSA_core_practice",
+        "peekOfCode": "def can_divide():\n    dp={0}\n    for i in range(len(nums)-1,-1,-1):\n        new_dp=set()\n        for t in dp:\n            if t+nums[i] == total:return True # type: ignore\n            new_dp.add(t+nums[i])\n            new_dp.add(t)\n        dp=new_dp",
+        "detail": "dsa.DSA_core_practice",
+        "documentation": {}
+    },
+    {
         "label": "piles",
         "kind": 5,
         "importPath": "dsa.DSA_core_practice",
@@ -1236,11 +1263,20 @@
         "documentation": {}
     },
     {
+        "label": "memo",
+        "kind": 5,
+        "importPath": "dsa.DSA_core_practice",
+        "description": "dsa.DSA_core_practice",
+        "peekOfCode": "memo = [None] * len(s)\ndef search(i):\n    if i == len(s): return True      # Base case: reached string end\n    if memo[i] is not None: return memo[i] # DP cache hit\n    curr = root\n    for j in range(i, len(s)):\n        if s[j] not in curr.children: break # Prefix path broken\n        curr = curr.children[s[j]]\n        # Valid word match found -> test remaining suffix\n        if curr.endOfWord and search(j + 1):",
+        "detail": "dsa.DSA_core_practice",
+        "documentation": {}
+    },
+    {
         "label": "server",
         "kind": 5,
         "importPath": "Interview Concepts.CN",
         "description": "Interview Concepts.CN",
-        "peekOfCode": "server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # It returns the descriptor to work with.\n# Server performs: bind(), listen(), accept(), recv(), send(), close()\n# Client performs: connect(), send(), recv(), close()\nserver.recv(1024) # Only the 1024 byte is not received instead all the bytes which are available in until that point is sent as TCP is a byte stream and sends everything.",
+        "peekOfCode": "server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # It returns the descriptor to work with.\n# Server performs: bind(), listen(), accept(), recv(), send(), close()\n# Client performs: connect(), send(), recv(), close()\nserver.recv(1024) # Only the 1024 byte is not received instead all the bytes which are available in until that point is sent as TCP is a byte stream and sends everything.\n#\n#\n'''UDP(User Datagram Protocol(4/7)'''\n# It is connectionless transport-layer protocol that sends independent datagrams without guaranteeing delivery, ordering, or retransmission\n# It provides:\n# 1.Source and destination ports",
         "detail": "Interview Concepts.CN",
         "documentation": {}
     },
@@ -1722,6 +1758,24 @@
         "documentation": {}
     },
     {
+        "label": "anjan",
+        "kind": 6,
+        "importPath": "Python Advanced Concepts.python_usage",
+        "description": "Python Advanced Concepts.python_usage",
+        "peekOfCode": "class anjan:\n    def __init__(self):\n        st={}\n        op=True\n# When we want to inherit from other classes then we use the () and put the parent class name inside the brackets\n# Ex:\nclass hero(anjan):\n    def __init__(self):\n        super().__init__\n        print(\"hello\")",
+        "detail": "Python Advanced Concepts.python_usage",
+        "documentation": {}
+    },
+    {
+        "label": "hero",
+        "kind": 6,
+        "importPath": "Python Advanced Concepts.python_usage",
+        "description": "Python Advanced Concepts.python_usage",
+        "peekOfCode": "class hero(anjan):\n    def __init__(self):\n        super().__init__\n        print(\"hello\")",
+        "detail": "Python Advanced Concepts.python_usage",
+        "documentation": {}
+    },
+    {
         "label": "func",
         "kind": 2,
         "importPath": "Python Advanced Concepts.python_usage",
@@ -1735,7 +1789,7 @@
         "kind": 2,
         "importPath": "Python Advanced Concepts.python_usage",
         "description": "Python Advanced Concepts.python_usage",
-        "peekOfCode": "def func2():\n    global y\n    y+=1\n    print(x)\nprint(y)\n# Here both executes.\n# global is used when we need to acess the variables which are not in any parent outer loops.\n# nonlocal is used to acess the variables which is in parent outer loops.",
+        "peekOfCode": "def func2():\n    global y\n    y+=1\n    print(x)\nprint(y)\n# Here both executes.\n# global is used when we need to acess the variables which are not in any parent outer loops.\n# nonlocal is used to acess the variables which is in parent outer loops.\n'''How to use the class keyword'''\n# When we want to initialize a class we will use the class keyword and some constructor and also some methods and variables in it.",
         "detail": "Python Advanced Concepts.python_usage",
         "documentation": {}
     }

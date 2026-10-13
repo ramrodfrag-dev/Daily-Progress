@@ -248,7 +248,7 @@
 # If the dest ip is same as that of device then it sends packet through the switch otherwise it sends to default router by adding a frame around it by the routers mac address as dest mac.
 
 
-'''Routing'''
+'''Routing(Part2/7)'''
 # Which path/next hop should a packet take toward its destination network?
 # Routers maintain routing tables. => (dest-IP ->next hop Ip/Interface)
 
@@ -382,7 +382,7 @@
 #See how it just puts every packet in to same buffer and send but at last everything will be in order like helloworld only but what is 1st or 2nd word is not identifies by tcp.
 # IP can sent the whole buffer in any way withrespect to the available buffer in the networks bottleneck capacity.
 
-'''Complete TCP life cycle:'''
+'''Complete TCP life cycle:(Part3/7)'''
 #     CONNECTION ESTABLISHMENT
 
 # Client                  Server
@@ -471,3 +471,119 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # It returns the des
 
 server.recv(1024) # Only the 1024 byte is not received instead all the bytes which are available in until that point is sent as TCP is a byte stream and sends everything.
 
+#
+#
+
+'''UDP(User Datagram Protocol(4/7)'''
+# It is connectionless transport-layer protocol that sends independent datagrams without guaranteeing delivery, ordering, or retransmission
+# It provides:
+# 1.Source and destination ports
+# 2. Message boundaries through datagrams
+# 3. Checksum for error detection
+
+# UDP provides light weight and minimalistic overhead of headers and other components as its header's are soo small, so these can be transferred easily.
+# Due to this minimalistic way many application use this UDP to build other Protocols like QUIC by implementing more features like reliability, congestion control, encryption.
+# The sender transmits datagrams independently. A datagram may arrive, arrive out of order, be duplicated, or be lost. UDP does not care about these. These all are checked by the Application
+# UDP is reliable only when the top application is made such a way as it does not as built in features
+
+# Sender                         Receiver
+#   |                                |
+#   |--------- UDP Datagram -------->|
+#   |--------- UDP Datagram -------->|
+
+
+'''QUIC: Communication Protocol'''
+# It is developed by google and is used in almost half of connections to google's servers.
+# It uses UDP as unlying Protocol and add extra features to it and make it better.
+# QUIC works hand-in-hand with HTTP/3's multiplexed connections, allowing multiple streams of data to reach all the endpoints independently.
+
+
+# UDP is used despite of chance of loosing data because sometimes every lost peice of data is not always useful when gaming or video conference where other new frames are important.
+# UDP allows the application to decide how to handle loss and delay
+# DNS also uses the UDP as it is very light weight and there is no need to send reliable info as if it misses also it can again ask it to send
+# DNS over HTTPS (DoH) and DNS over TLS (DoT) use different transport arrangements.
+# DNS is an application layer protocol which uses the TCP and UDP to communicate
+
+
+
+
+'''DNS+HTTP+HTTPS+TLS'''
+# DNS(Domain name system): which helps us to use the short names instead of using the ip addresses which is hard to remember.
+# These are generally asked by the browser and the qery may first go to the resolver and then to recursive resolver and ->Root server->TLS DNS server->Authoratative server
+# The DNS values can be stored as a cache in the browser or in the resolver, or other devices with a timer called TTL(Time to live) which specifies how long should it be there in cache before it must be updated
+
+# HTTP(Hypertext Transfer Protocol)
+# It is an application-layer protocol used for communication between clients and servers. It follows a request-response model
+# Client                         Server
+#   |                               |
+#   |--------- Request ------------>|
+#   |                               |
+#   |<-------- Response ------------|
+
+##Note: HTTP is stateless by default, each request is independently interpreted. Applications can maintain state using cookies, sessions,tokens, and databases
+
+# Syntax of communication: Request and Response
+'''
+GET /products HTTP/1.1        ->Request line: method,path,version
+Host: example.com             ->meta data
+Accept: application/json      ->Headers
+
+HTTP/1.1 200 OK                   ->Status line: version,status code, 
+Content-Type: application/json    ->Header explaining how the body will be there
+{"products": []}                  -> Actual body'''
+
+# HTTP methods see in the dox
+
+# Cookies and sessions: HTTP itself does not automatically remember a user's identity between requests
+# When we login the server creates a session ID which is stored in the cookie and it is always sent to the server with the request using which the server identifies it later in a stateless mechanism
+
+# HTTP/1.1
+# - Typically uses TCP.
+# - Supports persistent connections.
+# - Multiple connections are often used for parallel resource loading.
+# - Text-based message format.
+
+
+# HTTP/2
+# - Uses TCP, commonly secured with TLS.
+# - Binary framing and header compression.
+# - Multiplexes multiple streams over one connection.
+# - Still susceptible to TCP-level head-of-line blocking when packet loss delays the shared byte stream.
+
+
+# HTTP/3
+# - Uses QUIC over UDP.
+# - Integrates TLS 1.3 into QUIC's connection setup.
+# - Supports multiplexed streams with independent transport-level loss recovery.
+# - Avoids TCP's cross-stream head-of-line blocking.
+
+
+# HTTP uses the TLS as the security later. (HTTP 1 and 2 use the TLS explicitly whereas the HTTP 3 has an inbuilt TLS 1.3 in it along with several crytographic hashes in it)
+# TLS secures the communication through 3 major steps: 1.Confidentiality, 2.Integrity, 3.Authentication
+
+'''TLS Handshake
+Browser                         Server
+   |                                |
+   |--------- TCP handshake ------->|
+   |                                |
+   |--------- TLS ClientHello ----->|
+   |<-------- TLS ServerHello ------|
+   |<-------- Certificate, etc. ----|
+   |                                |
+   |    Validate certificate        |
+   |    Establish session keys      |
+   |                                |
+   |========= Encrypted HTTP =======|
+   '''
+   
+   # After the handshake the server and client exchange the symmetric session keys to protect HTTP messages.
+   
+# — Summary
+# - DNS: Resolves domain names using records, caching, and DNS servers.
+# - HTTP: Defines requests, responses, methods, headers, status codes, and application-level web communication.
+# - Cookies/sessions: Support state and identity across otherwise independent HTTP requests.
+# - HTTPS: HTTP protected by TLS.
+# - TLS: Provides confidentiality, integrity, and authentication.
+# - HTTP/1.1: Commonly HTTP over TCP, with persistent connections.
+# - HTTP/2: Multiplexes streams over TCP but retains TCP-level head-of-line blocking.
+# - HTTP/3: Uses QUIC over UDP, with reliable stream delivery and independent stream-level loss recovery.
