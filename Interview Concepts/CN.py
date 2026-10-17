@@ -558,7 +558,7 @@ Content-Type: application/json    ->Header explaining how the body will be there
 # - Avoids TCP's cross-stream head-of-line blocking.
 
 
-# HTTP uses the TLS as the security later. (HTTP 1 and 2 use the TLS explicitly whereas the HTTP 3 has an inbuilt TLS 1.3 in it along with several crytographic hashes in it)
+# HTTPS: HTTP uses the TLS as the security later. (HTTP 1 and 2 use the TLS explicitly whereas the HTTP 3 has an inbuilt TLS 1.3 in it along with several crytographic hashes in it)
 # TLS secures the communication through 3 major steps: 1.Confidentiality, 2.Integrity, 3.Authentication
 
 '''TLS Handshake
@@ -587,3 +587,5 @@ Browser                         Server
 # - HTTP/1.1: Commonly HTTP over TCP, with persistent connections.
 # - HTTP/2: Multiplexes streams over TCP but retains TCP-level head-of-line blocking.
 # - HTTP/3: Uses QUIC over UDP, with reliable stream delivery and independent stream-level loss recovery.
+
+

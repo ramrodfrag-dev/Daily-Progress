@@ -863,3 +863,25 @@ def can_divide():
         
         
         
+
+# 15-10-2026 (Day 43)
+'''Leetcode: Unique Paths'''
+# Q: We are given with a and we are placed at the starting point of grid and we need to move to the ground. Now what is the distinct number of ways to reach that spot and by moving right and bottom style moves
+
+# Intuition: The number of ways to reach any cell = ways from the right cell + ways from the bottom cell.
+# 1. Fill the bottom row with 1s because there is only one way to reach the destination by moving right.
+# 2. Fill the rightmost column with 1s because there is only one way to reach the destination by moving down.
+# 3. For every remaining cell, add the values of its right and bottom neighbors.
+# 4. The top-left cell contains the total number of unique paths through the grid.
+
+
+
+
+# 17-10-2026 (Day 44)
+'''Minimum no.of swaps required to make the array sorted'''
+# Here a unsorted array is given and generally a distinct array will be given. and if not then we have to use the cycles method to do this
+
+#General: First take a hash and put all elements along with their indexes and next sort the elements according to the given condition and finally:
+# Loop through the indexes and then check whether this element belongs to here or not with the help of sorted array and if ok then leave otherwise then with the help of hash see where is the element at that index currently and swap with that
+# Swap both the nums array and also update the hash accordingly. We need to update both because we need to know where exactly the current element of sorted array is right now in order to swap in the main array.
+# Be careful when there we have to update both as we might use one variable to update other thing but that variable is also being updated.

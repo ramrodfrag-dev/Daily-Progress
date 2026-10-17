@@ -77,6 +77,13 @@ dicts=sorted(dicts.items(),key=lambda x:x[1]) # Here we get the output as list i
 " The important thing is that sorted() itself always returns a new list, regardless of whether you're sorting tuples, objects, dictionaries, strings, etc,"
 "while the .sort sorted the elements inplace instead of creating new structure, but only some data structure have .sort and for others like dictionaries we have to use sorted function "
 
+
+# We can also use the lambda for writing the custom sort and other functions:
+nums=[100,23, 20000,34,78,99]   #->If we want to sort wrt to some condition
+def funct():
+    pass
+nums.sort(key=lambda x:(funct,x))   # Here first with respect to that fucntion which number is small it puts that number when comparing and also if there is tie then it goes to second parameter to make a tie breaker
+
 #
 #
 #
