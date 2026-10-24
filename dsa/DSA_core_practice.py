@@ -959,4 +959,56 @@ def check(nums1,nums2): #nums1 is checking array and num2 is the sorted array
 # Ex: prefix is [....7,9,12,22,....] see 7 and 12
 # 12 mod 5==2 and 7 mod 5==2 so, there exists an array whose sum is divisible by k. So, if we closly see other examples then we get like 22mod5==2 and 12mod5==2 so we will be having a multiple of 5 sum in between which is 10 here.
 # We will be storing the remainders and along with the number of times they appeared to identify many prefixes whose remainder is same and then counts those in linear time to get answer
-# Each remiander is stored in hash map for this idea to get result. Do not forget to add 0:1 in hash map to get the case for a single element or for all array divisible by k       
+# Each remiander is stored in hash map for this idea to get result. Do not forget to add 0:1 in hash map to get the case for a single element or for all array divisible by k
+
+
+#
+#
+#
+#
+
+# 24-10-2026(Day48)
+'''No.of days they stayed together:'''
+#We are given with a month and date format of both the couples arriving and leaving dates of visting the rome. Then we need to find what are their total_no_days_together.
+# Here taking the intervals and doing this soo difficult. So we will assume all days to be a fixed number. like january 1 is 1st day and feb 1 is 32nd day and so on to make it easier
+# Now convert all the dates to these numbers and then compare the numbers to see whether there are any common of them or not.
+# Note: Here it is mentioned it is a non-leap year always so, we know how many days will be there in each month of a year. It is fixed.But it is not mentioned like this then the question becomes difficult.
+
+
+'''No of operations to perform to make the array sorrted.'''
+# Here we are given with the array from 0 to n-1 and we can swap them if their birtwise and is ==k and we need to find that k which makes the whole array sorted.
+
+### Intuition: SO, we do bitwise and operation on all the elements in the array which are not in the correct positions. so that we can get common bits of all and so, every time the nums[i] & nums[j]==k.
+# Ex: first we have 2 swaps to do: 1,2,3 -> 1,2 and 2,3 so, here we need 1 & 2==0 and 2 & 3==2 so, combinely if we do 1&2&3==0 then it will be same only.
+# So, we do and operations for all the elements and return it.
+
+# Logic: Since every swap must satisfy nums[i] & nums[j] == k for the same fixed k, we need a common value that permits all required swaps. Taking the bitwise AND of all misplaced elements gives the maximum feasible k.
+# If k=0, swapping 0 with any element always gives an AND of 0, allowing the misplaced elements to be moved into their correct positions.
+
+
+'''No of operations to perform to make the array sorted.'''
+# We are given with the array from 0 to n-1 and we are allowed to do 2 operations. 1 is left shift and other is reverse the array.
+# Important point: xtimes RightShift=Reverse + xtimes LeftShift + Reverse
+# So, if we notice however we do 2 operations the order of them does not change if we start with a number. So, we will use this and decide first whether they are in good order or bad order. If they are in bad order they return -1 there itself while if not we will again see:
+# First left shift how many times it takes to get for 0 to make it increasing order or decreasing ones and then we will take minimum of their 2 to return value.
+
+
+'''How to find matching pair of one array to other'''
+# Count all matching pairs between two arrays using frequency.
+
+arr1 = [1, 1, 2, 3]
+arr2 = [1, 2, 3]
+
+# Step 1: Store frequencies of elements in the first array.
+freq = {}
+for d in arr1:
+    freq[d] = freq.get(d, 0) + 1
+
+# Step 2: Count matching pairs and store the pairs.
+res = 0
+for d in arr2:
+    res += freq.get(d, 0)
+
+# Output:
+# Matching pairs: [(1, 1), (1, 1), (2, 2), (3, 3)], ->Total pairs: 4
+
