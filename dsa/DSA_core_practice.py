@@ -885,3 +885,78 @@ def can_divide():
 # Loop through the indexes and then check whether this element belongs to here or not with the help of sorted array and if ok then leave otherwise then with the help of hash see where is the element at that index currently and swap with that
 # Swap both the nums array and also update the hash accordingly. We need to update both because we need to know where exactly the current element of sorted array is right now in order to swap in the main array.
 # Be careful when there we have to update both as we might use one variable to update other thing but that variable is also being updated.
+
+
+
+# 18-10-2026 (Day 45)
+'''Remove Invalid Paranthesis and return all the possible outputs'''
+# Here we are given with a string which are opening,closing and some characters.
+# Input: s = "()())()"
+# Output: ["(())()","()()()"]
+
+# See here we are removing the minimum no.of paranthesis and returning all possible things.
+
+###Intuition: First apply brute force by dfs
+# If we get cross the index i of checking then we have to check whether the left and right paranthesis are equal or not. If yes then also check it is previous max length and if yes add the result string to the res ad if not empty the res and then add this result
+# Now if the index is still less than len(string) then we have to check current character and if the character is the '(' then we will add it once and check for next character and also after popping also we check once more. ANd in ')' character also same two times checking but
+# It is only added when the left_paranthesis >right_paranthesis strictly. And finally if the current character is a normal charcter apart from the paranthesis then we will just append and check fopr next charcter and lastly which later we will be popping this character to backpropagate this.
+
+# Here we always have 2 choices: 1 for the addding of the character and 1 is not to include it.So, follow this and when the index passes then check the subset of the charcaters and add to the result appropriately.
+
+#
+#
+#
+#
+
+#20-10-2026 (Day 46)
+'''Sum of sortable Integers'''
+# Here we are given with a array and we can divide the array to chunks of all equal length if possible.Ex:array size=4 then chunks of size 1,2,4 is possible.
+# Now each chunk can be independently rotated any way and finally they can be made to ascending order.
+# So, we have to take the length of array given and find its all divisors and then for each divisor we have to check like if we divide the array in to that size chunks and rotate then the whole array will become sorted or not. If yes then add that divisor to the res otherwise no. Max the result will be the sum of all the divisors of len(nums)
+
+### Intuition:
+#Way1(simple):
+# 1. see first we need to know however you make the chunks when we rotate each chunk the small chunks must match with all the character of the sorted array. Even if the chunk is in ascending order but does not match with the original sorted array then its waste.
+# 2. So, sort the array and name it as target and then calculate all the divisors and for each divisor make that many chunks and each chunk compare it with target that portion chunk and if one of the chunk is mismatch then also it fails the whole divisor.
+# 3. For checking the 2 chunks first Understand the below Method
+
+'''Method: An array can be put in sorted Order after any no.of rotations left or right if it follows a fixed drops of less than 2(0 or 1 is allowed)'''
+#Ex: 4,5,6,1,2,3 see here the only drop is 6 to 1 
+#    1,2,3 see the only drop is 3 to 1 ->also check the last element with the first one
+#    3,4,5,2,4 here 2 drops one is 5>2 and 4>3 so, however you rotate at the end you will not be able to get sorted array
+
+# So, according to this rule we see exactly where the drop is and we try to use this to build whole sorted array and it fails if there is other drop point. and we compare with the target chunk. IF both are equal then true otherwise we get False
+
+# 4. But while checking we do not check the last element with the first one. so, this case is handled outside like directly check the chunk with the target one.
+
+def check(nums1,nums2): #nums1 is checking array and num2 is the sorted array
+        L=len(nums1)
+        for i in range(L-1):
+            if nums1[i]>nums1[i+1]:
+                return nums1[i+1:]+nums1[:i+1]==nums2
+        return nums1==nums2
+
+# Ex: chunk=[3,2] and target_chunk=[2,3]
+# drop point=2 so, we do chunk[1:]+chunk[:1]==target_chunk
+
+#Way2(KMP):
+#1. Until make chunks keep it same. For checking:
+'''Method: Append the target chunk with itself and use the KMP to check whether the first chunk is present in it or not. If present then we will be getting the 2nd chunk if we rotate the first one.'''
+# Ex: chunk=[3,2] and target_chunk=[2,3]
+# check the [3,2] present in [2,3,2,3] so, we get and return true
+
+#
+#
+#
+#
+
+
+# 23-10-2026(Day47)
+'''Sub Array Sum divisible by k:'''
+# We are given witha array and we are asked to get how many subarrays are there whose sum is divisible by k
+
+##Intuition: Different prefix sums must have the same remainder when divided by k, which means there exists an array in between the prefixes whose sum is divisble by k
+# Ex: prefix is [....7,9,12,22,....] see 7 and 12
+# 12 mod 5==2 and 7 mod 5==2 so, there exists an array whose sum is divisible by k. So, if we closly see other examples then we get like 22mod5==2 and 12mod5==2 so we will be having a multiple of 5 sum in between which is 10 here.
+# We will be storing the remainders and along with the number of times they appeared to identify many prefixes whose remainder is same and then counts those in linear time to get answer
+# Each remiander is stored in hash map for this idea to get result. Do not forget to add 0:1 in hash map to get the case for a single element or for all array divisible by k       

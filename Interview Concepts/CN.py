@@ -561,7 +561,7 @@ Content-Type: application/json    ->Header explaining how the body will be there
 # HTTPS: HTTP uses the TLS as the security later. (HTTP 1 and 2 use the TLS explicitly whereas the HTTP 3 has an inbuilt TLS 1.3 in it along with several crytographic hashes in it)
 # TLS secures the communication through 3 major steps: 1.Confidentiality, 2.Integrity, 3.Authentication
 
-'''TLS Handshake
+'''TLS Handshake in HTTPS:
 Browser                         Server
    |                                |
    |--------- TCP handshake ------->|
@@ -588,4 +588,72 @@ Browser                         Server
 # - HTTP/2: Multiplexes streams over TCP but retains TCP-level head-of-line blocking.
 # - HTTP/3: Uses QUIC over UDP, with reliable stream delivery and independent stream-level loss recovery.
 
+
+'''The Segmentation is only 1 concept of dividing the memory into differnt chunks according to stack,heap, and only present in OS
+While the fragmentation in OS(Memory Management) mean there are 2 types of it and Segmentation leads to External Fragmentation and the Paging leads to Internal Fragmentation
+Wheras the fragmentation in CN(network layer) mean there are 2 types: IPv4 Fragmentation and IPv6 Fragmentation'''
+
+# IPv4 Fragmentation: Here both the sender and the router can fragment the packets which are more than the MTU(maximum transmission unit)size then and then send thought the network and finally they meet and joined in the receiver side
+# IPv6 Fragmnetation: Here only the sender can fragment the packets and the router cannot do anything except forwarding the packets and the receiver joins the packets at last
+
+#
+#
+#
+#
+#
+
+'''WebSockets(6/7)'''
+# This is key idea for understandng how server can send data to client without waiting for the client to make a new request
+# General HTTP uses a request-response model so, when the server can only send messages after the client sents a request(half-duplex).
+# So, we use websockets which provides persistent, bidirectional(full-duplex), communication between a client and server over one connection
+# Ex: Chat applications, live notifications, multiplayer game updates.
+# ->Persistant cannot be permanent as they may end when there is an error in the network, other failures
+
+# How it works:
+# 1.The client uses the HTTP and sends a request to the server requesting the server to upgrade the connetion to websocket.
+# 2.Server accepts the request and upgrade the connection.
+# 3.After a successful handshake, communication continues using Websockets frames.
+
+
+'''Types of approaches to real-time web updates
+1.WebSocket: communicaction done by persistant websocket
+2.Polling: communcation done by repeated HTTP requests  ->Client repeatedly asks for updates
+3.SSE(Server-sent Events): communication done by persistent HTTP response(server-to-client stream)
+'''
+
+# Long polling where we get an responce for sure but we have to wait for long time before server sends a response but short polling is like continuously sends requests and when there is response then only it sends response
+# Web socket messages are carries in frames. A message may consist of one frame or multiple fragments(text messages,control frames)
+# Control frames support operations such as ping,pong and closing the connection.
+
+# Important terms:
+# 1.TCP segment: Transport-layer unit
+# 2.WebSocket frame: Websocket protocol unit
+# 3.Websocket message: Application-level message carried in 1 or more frames
+# ->WebSockets framing allows the endpoints to identify message boundaries within that stream.
+
+'''Websockets using python'''
+# In python there is library called websockets and it handles the protocol and our code will handle the application
+# Python manages websockets connection, authenticate and authorize client,receive messages,process and validate them and send responses or publish updates to connected clients, handle disconnections and cleanup.
+
+# Websockets    ->Application layer and it needs to provide full duplex and used for identifying messge boundaries
+#     |
+#    TLS        ->It is used for Encryption and this is in transport layer
+#     |
+#    TCP        ->It is used for sending and receiving of segments(Reliable connection) and it belongs to transport layer
+# Note: Actually the order of all these things happening is reverse from bottom to top
+
+'''Complete Connection Lifecycle Sequence:
+1.TCP Handshake: Establishes raw connection over port 443.
+2.TLS Handshake: Negotiates encryption keys and verifies server certificate (creates the encrypted tunnel).
+3.HTTP Request + Auth: Client sends authenticated HTTP GET request inside the encrypted TLS tunnel.
+4.WebSocket Upgrade: Server accepts, switching the protocol to WebSocket while keeping the existing encrypted TLS tunnel open.'''
+
+#
+#
+#
+
+'''Final Summary:(7/7)'''
+# Sequence: Application->DNS->Transport->IP routing->link layer->destination application
+# HTTP/2 adds binary framing and multiplexed streams over a connection,typically TCP(similarly) and HTTP/1 is normal request-response system
+# DHCP(Dynamic Host Configuration Protocol): Assigns IP addresses and network settings. Used by devices which are going to join local networks. It operates on local network
 
