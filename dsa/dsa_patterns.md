@@ -470,3 +470,17 @@ see all the elements are in increasing or not. For it you need to use the recurs
 - So, there's other way to think when asking about palindrom and (longest or no.of palindromes or ways) are asked:
 - => We will traverse the given string adn at each character we will expand towards the both sides by pointers and check whether the given string is a palindrome or not.
 
+
+## 25-10-2026(Day49)
+
+#### '''Trapping Rain water Problem-I'''
+- Here we are given with a array which contains the heights of the containers and we need to find how much water can be stored between the containers
+- Take an array and store all the max_right height and while moving only we can get the max_left height so, by both we can use them and take their minimum of those and then substract the original height to get water stored in that cell.
+- Here see the max_left and max_right are for the idx at which it is current now.
+
+- Formula: water_at_i = min(max_left_height, max_right_height) - height[i]
+
+- =>Intuition: SO, if we find what are the maximum heights at beside us then we can able to know how much water can be fit in to this idx and by removing its height we can get the water. And also we have to take min of those 2 because water can be stored until that point only
+
+
+
