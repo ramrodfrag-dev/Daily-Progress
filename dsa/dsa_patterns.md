@@ -483,4 +483,24 @@ see all the elements are in increasing or not. For it you need to use the recurs
 - =>Intuition: SO, if we find what are the maximum heights at beside us then we can able to know how much water can be fit in to this idx and by removing its height we can get the water. And also we have to take min of those 2 because water can be stored until that point only
 
 
+### Why use a Min-Heap? 💧 ->Trapping Rain water Problem-II
+
+Water escapes through the **lowest available boundary**, not the tallest wall. Therefore, we process the lowest boundary cell first using a min-heap and expand inward. This helps us discover lower escape routes before higher ones, allowing us to determine the correct water level and calculate trapped water.
+
+**Small Grid Example:**
+
+```python
+heightMap = [
+    [3, 3, 3],
+    [3, 1, 3],
+    [3, 2, 3]
+]
+```
+
+- The boundary cell with height `2` is the lowest, so the min-heap processes it first.
+- The center cell has height `1`, surrounded by walls of height `3`, but water can escape through the boundary of height `2`.
+- Therefore, the center can hold only `2 - 1 = 1` unit of water, **not** `3 - 1 = 2`.
+
+**Key intuition:** Processing the lowest available boundary first helps us discover the lowest escape route, which determines how much water each cell can retain.
+
 

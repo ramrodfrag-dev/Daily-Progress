@@ -1012,3 +1012,24 @@ for d in arr2:
 # Output:
 # Matching pairs: [(1, 1), (1, 1), (2, 2), (3, 3)], ->Total pairs: 4
 
+#
+#
+#
+#
+
+# 25-10-2026(Day 49)
+'''Count all sub square matrices with all ones'''
+
+# We are given with a matrix which has all 0's and 1's. And we need to find all the substirngs which has all 1's
+## Intuition: Here first we will divide the problem into subparts and solve each part recursively.
+
+# Recurrence:
+# dp[i][j] = 1 + min(
+#     dp[i-1][j],     # ↑ Top
+#     dp[i][j-1],     # ← Left
+#     dp[i-1][j-1]    # ↖ Top-left diagonal
+# )
+#
+# What is being recursively solved?
+# dp[i][j] = size of the largest all-ones square
+#            whose bottom-right corner is (i, j).
