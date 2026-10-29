@@ -1019,7 +1019,6 @@ for d in arr2:
 
 # 25-10-2026(Day 49)
 '''Count all sub square matrices with all ones'''
-
 # We are given with a matrix which has all 0's and 1's. And we need to find all the substirngs which has all 1's
 ## Intuition: Here first we will divide the problem into subparts and solve each part recursively.
 
@@ -1033,3 +1032,50 @@ for d in arr2:
 # What is being recursively solved?
 # dp[i][j] = size of the largest all-ones square
 #            whose bottom-right corner is (i, j).
+
+#
+#
+#
+
+# 28-10-2026(Day 50)
+'''Count the min XOR Path in the grid'''
+# Here we are given with a grid of values and we have to find the path which gives less value. A value from one square to other calculated as the XOR operations of those 2
+# We will do dfs and travel whole grid and do XOR operation and see which value is less and more efficiently we can use the dp bottom appraoch which is very optimal
+
+# Key takeaway is like we should not store a single value in the dp_grid which is minimum because in XOR operations there might be chances of getting a minimum value when done XOR with large number. SO, we have to store all values when XOR is done(All path values)
+# And then we will use those for later stages to do XOR for differnt cell paths. Store it as a set instead of list as the common values gives the common results when done XOR with some element.
+
+
+'''Merge k sorted lists'''
+# Here we are given with k linked lists and then we need to merge those all to make a single increasing one
+###Intuition: Just use a heapq(Priority queue) which gets the minimum value to us.
+import itertools
+counter=itertools.count()
+# -> Store node.val, next(counter), node in it
+# Here we are using the counter because we need to need to assign a new unique value to each of them to compare among the thing whose node value is same
+# If there are 2 lists whose current values are same then instead of comparing lists which cannot be happening we use this counter as our 2nd variable to compare if the node value is same to break the ties.
+
+
+'''Split array largest sum'''
+# Split the array into k parts where the maximum of sum of each subarray is minimum.
+# Doing this with bruteforce is so time consuming and hard to implement. SO, we use the Biary search for this   ->Binary search idea must be told by someone otherwise we cannot directly get it for 1st time
+
+###Intuition: Convert this question into binary search. l is the least possible maximum sum which is max(nums) and the r is largest possible maximum sum which is sum(nums), which only occurs when all the array is taken as a whole.
+# Now check with the mid can we split the array by keeping the largest sum of subarrays <=mid if possible then decrease the r which checks further any small values or possible or not and else we will increase l so that we can check for a valid answer
+
+# Splitting is easy. Do not try to split. Greedy approach: First iterate over the array and add elemnts to total until your total<=mid then if it crosses then we got 1 subarray and then go for next subarray by restating total. count subarrays.
+# If the subarrys formed are <=k(how many to be made) then we cn split otherwise we cannot. Even if it is <k we an include some elements from one subarray to the remaining aubarrays to make them non empty and return. We just need the maximum sum of those to be minimum
+
+#
+#
+#
+
+# 29-10-2026(Day51)
+'''Special Binary Strings:'''
+# Here we are given with a special string which has only 1's or 0's only, and in if we take any prefixes we will get 1's as atleast the no.of 0's. It means the 1;s will comes firsts in the string and then the 0's follows. But not all happens like this
+# Ex: 11011000 ->See in any prefix we will get more number of 1's than 0's in the string
+
+### Idea: So, we will break the problem into small problems and each time we will see the substring and arrange them in correct order like lexicographically increasing and then return to the main subproblem. 
+# The subproblem gives the optimal thing to the main problem and then it takes it and give it to main problem
+
+ 

@@ -170,3 +170,28 @@ integer2=int('1010',16)   #Takes base as 16
 
 binary1=bin(9)[2:]  #The slicing is done at last to make sure the convention/symbol does not comes with the number
 
+
+
+'''Use of defaultdict'''
+# This is generally used in order to not get any errors when we are acessing any elements which are not present at all in the data structure
+
+# To intialize a 1d array with this:
+from collections import defaultdict
+arr=defaultdict(int)        # -> Here we are intializing a array which contains integer as default
+arr[0]=5
+print(arr[0])   # Gives 5
+print(arr[1])   # Gives 0 instead of returning an error, it knows the default is int so, it places 0 instead and returns
+
+# We can also do like:
+arr[(2,4)]=6 # This can be used as all as this is a dictionary only.
+
+# If we want to get a 2D dictionaey with all default lists in it
+arr2=defaultdict(lambda: defaultdict(list)) #->Here we will be putting the lists in the list and then if we access anything which does not exist then it returns empty list as it is defaultdict is set to list
+
+
+
+'''Use of extend and update keyword in sets'''
+# We use these when there is an iterable thing and we need to add all that values to the list or a set respectively.
+# For list append method adds one element to list and the extend adds all the elements in the given iterable dataset
+# For set add method adds one element to set and the update adds all the elements in the given iterable dataset
+

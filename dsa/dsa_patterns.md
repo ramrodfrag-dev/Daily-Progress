@@ -487,6 +487,8 @@ see all the elements are in increasing or not. For it you need to use the recurs
 
 Water escapes through the **lowest available boundary**, not the tallest wall. Therefore, we process the lowest boundary cell first using a min-heap and expand inward. This helps us discover lower escape routes before higher ones, allowing us to determine the correct water level and calculate trapped water.
 
+- At each iteration of poping an element from heap we add its unvisited neighbours and also add how much water can be stored upon it with( max_height- current_height ) and also mark the added neighbours as visited in order to not check repeatedly.
+
 **Small Grid Example:**
 
 ```python
@@ -502,5 +504,5 @@ heightMap = [
 - Therefore, the center can hold only `2 - 1 = 1` unit of water, **not** `3 - 1 = 2`.
 
 **Key intuition:** Processing the lowest available boundary first helps us discover the lowest escape route, which determines how much water each cell can retain.
-
+- Max_height gradually increases so, at any point if we reach a smaller height element than the max_height at that time then we find water there else no.
 

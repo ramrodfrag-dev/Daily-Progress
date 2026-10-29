@@ -50,5 +50,13 @@ class hero(anjan):
     def __init__(self):
         super().__init__
         print("hello")
-        
-        
+
+
+'''Some facts:'''
+a=9000000
+b=9000000
+mid=(a+b)//2
+# The above thing works in python as the integer holding capacity is way more and they are expandable unlike other languages like c++ or java where they may overflow and can cause many unwanted results
+# So, instead of doing the above method we use as below:
+mid=a+((b-a)//2)    #-> With this we can make sure they never cross the limit/capcity to hold.
+
